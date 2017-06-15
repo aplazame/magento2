@@ -1,0 +1,85 @@
+<?php
+
+namespace Aplazame\Payment\Gateway\Config;
+
+use Magento\Framework\App\Config\ScopeConfigInterface;
+
+class Config extends \Magento\Payment\Gateway\Config\Config
+{
+    /**
+     * @var string
+     */
+    private $apiBaseUri;
+
+    /**
+     * @var string
+     */
+    private $aplazameJsUri;
+
+    public function __construct(
+        ScopeConfigInterface $scopeConfig,
+        $methodCode = null,
+        $pathPattern = self::DEFAULT_PATH_PATTERN
+    ) {
+        parent::__construct($scopeConfig, $methodCode, $pathPattern);
+
+        $this->apiBaseUri = getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com';
+        $this->aplazameJsUri = getenv('APLAZAME_JS_URI') ? getenv('APLAZAME_JS_URI') : 'https://aplazame.com/static/aplazame.js';
+    }
+
+    /**
+     * @return bool
+     */
+    public function isActive()
+    {
+        return (bool) $this->getValue('active');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSandbox()
+    {
+        return (bool) $this->getValue('sandbox');
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiBaseUri()
+    {
+        return $this->apiBaseUri;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAplazameJsUri()
+    {
+        return $this->aplazameJsUri;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrivateApiKey()
+    {
+        return $this->getValue('private_api_key');
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublicApiKey()
+    {
+        return $this->getValue('public_api_key');
+    }
+
+    /**
+     * @return string
+     */
+    public function getPaymentButton()
+    {
+        return $this->getValue('payment_button');
+    }
+}

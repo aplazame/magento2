@@ -1,0 +1,64 @@
+version: '2'
+
+services:
+    web:
+        hostname: magento2
+        domainname: aplazame
+        image: magento/magento2devbox-web:latest
+        volumes:
+          - "~/.composer:/home/magento2/.composer"
+          - "./src:/aplazame"
+        environment:
+          - MAGENTO_ADMIN_USER=admin
+          - MAGENTO_ADMIN_PASSWORD=admin123
+          - MAGENTO_BACKEND_PATH=admin
+          - MAGENTO_CRON_RUN=0
+          - MAGENTO_DI_COMPILE=0
+          - MAGENTO_DOWNLOAD_SOURCES_CLOUD=0
+          - MAGENTO_DOWNLOAD_SOURCES_COMPOSER=1
+          - MAGENTO_EDITION=ce
+          - MAGENTO_GRUNT_COMPILE=0
+          - MAGENTO_SAMPLE_DATA_INSTALL=1
+          - MAGENTO_STATIC_CONTENTS_DEPLOY=0
+          - MAGENTO_USE_SOURCES_IN_HOST=0
+          - MAGENTO_VERSION=
+          - USE_ELASTICSEARCH=0
+          - USE_RABBITMQ=0
+          - USE_REDIS_CACHE=0
+          - USE_REDIS_FULL_PAGE_CACHE=0
+          - USE_REDIS_SESSIONS=0
+          - USE_SHARED_WEBROOT=
+          - USE_UNISON_SYNC=0
+          - USE_VARNISH=0
+        env_file:
+          - ./.env.dist
+          - ./.env
+        extra_hosts:
+          - "magento2.aplazame:127.0.0.1"
+        ports:
+          - "1748:80"
+
+    db:
+        image: mysql:5.6
+        env_file:
+          - ./.env.dist
+          - ./.env
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_DATABASE=magento2
+        ports:
+          - "3306:3306"
+
+#    varnish:
+#        depends_on:
+#          - "web"
+#        image: magento/magento2devbox-varnish:latest
+#
+#    redis:
+#        image: redis:3.0.7
+#
+#    rabbit:
+#        image: rabbitmq:3-management
+#
+#    elasticsearch:
+#        image: elasticsearch:2

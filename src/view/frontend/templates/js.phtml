@@ -1,0 +1,12 @@
+<?php
+    /** @var $block \Aplazame\Payment\Block\Js */
+    $config = $block->getConfig();
+?>
+
+<script
+  type="text/javascript"
+  src="<?php echo $config->getAplazameJsUri(); ?>"
+  data-api-host="<?php echo $config->getApiBaseUri(); ?>"
+  data-aplazame="<?php echo $config->getPublicApiKey() ?>"
+  data-sandbox="<?php echo $config->isSandbox() ? 'true' : 'false' ?>"
+></script>

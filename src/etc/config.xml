@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <aplazame_payment>
+                <active>0</active>
+                <model>Aplazame\Payment\Model\Aplazame</model>
+                <payment_action>order</payment_action>
+                <order_status>pending</order_status>
+                <title>Aplazame</title>
+                <allowspecific>0</allowspecific>
+                <payment_button>#aplazame-payment-method</payment_button>
+            </aplazame_payment>
+        </payment>
+    </default>
+</config>

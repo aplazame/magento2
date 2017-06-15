@@ -1,0 +1,31 @@
+<?php
+
+namespace Aplazame\Payment\Model\Api\BusinessModel;
+
+use Aplazame\Payment\Model\BusinessModel\Address;
+use Aplazame\Payment\Model\BusinessModel\ShippingInfo;
+use Aplazame\Serializer\Decimal;
+use Magento\Quote\Model\Quote;
+
+class HistoricalOrder
+{
+    /**
+     * @return array
+     */
+    public static function createFromOrder(Quote $quote)
+    {
+        $serialized = array(
+            'id' => $quote->getId(),
+            'amount' => Decimal::fromFloat($quote->getGrandTotal()),
+            'due' => Decimal::fromFloat($quote->getTotalDue()),
+            'status' => $quote->getStatus(),
+            'type' => $quote->getPayment()->getMethodInstance()->getCode(),
+            'order_date' => date(DATE_ISO8601, strtotime($quote->getCreatedAt())),
+            'currency' => $quote->getQuoteCurrencyCode(),
+            'billing' => Address::createFromAddress($quote->getBillingAddress()),
+            'shipping' => ShippingInfo::createFromQuote($quote),
+        );
+
+        return $serialized;
+    }
+}
