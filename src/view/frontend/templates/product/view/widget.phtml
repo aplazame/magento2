@@ -1,0 +1,12 @@
+<?php
+/** @var Widget $block */
+
+use Aplazame\Payment\Block\Product\View\Widget;
+use Aplazame\Serializer\Decimal;
+?>
+<div
+  data-aplazame-simulator=""
+  data-view="product"
+  data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
+  data-currency="<?php echo $block->getCurrencyCode(); ?>"
+></div>
