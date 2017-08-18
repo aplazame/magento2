@@ -14,7 +14,7 @@ class HistoricalOrder
      */
     public static function createFromOrder(Quote $quote)
     {
-        $serialized = array(
+        $serialized = [
             'id' => $quote->getId(),
             'amount' => Decimal::fromFloat($quote->getGrandTotal()),
             'due' => Decimal::fromFloat($quote->getTotalDue()),
@@ -24,7 +24,7 @@ class HistoricalOrder
             'currency' => $quote->getQuoteCurrencyCode(),
             'billing' => Address::createFromAddress($quote->getBillingAddress()),
             'shipping' => ShippingInfo::createFromQuote($quote),
-        );
+        ];
 
         return $serialized;
     }

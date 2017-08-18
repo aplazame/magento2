@@ -73,14 +73,12 @@ class Confirm extends Action
         $invoice
             ->setRequestedCaptureCase(\Magento\Sales\Model\Order\Invoice::NOT_CAPTURE)
             ->setTransactionId($checkoutToken)
-            ->register()
-        ;
+            ->register();
 
         $this->_objectManager->create('Magento\Framework\DB\Transaction')
              ->addObject($invoice)
              ->addObject($order)
-             ->save()
-        ;
+             ->save();
 
         $order->addRelatedObject($invoice);
         $payment = $order->getPayment();

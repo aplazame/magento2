@@ -77,7 +77,8 @@ class Aplazame extends AbstractMethod
         ) {
             throw new LocalizedException(__(
                 'Aplazame authorized amount of ' . $aOrder['total_amount'] .
-                ' does not match requested amount of: ' . $amount));
+                ' does not match requested amount of: ' . $amount
+            ));
         }
 
         $this->aplazameClient->authorize($checkoutToken);
@@ -87,20 +88,17 @@ class Aplazame extends AbstractMethod
             ->setTransactionId($checkoutToken)
             ->setIsTransactionClosed(false)
             ->setIsTransactionPending(true)
-            ->setIsTransactionApproved(true)
-        ;
+            ->setIsTransactionApproved(true);
         $transaction = $this->transactionBuilder
             ->setPayment($payment)
             ->setOrder($order)
             ->setTransactionId($payment->getTransactionId())
-            ->build(Transaction::TYPE_ORDER)
-        ;
+            ->build(Transaction::TYPE_ORDER);
         $payment->addTransactionCommentsToOrder($transaction, $message);
 
         $order
             ->setState(\Magento\Sales\Model\Order::STATE_PROCESSING)
-            ->setStatus(\Magento\Sales\Model\Order::STATE_PROCESSING)
-        ;
+            ->setStatus(\Magento\Sales\Model\Order::STATE_PROCESSING);
 
         $payment->setSkipOrderProcessing(true);
 

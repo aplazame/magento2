@@ -11,13 +11,13 @@ class Article
      */
     public static function createFromProduct(Product $product)
     {
-        $article = array(
+        $article = [
             'id' => $product->getId(),
             'name' => $product->getName(),
             'description' => substr($product->getDescription(), 0, 255),
             'url' => $product->getProductUrl(),
             'image_url' => $product->getImageUrl(),
-        );
+        ];
 
         return $article;
     }

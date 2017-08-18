@@ -46,7 +46,7 @@ define(
                 }
             },
 
-            launchAplazameCheckout: function() {
+            launchAplazameCheckout: function () {
                 var payload = config.checkout;
 
                 payload.merchant.onDismiss = function () {};
