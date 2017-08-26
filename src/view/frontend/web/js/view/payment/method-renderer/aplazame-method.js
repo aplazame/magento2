@@ -50,12 +50,8 @@ define(
                 var payload = config.checkout;
 
                 payload.merchant.onDismiss = function () {};
-                payload.merchant.onError = function () {
-                    console.log("A error");
-                };
+                payload.merchant.onError = function () {};
                 payload.merchant.onSuccess = function () {
-                    console.log("A success");
-
                     redirectOnSuccessAction.execute()
                 };
 
