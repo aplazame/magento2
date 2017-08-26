@@ -55,14 +55,14 @@ class Customer
         return $aCustomer;
     }
 
-    public static function createGuessCustomerFromQuote(Quote $orderquote)
+    public static function createGuessCustomerFromQuote(Quote $quote)
     {
         $aCustomer = new self();
-        $aCustomer->email = $orderquote->getCustomerEmail();
+        $aCustomer->email = $quote->getCustomerEmail();
         $aCustomer->type = 'g';
         $aCustomer->gender = 0;
-        $aCustomer->first_name = $orderquote->getCustomerFirstname();
-        $aCustomer->last_name = $orderquote->getCustomerLastname();
+        $aCustomer->first_name = $quote->getCustomerFirstname();
+        $aCustomer->last_name = $quote->getCustomerLastname();
 
         return $aCustomer;
     }
