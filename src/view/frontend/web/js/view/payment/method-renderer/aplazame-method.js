@@ -60,6 +60,10 @@ define(
                 payload.order.total_amount = aplazame._.parsePrice("" + totals.base_grand_total);
                 payload.order.discount = aplazame._.parsePrice("" + totals.discount_amount);
 
+                if (quote.guestEmail) {
+                    payload.customer.email = quote.guestEmail ;
+                }
+
                 var billingAddress = quote.billingAddress();
                 payload.billing.city = billingAddress.city;
                 payload.billing.country = billingAddress.countryId;
