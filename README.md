@@ -4,6 +4,17 @@
 
 Magento CE 2.0.0.0+
 
+#### Installation
+
+From Magento 2 root directory type the following commands in the console.
+
+```
+composer require aplazame/magento2
+php bin/magento module:enable Aplazame_Payment
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+```
+
 #### Release history
 
 For new features check [this](HISTORY.md).
