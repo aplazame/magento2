@@ -16,7 +16,7 @@ class Article
             'name' => $product->getName(),
             'description' => substr($product->getDescription(), 0, 255),
             'url' => $product->getProductUrl(),
-            'image_url' => $product->getImageUrl(),
+//            'image_url' => $product->getImageUrl(),
         ];
 
         return $article;
