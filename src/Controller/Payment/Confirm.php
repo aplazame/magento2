@@ -3,19 +3,13 @@
 namespace Aplazame\Payment\Controller\Payment;
 
 use Aplazame\Payment\Model\Api\AplazameClient;
-use Aplazame\Payment\Model\Aplazame;
-use Aplazame\Serializer\Decimal;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Api\CartManagementInterface;
-use Magento\Quote\Api\Data\PaymentInterface;
-use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\QuoteManagement;
 use Magento\Sales\Model\Order;
-use Magento\Sales\Model\Order\Invoice;
-use Magento\Sales\Model\OrderFactory;
 
 class Confirm extends Action
 {
@@ -57,6 +51,10 @@ class Confirm extends Action
         $quote = $this->checkoutSession->getQuote();
         if ($quote->getId() !== $checkoutToken) {
             throw new LocalizedException(__('Invalid token or session has expired.'));
+        }
+
+        if (empty($quote->getCustomerEmail())) {
+            $quote->setCheckoutMethod(CartManagementInterface::METHOD_GUEST);
         }
 
         $this->quoteManagement->placeOrder($quote->getId());
