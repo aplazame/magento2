@@ -5,6 +5,7 @@ namespace Aplazame\Payment\Model\Ui;
 use Aplazame\Payment\Model\BusinessModel\Checkout;
 use Aplazame\Payment\Gateway\Config\Config;
 use Aplazame\Payment\Model\Aplazame;
+use Aplazame\Serializer\Decimal;
 use Aplazame\Serializer\JsonSerializer;
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Checkout\Model\Session;
@@ -46,7 +47,7 @@ class ConfigProvider implements ConfigProviderInterface
     {
         return [
             'selector' => $this->config->getPaymentButton(),
-            'amount'   => $quote->getGrandTotal(),
+            'amount'   => JsonSerializer::serializeValue(Decimal::fromFloat($quote->getGrandTotal())),
             'currency' => $quote->getQuoteCurrencyCode(),
         ];
     }
