@@ -91,6 +91,14 @@ define(
 
                 aplazame.checkout(payload);
             },
+
+            button: function () {
+                aplazame.button({
+                    selector: config.button.selector,
+                    amount: config.button.amount,
+                    currency: config.button.currency
+                });
+            },
         });
     }
 );
