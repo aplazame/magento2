@@ -1,0 +1,143 @@
+<?php
+
+/** @var Aplazame $block */
+
+use Aplazame\Payment\Block\Adminhtml\Product\Edit\Aplazame;
+use Aplazame\Serializer\JsonSerializer;
+
+?>
+
+<div class="entry-edit">
+    <fieldset class="admin__fieldset" id="aplazame_campaigns_container">
+    </fieldset>
+
+    <button type="button" name="associateProductsToCampaigns" id="associateProductsToCampaigns" onclick="associateArticlesToCampaigns()">
+        <?php echo __('Associate products to selected campaigns'); ?>
+    </button>
+
+    <button type="button" name="removeProductsFromCampaigns" id="removeProductsFromCampaigns" onclick="removeArticlesFromCampaigns()">
+        <?php echo __('Remove products from selected campaigns'); ?>
+    </button>
+</div>
+
+<script>
+    var apiProxyEndpoint = "<?php echo $block->getUrl('aplazame/proxy/index') ?>";
+    var campaignsContainer = document.getElementById("aplazame_campaigns_container");
+
+    var articles = <?php echo json_encode(JsonSerializer::serializeValue($block->getArticles())) ?>;
+
+    function associateArticlesToCampaign(articles, campaignId) {
+        apiRequest("POST", "/me/campaigns/" + campaignId + "/articles", articles, function() {});
+    }
+
+    function removeArticlesFromCampaign(articles, campaignId) {
+        var articleIds = articles.map(function (article) {
+            return article.id;
+        });
+
+        apiRequest("DELETE", "/me/campaigns/" + campaignId + "/articles?article-mid=" + articleIds.join(","), null, function() {});
+    }
+
+    function associateArticlesToCampaigns() {
+        var campaignsId = getSelectedCampaigns();
+
+        campaignsId.forEach(function (campaignId) {
+            associateArticlesToCampaign(articles, campaignId);
+        });
+    }
+
+    function removeArticlesFromCampaigns() {
+        var campaignsId = getSelectedCampaigns();
+
+        campaignsId.forEach(function (campaignId) {
+            removeArticlesFromCampaign(articles, campaignId);
+        });
+    }
+
+    function getSelectedCampaigns()
+    {
+        var checkboxes = document.getElementsByName("campaigns");
+        var selected = [];
+        for (var i = 0; i < checkboxes.length; ++i) {
+            var checkbox = checkboxes[i];
+            if (checkbox.checked) {
+                selected.push(checkbox["data-campaignId"]);
+            }
+        }
+
+        return selected;
+    }
+
+    function insertCampaign(campaign) {
+
+        var inputId = "campaign_" + campaign.id;
+        /**
+         * @type {HTMLInputElement|Element}
+         */
+        var checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.name = "campaigns";
+        checkbox.value = campaign.id;
+        checkbox.id = inputId;
+        checkbox["data-campaignId"] = campaign.id;
+
+        if (!campaign.partial) {
+            checkbox.checked = true;
+            checkbox.disabled = true;
+            checkbox.title = "<?php echo __('The campaign applies to all products from your catalogue'); ?>";
+        }
+
+        /**
+         * @type {HTMLLabelElement|Element}
+         */
+        var label = document.createElement("label");
+        label.htmlFor = inputId;
+
+        label.appendChild(document.createTextNode(campaign.name));
+
+        var row = document.createElement("div");
+
+        var control = document.createElement("div");
+        control.appendChild(checkbox);
+        control.appendChild(label);
+
+        row.appendChild(control);
+
+        row.className = "admin__field";
+        label.className = "admin__field-label";
+        control.className = "admin__field-control";
+        checkbox.className = "admin__control-checkbox";
+
+        campaignsContainer.appendChild(row);
+    }
+
+    function displayCampaigns(campaigns) {
+        campaigns.forEach(insertCampaign);
+    }
+
+    function apiRequest(method, path, data, callback) {
+        new Ajax.Request(apiProxyEndpoint, {
+            method: "POST",
+            parameters: {
+                method: method,
+                path: path,
+                data: JSON.stringify(data)
+            },
+            onComplete: function (transport) {
+                var payload = JSON.parse(transport.responseText);
+
+                callback(payload);
+            }
+        });
+    }
+
+    require([
+        'prototype'
+    ], function () {
+    apiRequest("GET", "/me/campaigns", null, function(payload) {
+        var campaigns = payload.results;
+
+        displayCampaigns(campaigns);
+    });
+    });
+</script>
