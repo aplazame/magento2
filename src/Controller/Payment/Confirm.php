@@ -53,7 +53,7 @@ class Confirm extends Action
             throw new LocalizedException(__('Invalid token or session has expired.'));
         }
 
-        if (empty($quote->getCustomerEmail())) {
+        if (empty($quote->getCustomerId())) {
             $quote->setCheckoutMethod(CartManagementInterface::METHOD_GUEST);
         }
 
