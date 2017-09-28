@@ -96,10 +96,6 @@ class Aplazame extends AbstractMethod
             ->build(Transaction::TYPE_ORDER);
         $payment->addTransactionCommentsToOrder($transaction, $message);
 
-        $order
-            ->setState(\Magento\Sales\Model\Order::STATE_PROCESSING)
-            ->setStatus(\Magento\Sales\Model\Order::STATE_PROCESSING);
-
         $payment->setSkipOrderProcessing(true);
 
         return $this;
