@@ -120,9 +120,6 @@ class Aplazame extends AbstractMethod
     {
         /** @var Payment $payment */
         $order = $payment->getOrder();
-        if ($order->getSubtotalInclTax() == $amount) {
-            return $this->cancel($payment);
-        }
 
         $this->aplazameClient->refundAmount($order->getQuoteId(), $amount);
 
