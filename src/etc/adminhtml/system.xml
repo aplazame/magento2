@@ -51,6 +51,11 @@
                     <label>Sort Order</label>
                     <frontend_class>validate-number</frontend_class>
                 </field>
+
+                <field id="autoinvoice" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Automatic invoice generation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
             </group>
         </section>
     </system>

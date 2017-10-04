@@ -82,4 +82,12 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     {
         return $this->getValue('payment_button');
     }
+
+    /**
+     * @return bool
+     */
+    public function shouldAutoInvoice()
+    {
+        return (bool) $this->getValue('autoinvoice');
+    }
 }

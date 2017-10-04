@@ -2,6 +2,7 @@
 
 namespace Aplazame\Payment\Controller\Payment;
 
+use Aplazame\Payment\Gateway\Config\Config;
 use Aplazame\Payment\Model\Api\AplazameClient;
 use Magento\Checkout\Model\Session;
 use Magento\Framework\App\Action\Action;
@@ -28,15 +29,22 @@ class Confirm extends Action
      */
     private $quoteManagement;
 
+    /**
+     * @var Config
+     */
+    private $config;
+
     public function __construct(
         Context $context,
         Session $checkoutSession,
         QuoteManagement $quoteManagement,
-        AplazameClient $aplazameClient
+        AplazameClient $aplazameClient,
+        Config $config
     ) {
         $this->checkoutSession = $checkoutSession;
         $this->aplazameClient = $aplazameClient;
         $this->quoteManagement = $quoteManagement;
+        $this->config = $config;
 
         parent::__construct($context);
     }
@@ -59,9 +67,11 @@ class Confirm extends Action
 
         $this->quoteManagement->placeOrder($quote->getId());
 
-        $order = $this->checkoutSession->getLastRealOrder();
+        if ($this->config->shouldAutoInvoice()) {
+            $order = $this->checkoutSession->getLastRealOrder();
 
-        $this->invoice($order, $checkoutToken);
+            $this->invoice($order, $checkoutToken);
+        }
     }
 
     private function invoice(Order $order, $checkoutToken)

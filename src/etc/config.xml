@@ -11,6 +11,7 @@
                 <payment_button>#aplazame-payment-method</payment_button>
                 <order_status>processing</order_status>
                 <allowspecific>0</allowspecific>
+                <autoinvoice>1</autoinvoice>
             </aplazame_payment>
         </payment>
     </default>

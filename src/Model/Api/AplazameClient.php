@@ -5,7 +5,6 @@ namespace Aplazame\Payment\Model\Api;
 use Aplazame\Api\Client;
 use Aplazame\Payment\Gateway\Config\Config;
 use Aplazame\Serializer\Decimal;
-use Magento\Sales\Model\Order;
 
 class AplazameClient
 {
