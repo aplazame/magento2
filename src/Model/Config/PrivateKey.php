@@ -72,6 +72,7 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
         $path = 'payment/aplazame_payment/public_api_key';
         $this->configValueFactory->create()->load($path, 'path')
             ->setValue($this->publicApiKey)
+            ->setPath($path)
             ->save()
         ;
 
