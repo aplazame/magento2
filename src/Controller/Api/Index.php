@@ -127,6 +127,11 @@ class Index extends Action
         }
 
         switch ($path) {
+            case '/article/':
+                /** @var \Aplazame\Payment\Model\Api\Controller\Article $controller */
+                $controller = $this->_objectManager->get('Aplazame\Payment\Model\Api\Controller\Article');
+
+                return $controller->articles($queryArguments);
             default:
                 return self::not_found();
         }
