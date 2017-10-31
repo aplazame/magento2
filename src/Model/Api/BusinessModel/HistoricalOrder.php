@@ -12,7 +12,7 @@ class HistoricalOrder
     /**
      * @return array
      */
-    public static function createFromOrder(Quote $quote)
+    public static function createFromQuotes(Quote $quote)
     {
         $serialized = [
             'id' => $quote->getId(),

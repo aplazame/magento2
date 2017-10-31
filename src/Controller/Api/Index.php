@@ -132,6 +132,11 @@ class Index extends Action
                 $controller = $this->_objectManager->get('Aplazame\Payment\Model\Api\Controller\Article');
 
                 return $controller->articles($queryArguments);
+            case '/order/{order_id}/history/':
+                /** @var \Aplazame\Payment\Model\Api\Controller\Order $controller */
+                $controller = $this->_objectManager->get('Aplazame\Payment\Model\Api\Controller\Order');
+
+                return $controller->history($pathArguments, $queryArguments);
             default:
                 return self::not_found();
         }
