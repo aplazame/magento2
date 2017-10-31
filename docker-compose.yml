@@ -8,6 +8,7 @@ services:
         volumes:
           - "~/.composer:/home/magento2/.composer"
           - "./src:/aplazame"
+          - magento:/var/www/magento2
         environment:
           - MAGENTO_ADMIN_USER=admin
           - MAGENTO_ADMIN_PASSWORD=admin123
@@ -49,16 +50,5 @@ services:
         ports:
           - "3306:3306"
 
-#    varnish:
-#        depends_on:
-#          - "web"
-#        image: magento/magento2devbox-varnish:latest
-#
-#    redis:
-#        image: redis:3.0.7
-#
-#    rabbit:
-#        image: rabbitmq:3-management
-#
-#    elasticsearch:
-#        image: elasticsearch:2
+volumes:
+  magento:

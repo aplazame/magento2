@@ -13,4 +13,8 @@ docker-compose exec -d --user magento2 web /home/magento2/scripts/m2init magento
 docker-compose exec -d --user magento2 web mkdir -p /var/www/magento2/app/code/Aplazame
 docker-compose exec -d --user magento2 web ln -s /aplazame /var/www/magento2/app/code/Aplazame/Payment
 docker-compose exec -d --user magento2 web ln -s /aplazame /var/www/magento2/aplazame
-docker-compose exec -d --user magento2 web composer require aplazame/aplazame-api-sdk
+docker-compose exec -d --user magento2 web composer -d=/var/www/magento2/ require aplazame/aplazame-api-sdk
+docker-compose exec -d --user magento2 web php bin/magento module:enable Aplazame_Payment
+docker-compose exec -d --user magento2 web php bin/magento setup:upgrade
+docker-compose exec -d --user magento2 web php bin/magento setup:di:compile
+docker-compose exec -d --user magento2 web php bin/magento cache:flush
