@@ -4,7 +4,9 @@ services:
     web:
         hostname: magento2
         domainname: aplazame
-        image: magento/magento2devbox-web:latest
+        build:
+          dockerfile: Dockerfile
+          context: ./
         volumes:
           - "~/.composer:/home/magento2/.composer"
           - "./src:/aplazame"
