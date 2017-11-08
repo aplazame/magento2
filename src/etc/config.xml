@@ -5,13 +5,10 @@
             <aplazame_payment>
                 <active>0</active>
                 <model>Aplazame\Payment\Model\Aplazame</model>
-                <payment_action>order</payment_action>
-                <order_status>pending</order_status>
+                <payment_action>authorize</payment_action>
                 <title>Aplazame</title>
                 <payment_button>#aplazame-payment-method</payment_button>
-                <order_status>processing</order_status>
                 <allowspecific>0</allowspecific>
-                <autoinvoice>1</autoinvoice>
             </aplazame_payment>
         </payment>
     </default>
