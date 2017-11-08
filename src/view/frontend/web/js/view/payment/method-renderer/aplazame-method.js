@@ -47,6 +47,10 @@ define(
             },
 
             launchAplazameCheckout: function () {
+                function toAplazameDecimal(number) {
+                    return parseInt(number * 100)
+                }
+
                 var payload = config.checkout;
 
                 payload.merchant.onDismiss = function () {};
@@ -57,8 +61,8 @@ define(
 
                 var totals = quote.totals();
                 payload.order.currency = totals.quote_currency_code;
-                payload.order.total_amount = aplazame._.parsePrice("" + totals.base_grand_total);
-                payload.order.discount = aplazame._.parsePrice("" + totals.discount_amount);
+                payload.order.total_amount = toAplazameDecimal(totals.base_grand_total);
+                payload.order.discount = toAplazameDecimal(totals.discount_amount);
 
                 if (quote.guestEmail) {
                     payload.customer.email = quote.guestEmail ;
@@ -86,8 +90,8 @@ define(
 
                 var shippingMethod = quote.shippingMethod();
                 payload.shipping.name = shippingMethod.carrier_code + "_" + shippingMethod.method_code;
-                payload.shipping.price = aplazame._.parsePrice("" + totals.shipping_amount);
-                payload.shipping.discount = aplazame._.parsePrice("" + totals.shipping_discount_amount);
+                payload.shipping.price = toAplazameDecimal(totals.shipping_amount);
+                payload.shipping.discount = toAplazameDecimal(totals.shipping_discount_amount);
 
                 aplazame.checkout(payload);
             },
