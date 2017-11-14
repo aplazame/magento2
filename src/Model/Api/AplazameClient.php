@@ -40,15 +40,6 @@ class AplazameClient
      * @param string $orderId
      * @return array
      */
-    public function authorize($orderId)
-    {
-        return $this->apiClient->request('POST', '/orders/' . urlencode(urlencode($orderId)) . '/authorize');
-    }
-
-    /**
-     * @param string $orderId
-     * @return array
-     */
     public function fetchOrder($orderId)
     {
         $orders = $this->apiClient->request('GET', '/orders?mid=' . urlencode($orderId));

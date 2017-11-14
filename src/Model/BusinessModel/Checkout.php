@@ -4,7 +4,6 @@ namespace Aplazame\Payment\Model\BusinessModel;
 
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\App\ProductMetadataInterface;
-use Magento\Framework\UrlInterface;
 use Magento\Quote\Model\Quote;
 
 class Checkout
@@ -13,7 +12,7 @@ class Checkout
     {
         $checkout = new self();
         $checkout->toc = true;
-        $checkout->merchant = self::getMerchant();
+        $checkout->merchant = new \stdClass();
         $checkout->order = Order::crateFromQuote($quote);
         $checkout->customer = Customer::createFromQuote($quote);
         $checkout->billing = Address::createFromAddress($quote->getBillingAddress());
@@ -50,17 +49,5 @@ class Checkout
         $moduleInfo =  $objectManager->get('Magento\Framework\Module\ModuleList')->getOne('Aplazame_Payment');
 
         return $moduleInfo['setup_version'];
-    }
-
-    private static function getMerchant()
-    {
-        $objectManager = ObjectManager::getInstance();
-        /** @var UrlInterface $urlBuilder */
-        $urlBuilder = $objectManager->get('Magento\Framework\UrlInterface');
-
-        $merchant = new \stdClass();
-        $merchant->confirmation_url = $urlBuilder->getUrl('aplazame/payment/confirm', ['_secure' => true]);
-
-        return $merchant;
     }
 }

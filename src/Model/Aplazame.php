@@ -3,23 +3,21 @@
 namespace Aplazame\Payment\Model;
 
 use Aplazame\Payment\Model\Api\AplazameClient;
-use Aplazame\Serializer\Decimal;
-use Magento\Framework\Exception\LocalizedException;
 use Magento\Payment\Model\InfoInterface;
 use Magento\Payment\Model\Method\AbstractMethod;
 use Magento\Sales\Model\Order\Payment;
-use Magento\Sales\Model\Order\Payment\Transaction;
 
 class Aplazame extends AbstractMethod
 {
     const PAYMENT_METHOD_CODE = 'aplazame_payment';
 
     protected $_code = self::PAYMENT_METHOD_CODE;
+    protected $_canAuthorize = true;
     protected $_canCancelInvoice = true;
-    protected $_canOrder = true;
     protected $_canRefund = true;
     protected $_canRefundInvoicePartial = true;
     protected $_canVoid = true;
+    protected $_canUseInternal = false;
 
     /**
      * @var AplazameClient
@@ -27,12 +25,13 @@ class Aplazame extends AbstractMethod
     private $aplazameClient;
 
     /**
-     * @var Payment\Transaction\BuilderInterface
+     * @var \Aplazame\Payment\Gateway\Config\Config
      */
-    private $transactionBuilder;
+    private $aplazameConfig;
 
     public function __construct(
         AplazameClient $aplazameClient,
+        \Aplazame\Payment\Gateway\Config\Config $aplazameConfig,
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory,
@@ -42,7 +41,6 @@ class Aplazame extends AbstractMethod
         \Magento\Payment\Model\Method\Logger $logger,
         \Magento\Framework\Module\ModuleListInterface $moduleList,
         \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate,
-        \Magento\Sales\Model\Order\Payment\Transaction\BuilderInterface $transactionBuilder,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
         \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
         array $data = []
@@ -61,49 +59,52 @@ class Aplazame extends AbstractMethod
         );
 
         $this->aplazameClient = $aplazameClient;
-        $this->transactionBuilder = $transactionBuilder;
+        $this->aplazameConfig = $aplazameConfig;
     }
 
-    public function order(InfoInterface $payment, $amount)
+    /**
+     * @param \Magento\Sales\Model\Order\Payment $payment
+     * @param float $amount
+     *
+     * @return $this
+     */
+    public function authorize(InfoInterface $payment, $amount)
     {
-        /** @var Payment $payment */
-
-        $order = $payment->getOrder();
-        $checkoutToken = $order->getQuoteId();
-
-        $aOrder = $this->aplazameClient->fetchOrder($checkoutToken);
-        if ($aOrder['total_amount'] !== Decimal::fromFloat($amount)->jsonSerialize() ||
-            $aOrder['currency']['code'] !== $order->getOrderCurrencyCode()
-        ) {
-            throw new LocalizedException(__(
-                'Aplazame authorized amount of ' . $aOrder['total_amount'] .
-                ' does not match requested amount of: ' . $amount
-            ));
+        if ($payment->getIsFraudDetected()) {
+            return $this;
         }
 
-        $this->aplazameClient->authorize($checkoutToken);
+        $order = $payment->getOrder();
+        $mid = $order->getIncrementId();
 
-        $message = __('Ordered amount of %1', $amount);
-        $payment
-            ->setTransactionId($checkoutToken)
-            ->setIsTransactionClosed(false)
-            ->setIsTransactionPending(true)
-            ->setIsTransactionApproved(true);
-        $transaction = $this->transactionBuilder
-            ->setPayment($payment)
-            ->setOrder($order)
-            ->setTransactionId($payment->getTransactionId())
-            ->build(Transaction::TYPE_ORDER);
-        $payment->addTransactionCommentsToOrder($transaction, $message);
+        $payment->setTransactionId($mid);
 
-        $payment->setSkipOrderProcessing(true);
+        $payment->setIsTransactionPending(true);
+        $payment->setIsTransactionClosed(false);
 
         return $this;
     }
 
-    public function void(InfoInterface $payment)
+    /**
+     * @param \Magento\Sales\Model\Order\Payment $payment
+     *
+     * @return bool
+     */
+    public function acceptPayment(InfoInterface $payment)
     {
-        return $this->cancel($payment);
+        $payment->registerCaptureNotification($payment->getAmountAuthorized());
+
+        return true;
+    }
+
+    /**
+     * @param \Magento\Sales\Model\Order\Payment $payment
+     *
+     * @return bool
+     */
+    public function denyPayment(InfoInterface $payment)
+    {
+        return true;
     }
 
     public function cancel(InfoInterface $payment)
@@ -114,6 +115,11 @@ class Aplazame extends AbstractMethod
         $this->aplazameClient->cancelOrder($order->getQuoteId());
 
         return $this;
+    }
+
+    public function void(InfoInterface $payment)
+    {
+        return $this->cancel($payment);
     }
 
     public function refund(InfoInterface $payment, $amount)
