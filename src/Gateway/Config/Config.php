@@ -11,11 +11,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     private $apiBaseUri;
 
-    /**
-     * @var string
-     */
-    private $aplazameJsUri;
-
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         $methodCode = null,
@@ -24,7 +19,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         parent::__construct($scopeConfig, $methodCode, $pathPattern);
 
         $this->apiBaseUri = getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com';
-        $this->aplazameJsUri = getenv('APLAZAME_JS_URI') ? getenv('APLAZAME_JS_URI') : 'https://aplazame.com/static/aplazame.js';
     }
 
     /**
@@ -49,14 +43,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getApiBaseUri()
     {
         return $this->apiBaseUri;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAplazameJsUri()
-    {
-        return $this->aplazameJsUri;
     }
 
     /**

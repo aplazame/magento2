@@ -3,10 +3,14 @@
     $config = $block->getConfig();
 ?>
 
-<script
-  type="text/javascript"
-  src="<?php echo $config->getAplazameJsUri(); ?>"
-  data-api-host="<?php echo $config->getApiBaseUri(); ?>"
-  data-aplazame="<?php echo $config->getPublicApiKey() ?>"
-  data-sandbox="<?php echo $config->isSandbox() ? 'true' : 'false' ?>"
-></script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Aplazame_Payment/js/aplazame-init": {
+                "host":"<?php echo $config->getApiBaseUri(); ?>",
+                "publicKey":"<?php echo $config->getPublicApiKey() ?>",
+                "sandbox":<?php echo $config->isSandbox() ? 'true' : 'false' ?>
+            }
+        }
+    }
+</script>
