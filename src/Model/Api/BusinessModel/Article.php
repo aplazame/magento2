@@ -19,16 +19,9 @@ class Article
             'url' => $product->getProductUrl(),
         ];
 
-        if (!empty($product->getData('image'))) {
-            $objectManager = ObjectManager::getInstance();
-            /** @var \Magento\Catalog\Block\Product\ImageBuilder $imageBuilder */
-            $imageBuilder = $objectManager->get('Magento\Catalog\Block\Product\ImageBuilder');
-            $image = $imageBuilder->setProduct($product)
-                ->setImageId('category_page_list')
-                ->create()
-            ;
-
-            $article['image_url'] = $image->getImageUrl();
+        $imagePath = $product->getImage();
+        if (!empty($imagePath)) {
+            $article['image_url'] = $product->getMediaConfig()->getMediaUrl($imagePath);
         }
 
         return $article;

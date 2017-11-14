@@ -23,15 +23,10 @@ class Article
         $aArticle->tax_rate = Decimal::fromFloat($item->getTaxPercent());
         $aArticle->discount = Decimal::fromFloat($item->getDiscountAmount());
 
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        /** @var \Magento\Catalog\Block\Product\ImageBuilder $imageBuilder */
-        $imageBuilder = $objectManager->get('Magento\Catalog\Block\Product\ImageBuilder');
-        $image = $imageBuilder->setProduct($product)
-            ->setImageId('category_page_list')
-            ->create()
-        ;
-
-        $aArticle->image_url = $image->getImageUrl();
+        $imagePath = $product->getImage();
+        if (!empty($imagePath)) {
+            $aArticle->image_url = $product->getMediaConfig()->getMediaUrl($imagePath);
+        }
 
         return $aArticle;
     }
