@@ -92,7 +92,13 @@ class Aplazame extends AbstractMethod
      */
     public function acceptPayment(InfoInterface $payment)
     {
-        $payment->registerCaptureNotification($payment->getAmountAuthorized());
+        if ($payment->getIsFraudDetected()) {
+            return false;
+        }
+
+        if ($this->aplazameConfig->shouldAutoInvoice()) {
+            $payment->registerCaptureNotification($payment->getAmountAuthorized());
+        }
 
         return true;
     }

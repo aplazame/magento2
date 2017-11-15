@@ -89,13 +89,16 @@ final class Confirm
             $payload['currency']['code'] !== $order->getOrderCurrencyCode()
         ) {
             $payment->setIsFraudDetected(true);
-            $payload['status'] = 'ko';
         }
 
         switch ($payload['status']) {
             case 'ok':
                 $payment->accept();
                 $this->orderRepository->save($order);
+
+                if ($payment->getIsFraudDetected()) {
+                    return self::ko();
+                }
 
                 return self::ok();
             case 'ko':
