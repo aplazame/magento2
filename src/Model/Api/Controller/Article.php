@@ -33,8 +33,7 @@ final class Article
         $searchCriteria = $searchCriteriaBuilder
             ->setCurrentPage($page)
             ->setPageSize($page_size)
-            ->create()
-        ;
+            ->create();
 
         /** @var \Magento\Catalog\Model\Product[] $products */
         $products = $this->productRepository->getList($searchCriteria)->getItems();

@@ -36,7 +36,6 @@ class Index extends Action
 
         $this->getResponse()
              ->setHeader('Content-Type', 'application/json')
-             ->setBody(json_encode($response))
-        ;
+             ->setBody(json_encode($response));
     }
 }

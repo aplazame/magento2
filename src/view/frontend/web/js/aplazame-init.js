@@ -3,7 +3,7 @@ define(
         "https://aplazame.com/static/aplazame.js",
     ],
     function (aplazameSdk) {
-        return function(config) {
+        return function (config) {
             aplazameSdk.init({
                 sandbox: config.sandbox,
                 publicKey: config.publicKey,

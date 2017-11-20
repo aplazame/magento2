@@ -23,7 +23,8 @@ define(
             redirectAfterPlaceOrder: false,
 
             afterPlaceOrder: function () {
-                function toAplazameDecimal(number) {
+                function toAplazameDecimal(number)
+                {
                     return parseInt(number * 100)
                 }
 

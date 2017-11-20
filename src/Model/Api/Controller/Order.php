@@ -46,8 +46,7 @@ final class Order
             ->addFilter('customer_id', $quote->getCustomer()->getId(), 'eq')
             ->setCurrentPage($page)
             ->setPageSize($page_size)
-            ->create()
-        ;
+            ->create();
 
         /** @var \Magento\Quote\Model\Quote[] $quotes */
         $quotes = $this->quoteRepository->getList($searchCriteria)->getItems();

@@ -83,8 +83,7 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
         $this->configValueFactory->create()->load($path, 'path')
             ->setValue($this->publicApiKey)
             ->setPath($path)
-            ->save()
-        ;
+            ->save();
 
         return parent::afterSave();
     }

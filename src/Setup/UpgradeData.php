@@ -73,7 +73,6 @@ class UpgradeData implements UpgradeDataInterface
              ->load($path, 'path')
              ->setValue($publicKey)
              ->setPath($path)
-             ->save()
-        ;
+             ->save();
     }
 }
