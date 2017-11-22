@@ -92,27 +92,25 @@ final class Confirm
         }
 
         switch ($payload['status']) {
-            case 'ok':
-                $payment->accept();
-                $this->orderRepository->save($order);
-
-                if ($payment->getIsFraudDetected()) {
-                    return self::ko();
+            case 'pending':
+                switch ($payload['status_reason']) {
+                    case 'confirmation_required':
+                        $payment->accept();
+                        $this->orderRepository->save($order);
+                        break;
                 }
-
-                return self::ok();
+                break;
             case 'ko':
                 $payment->deny(true);
                 $this->orderRepository->save($order);
-
-                if ($payment->getIsFraudDetected()) {
-                    return self::ko();
-                }
-
-                return self::ok();
-            default:
-                return ApiController::client_error('Unknown "status" ' . $payload['status']);
+                break;
         }
+
+        if ($payment->getIsFraudDetected()) {
+            return self::ko();
+        }
+
+        return self::ok();
     }
 
     /**
