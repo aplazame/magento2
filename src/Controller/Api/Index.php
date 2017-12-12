@@ -149,15 +149,20 @@ class Index extends Action
 
     private function verifyAuthentication(HttpRequest $request, $privateKey)
     {
-        $authorization = $this->getHeaderAuthorization($request);
+        $authorization = $this->getAuthorizationFromRequest($request);
         if (!$authorization || empty($privateKey)) {
             return false;
         }
         return ($authorization === $privateKey);
     }
 
-    private function getHeaderAuthorization(HttpRequest $request)
+    private function getAuthorizationFromRequest(HttpRequest $request)
     {
+        $token = $request->getParam('access_token');
+        if ($token) {
+            return $token;
+        }
+
         $header = $request->getHeader('authorization');
         if (!$header) {
             return false;
