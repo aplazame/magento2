@@ -23,11 +23,20 @@ class Article
         $aArticle->tax_rate = Decimal::fromFloat($item->getTaxPercent());
         $aArticle->discount = Decimal::fromFloat($item->getDiscountAmount());
 
-        $imagePath = $product->getImage();
-        if (!empty($imagePath)) {
-            $aArticle->image_url = $product->getMediaConfig()->getMediaUrl($imagePath);
-        }
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        /** @var \Magento\Catalog\Api\ProductRepositoryInterface $productRepository */
+        $productRepository = $objectManager->get('\Magento\Catalog\Api\ProductRepositoryInterface');
+        $aArticle->image_url = self::getImageProduct($productRepository->getById($item->getProductId()));
 
         return $aArticle;
+    }
+
+    public static function getImageProduct(\Magento\Catalog\Model\Product $product)
+    {
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        /** @var \Magento\Catalog\Helper\Image $imageHelper */
+        $imageHelper = $objectManager->get(\Magento\Catalog\Helper\Image::class);
+
+        return $imageHelper->init($product, 'product_base_image')->getUrl();
     }
 }
