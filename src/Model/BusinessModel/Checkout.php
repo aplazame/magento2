@@ -20,9 +20,9 @@ class Checkout
         $checkout->meta = [
             'module' => [
                 'name' => 'aplazame:magento',
-                'version' => self::getMagentoVersion(),
+                'version' => self::getModuleVersion(),
             ],
-            'version' => self::getModuleVersion(),
+            'version' => self::getMagentoVersion(),
         ];
 
         return $checkout;
