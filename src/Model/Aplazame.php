@@ -100,6 +100,14 @@ class Aplazame extends AbstractMethod
             $payment->registerCaptureNotification($payment->getAmountAuthorized());
         }
 
+        $order = $payment->getOrder();
+        if (!$order->getEmailSent()) {
+            $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+            /** @var \Magento\Sales\Model\Order\Email\Sender\OrderSender $orderSender */
+            $orderSender = $objectManager->get('Magento\Sales\Model\Order\Email\Sender\OrderSender');
+            $orderSender->send($order);
+        }
+
         return true;
     }
 
