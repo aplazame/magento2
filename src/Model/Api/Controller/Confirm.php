@@ -20,14 +20,19 @@ final class Confirm
     protected $objectManager;
 
     /**
-     * @var \Magento\Sales\Model\Order\Payment\Transaction\BuilderInterface
-     */
-    private $transactionBuilder;
-
-    /**
      * @var \Magento\Sales\Api\OrderRepositoryInterface
      */
     private $orderRepository;
+
+    /**
+     * @var \Magento\Quote\Model\QuoteManagement
+     */
+    private $quoteManagement;
+
+    /**
+     * @var \Magento\Quote\Api\CartRepositoryInterface
+     */
+    private $quoteRepository;
 
     private static function ok()
     {
@@ -51,21 +56,22 @@ final class Confirm
 
     public function __construct(
         \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
-        \Magento\Sales\Model\Order\Payment\Transaction\BuilderInterface $transactionBuilder,
+        \Magento\Quote\Model\QuoteManagement $quoteManagement,
+        \Magento\Quote\Api\CartRepositoryInterface $quoteRepository,
         \Aplazame\Payment\Gateway\Config\Config $aplazameConfig
     ) {
         $this->orderRepository = $orderRepository;
+        $this->quoteManagement = $quoteManagement;
+        $this->quoteRepository = $quoteRepository;
         $this->objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         $this->aplazameConfig = $aplazameConfig;
-        $this->transactionBuilder = $transactionBuilder;
     }
 
-    public function confirm($payload)
+    /**
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     */
+    public function confirm(array $payload)
     {
-        if (!$payload) {
-            return ApiController::client_error('Payload is malformed');
-        }
-
         if (!isset($payload['sandbox']) || $payload['sandbox'] !== $this->aplazameConfig->isSandbox()) {
             return ApiController::client_error('"sandbox" not provided');
         }
@@ -75,39 +81,63 @@ final class Confirm
         }
         $checkoutToken = $payload['mid'];
 
-        try {
-            $order = $this->findOneOrderByQuote($checkoutToken);
-        } catch (NoSuchEntityException $e) {
-            return ApiController::not_found();
-        }
-
-        /** @var \Magento\Sales\Model\Order\Payment $payment */
-        $payment = $order->getPayment();
-        $amount = $order->getGrandTotal();
-
-        if ($payload['total_amount'] !== Decimal::fromFloat($amount)->jsonSerialize() ||
-            $payload['currency']['code'] !== $order->getOrderCurrencyCode()
-        ) {
-            $payment->setIsFraudDetected(true);
-        }
-
         switch ($payload['status']) {
             case 'pending':
                 switch ($payload['status_reason']) {
+                    case 'challenge_required':
+                        $order = $this->createOrder($checkoutToken);
+                        /** @var \Magento\Sales\Model\Order\Payment $payment */
+                        $payment = $order->getPayment();
+
+                        if ($this->isFraud($payload, $order)) {
+                            $payment->setIsFraudDetected(true);
+                        }
+
+                        $this->orderRepository->save($order);
+
+                        if ($payment->getIsFraudDetected()) {
+                            return self::ko();
+                        }
+                        break;
                     case 'confirmation_required':
+                        $order = $this->createOrder($checkoutToken);
+                        /** @var \Magento\Sales\Model\Order\Payment $payment */
+                        $payment = $order->getPayment();
+
+                        if ($this->isFraud($payload, $order)) {
+                            $payment->setIsFraudDetected(true);
+                        }
+
                         $payment->accept();
                         $this->orderRepository->save($order);
+
+                        if ($payment->getIsFraudDetected()) {
+                            return self::ko();
+                        }
                         break;
                 }
                 break;
             case 'ko':
+                try {
+                    $order = $this->findOneOrderByQuote($checkoutToken);
+                } catch (NoSuchEntityException $e) {
+                    return self::ok();
+                }
+
+                /** @var \Magento\Sales\Model\Order\Payment $payment */
+                $payment = $order->getPayment();
+
+                if ($this->isFraud($payload, $order)) {
+                    $payment->setIsFraudDetected(true);
+                }
+
                 $payment->deny(true);
                 $this->orderRepository->save($order);
-                break;
-        }
 
-        if ($payment->getIsFraudDetected()) {
-            return self::ko();
+                if ($payment->getIsFraudDetected()) {
+                    return self::ko();
+                }
+                break;
         }
 
         return self::ok();
@@ -121,6 +151,7 @@ final class Confirm
      */
     private function findOneOrderByQuote($quoteId)
     {
+        /** @var \Magento\Framework\Api\SearchCriteriaBuilder $searchCriteriaBuilder */
         $searchCriteriaBuilder = $this->objectManager->create('Magento\Framework\Api\SearchCriteriaBuilder');
         $searchCriteria = $searchCriteriaBuilder->addFilter(OrderInterface::QUOTE_ID, $quoteId, 'eq')->create();
 
@@ -130,5 +161,28 @@ final class Confirm
         }
 
         return array_shift($orders);
+    }
+
+    /**
+     * @throws \Magento\Framework\Exception\LocalizedException
+     */
+    private function createOrder($checkoutMid)
+    {
+        /** @var \Magento\Quote\Model\Quote $quote */
+        $quote = $this->quoteRepository->get($checkoutMid);
+
+        if (empty($quote->getCustomerId())) {
+            $quote->setCheckoutMethod(\Magento\Quote\Api\CartManagementInterface::METHOD_GUEST);
+        }
+
+        $orderId = $this->quoteManagement->placeOrder($quote->getId());
+
+        return $this->orderRepository->get($orderId);
+    }
+
+    private function isFraud(array $payload, \Magento\Sales\Api\Data\OrderInterface $order)
+    {
+        return ($payload['total_amount'] !== Decimal::fromFloat($order->getGrandTotal())->jsonSerialize()) ||
+               ($payload['currency']['code'] !== $order->getOrderCurrencyCode());
     }
 }

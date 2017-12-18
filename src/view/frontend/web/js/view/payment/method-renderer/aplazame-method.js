@@ -3,12 +3,16 @@ define(
         'jquery',
         'Magento_Checkout/js/view/payment/default',
         'Magento_Checkout/js/action/redirect-on-success',
+        'Magento_Checkout/js/action/set-payment-information',
+        'Magento_Checkout/js/model/payment/additional-validators',
         'Magento_Checkout/js/model/quote'
     ],
     function (
         $,
         Component,
         redirectOnSuccessAction,
+        setPaymentInformationAction,
+        additionalValidators,
         quote
     ) {
         'use strict';
@@ -22,7 +26,27 @@ define(
 
             redirectAfterPlaceOrder: false,
 
-            afterPlaceOrder: function () {
+            /**
+             * @override
+             */
+            placeOrder: function () {
+                if (additionalValidators.validate()) {
+                    this.isPlaceOrderActionAllowed(false);
+
+                    $.when(
+                        setPaymentInformationAction(
+                            this.messageContainer,
+                            {
+                                method: this.getCode()
+                            }
+                        )
+                    )
+                    .done(this.launchAplazameCheckout().bind(this))
+                    .fail(this.fail.bind(this));
+                }
+            },
+
+            launchAplazameCheckout: function () {
                 function toAplazameDecimal(number)
                 {
                     return parseInt(number * 100)

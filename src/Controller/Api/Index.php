@@ -7,6 +7,7 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\App\Response\Http as HttpResponse;
+use Magento\Framework\Exception\NoSuchEntityException;
 
 class Index extends Action
 {
@@ -136,7 +137,15 @@ class Index extends Action
                 /** @var \Aplazame\Payment\Model\Api\Controller\Confirm $controller */
                 $controller = $this->_objectManager->get('Aplazame\Payment\Model\Api\Controller\Confirm');
 
-                return $controller->confirm($payload);
+                if (!$payload) {
+                    return self::client_error('Payload is malformed');
+                }
+
+                try {
+                    return $controller->confirm($payload);
+                } catch (NoSuchEntityException $e) {
+                    return self::not_found();
+                }
             case '/order/{order_id}/history/':
                 /** @var \Aplazame\Payment\Model\Api\Controller\Order $controller */
                 $controller = $this->_objectManager->get('Aplazame\Payment\Model\Api\Controller\Order');
