@@ -17,7 +17,7 @@ class Article
         $aArticle->id = $product->getId();
         $aArticle->name = $item->getName();
         $aArticle->url = $product->getProductUrl();
-        $aArticle->quantity = intval($item->getQtyOrdered());
+        $aArticle->quantity = intval($item->getQty());
         $aArticle->price = Decimal::fromFloat($item->getPrice() + $discounts);
         $aArticle->description = substr($product->getDescription(), 0, 255);
         $aArticle->tax_rate = Decimal::fromFloat($item->getTaxPercent());
