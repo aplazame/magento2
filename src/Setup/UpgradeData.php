@@ -59,6 +59,7 @@ class UpgradeData implements UpgradeDataInterface
                         'path' => '/confirm/',
                     ],
                     '_nosid' => true,
+                    '_secure' => true,
                 ]
             ),
         ]);

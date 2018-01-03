@@ -65,6 +65,7 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
                             'path' => '/confirm/',
                         ],
                         '_nosid' => true,
+                        '_secure' => true,
                     ]
                 ),
             ]);
