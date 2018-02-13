@@ -30,11 +30,6 @@
                     <validate>required-entry</validate>
                 </field>
 
-                <field id="order_status" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>New Order Status</label>
-                    <source_model>Magento\Sales\Model\Config\Source\Order\Status\Processing</source_model>
-                </field>
-
                 <field id="allowspecific" translate="label" type="allowspecific" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Payment from Applicable Countries</label>
                     <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
