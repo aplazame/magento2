@@ -7,6 +7,7 @@
                 <model>Aplazame\Payment\Model\Aplazame</model>
                 <payment_action>authorize</payment_action>
                 <title>Aplazame</title>
+                <product_widget_enabled>1</product_widget_enabled>
                 <payment_button>#aplazame-payment-method</payment_button>
                 <allowspecific>0</allowspecific>
             </aplazame_payment>
