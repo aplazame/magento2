@@ -5,7 +5,11 @@ define([
 ], function (ko, Component, Quote) {
     'use strict';
 
+    var config = window.checkoutConfig.payment.aplazame_payment;
+
     return Component.extend({
+        cartWidgetIsEnabled: config.cart_widget_enabled,
+
         getAmount: function () {
             return Quote.totals().base_grand_total;
         },
