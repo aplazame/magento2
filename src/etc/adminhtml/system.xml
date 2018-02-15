@@ -28,6 +28,7 @@
                 <field id="product_widget_enabled" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Show widget on product page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <backend_model>Aplazame\Payment\Model\Config\Backend\Links</backend_model>
                 </field>
 
                 <field id="cart_widget_enabled" translate="label" type="select" sortOrder="39" showInDefault="1" showInWebsite="1" showInStore="0">
