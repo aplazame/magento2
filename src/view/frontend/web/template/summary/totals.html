@@ -1,10 +1,9 @@
-<div class="amount price-container" data-bind="if:cartWidgetIsEnabled">
-    <div
-        data-aplazame-simulator=""
-        data-view="cart"
-        data-bind="attr: {
-            'data-amount': toAplazameDecimal(getAmount()),
-            'data-currency': getCurrency()
-        }"
-    ></div>
-</div>
+<div
+    data-aplazame-simulator=""
+    data-view="cart"
+    data-bind="attr: {
+        'if': cartWidgetIsEnabled,
+        'data-amount': toAplazameDecimal(getAmount()),
+        'data-currency': getCurrency()
+    }"
+></div>
