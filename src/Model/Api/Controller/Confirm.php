@@ -3,6 +3,7 @@
 namespace Aplazame\Payment\Model\Api\Controller;
 
 use Aplazame\Payment\Controller\Api\Index as ApiController;
+use Aplazame\Payment\Model\Aplazame;
 use Aplazame\Serializer\Decimal;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\OrderInterface;
@@ -89,6 +90,10 @@ final class Confirm
                         /** @var \Magento\Sales\Model\Order\Payment $payment */
                         $payment = $order->getPayment();
 
+                        if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
+                            return self::ko();
+                        }
+
                         if ($this->isFraud($payload, $order)) {
                             $payment->setIsFraudDetected(true);
                         }
@@ -103,6 +108,10 @@ final class Confirm
                         $order = $this->createOrder($checkoutToken);
                         /** @var \Magento\Sales\Model\Order\Payment $payment */
                         $payment = $order->getPayment();
+
+                        if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
+                            return self::ko();
+                        }
 
                         if ($this->isFraud($payload, $order)) {
                             $payment->setIsFraudDetected(true);
@@ -126,6 +135,10 @@ final class Confirm
 
                 /** @var \Magento\Sales\Model\Order\Payment $payment */
                 $payment = $order->getPayment();
+
+                if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
+                    return self::ko();
+                }
 
                 if ($this->isFraud($payload, $order)) {
                     $payment->setIsFraudDetected(true);
