@@ -62,6 +62,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return bool
+     */
+    public function getCartWidgetIsEnabled()
+    {
+        return (bool) $this->getValue('cart_widget_enabled');
+    }
+
+    /**
      * @return string
      */
     public function getPaymentButton()
