@@ -29,7 +29,13 @@ define(
             /**
              * @override
              */
-            placeOrder: function () {
+            placeOrder: function (data, event) {
+                var self = this;
+
+                if (event) {
+                    event.preventDefault();
+                }
+
                 if (additionalValidators.validate()) {
                     this.isPlaceOrderActionAllowed(false);
 
@@ -41,8 +47,12 @@ define(
                             }
                         )
                     )
-                    .done(this.launchAplazameCheckout().bind(this))
-                    .fail(this.fail.bind(this));
+                    .done(this.launchAplazameCheckout.bind(this))
+                    .fail(
+                        function () {
+                            self.isPlaceOrderActionAllowed(true);
+                        }
+                    );
                 }
             },
 
@@ -54,7 +64,9 @@ define(
 
                 var payload = config.checkout;
 
-                payload.merchant.onDismiss = function () {};
+                payload.merchant.onDismiss = function () {
+                    this.isPlaceOrderActionAllowed(true);
+                }.bind(this);
                 payload.merchant.onError = function () {
                     redirectOnSuccessAction.execute();
                 };
