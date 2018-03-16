@@ -30,7 +30,6 @@ services:
           - USE_REDIS_CACHE=0
           - USE_REDIS_FULL_PAGE_CACHE=0
           - USE_REDIS_SESSIONS=0
-          - USE_SHARED_WEBROOT=
           - USE_UNISON_SYNC=0
           - USE_VARNISH=0
         env_file:
