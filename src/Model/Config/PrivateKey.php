@@ -48,6 +48,10 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
 
     public function beforeSave()
     {
+        if (empty($this->getValue())) {
+            return parent::beforeSave();
+        }
+
         $label = $this->getData('field_config/label');
 
         $client = new Client(

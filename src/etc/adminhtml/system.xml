@@ -22,7 +22,6 @@
                 <field id="private_api_key" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Private API Key</label>
                     <backend_model>Aplazame\Payment\Model\Config\PrivateKey</backend_model>
-                    <validate>required-entry</validate>
                 </field>
 
                 <field id="product_widget_enabled" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -38,7 +37,6 @@
 
                 <field id="payment_button" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Aplazame Button CSS Selector</label>
-                    <validate>required-entry</validate>
                 </field>
 
                 <field id="allowspecific" translate="label" type="allowspecific" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
