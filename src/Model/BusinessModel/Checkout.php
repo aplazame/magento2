@@ -12,7 +12,18 @@ class Checkout
     {
         $checkout = new self();
         $checkout->toc = true;
-        $checkout->merchant = new \stdClass();
+        $checkout->merchant = [
+            'notification_url' => self::getUrlBuilder()->getUrl(
+                'aplazame/api/index',
+                [
+                    '_query' => [
+                        'path' => '/confirm/',
+                    ],
+                    '_nosid' => true,
+                    '_secure' => true,
+                ]
+            ),
+        ];
         $checkout->order = Order::crateFromQuote($quote);
         $checkout->customer = Customer::createFromQuote($quote);
         $checkout->billing = Address::createFromAddress($quote->getBillingAddress());
@@ -49,5 +60,14 @@ class Checkout
         $moduleInfo =  $objectManager->get('Magento\Framework\Module\ModuleList')->getOne('Aplazame_Payment');
 
         return $moduleInfo['setup_version'];
+    }
+
+    /**
+     * @return \Magento\Framework\Url
+     */
+    private static function getUrlBuilder()
+    {
+        $objectManager = ObjectManager::getInstance();
+        return $objectManager->get('Magento\Framework\Url');
     }
 }
