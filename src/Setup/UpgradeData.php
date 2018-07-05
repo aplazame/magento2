@@ -15,22 +15,15 @@ class UpgradeData implements UpgradeDataInterface
     private $aplazameConfig;
 
     /**
-     * @var \Magento\Framework\Url
-     */
-    private $urlBuilder;
-
-    /**
      * @var \Magento\Framework\App\Config\ValueFactory
      */
     private $configValueFactory;
 
     public function __construct(
         \Aplazame\Payment\Gateway\Config\Config $aplazameConfig,
-        \Magento\Framework\Url $urlBuilder,
         \Magento\Framework\App\Config\ValueFactory $configValueFactory
     ) {
         $this->aplazameConfig = $aplazameConfig;
-        $this->urlBuilder = $urlBuilder;
         $this->configValueFactory = $configValueFactory;
     }
 
@@ -52,16 +45,7 @@ class UpgradeData implements UpgradeDataInterface
         );
 
         $response = $apiClient->patch('/me', [
-            'confirmation_url' => $this->urlBuilder->getUrl(
-                'aplazame/api/index',
-                [
-                    '_query' => [
-                        'path' => '/confirm/',
-                    ],
-                    '_nosid' => true,
-                    '_secure' => true,
-                ]
-            ),
+            'confirmation_url' => '',
         ]);
 
         return $response;

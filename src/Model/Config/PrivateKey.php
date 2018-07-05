@@ -22,14 +22,8 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
      */
     private $configValueFactory;
 
-    /**
-     * @var \Magento\Framework\Url
-     */
-    private $urlBuilder;
-
     public function __construct(
         \Aplazame\Payment\Gateway\Config\Config $aplazameConfig,
-        \Magento\Framework\Url $urlBuilder,
         \Magento\Framework\App\Config\ValueFactory $configValueFactory,
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
@@ -43,7 +37,6 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
 
         $this->aplazameConfig = $aplazameConfig;
         $this->configValueFactory = $configValueFactory;
-        $this->urlBuilder = $urlBuilder;
     }
 
     public function beforeSave()
@@ -61,18 +54,7 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
         );
 
         try {
-            $response = $client->patch('/me', [
-                'confirmation_url' => $this->urlBuilder->getUrl(
-                    'aplazame/api/index',
-                    [
-                        '_query' => [
-                            'path' => '/confirm/',
-                        ],
-                        '_nosid' => true,
-                        '_secure' => true,
-                    ]
-                ),
-            ]);
+            $response = $client->get('/me');
         } catch (ApiClientException $apiClientException) {
             throw new \Magento\Framework\Exception\ValidatorException(__($label . ' ' . $apiClientException->getMessage()));
         }
