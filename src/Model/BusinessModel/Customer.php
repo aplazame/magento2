@@ -40,7 +40,7 @@ class Customer
         $aCustomer->first_name = $customer->getFirstname();
         $aCustomer->last_name = $customer->getLastname();
         if (($birthday = $customer->getDob()) !== null) {
-            $aCustomer->birthday = Date::fromDateTime(new DateTime($birthday));
+            $aCustomer->birthday = $birthday;
         }
         if (($document_id = $customer->getTaxvat()) !== null) {
             $aCustomer->document_id = $document_id;
