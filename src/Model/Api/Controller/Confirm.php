@@ -37,22 +37,20 @@ final class Confirm
 
     private static function ok()
     {
-        return [
-            'status_code' => 200,
-            'payload' => [
+        return ApiController::success(
+            [
                 'status' => 'ok',
-            ],
-        ];
+            ]
+        );
     }
 
     private static function ko()
     {
-        return [
-            'status_code' => 200,
-            'payload' => [
+        return ApiController::success(
+            [
                 'status' => 'ko',
-            ],
-        ];
+            ]
+        );
     }
 
     public function __construct(

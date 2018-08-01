@@ -50,18 +50,25 @@ class Index extends Action
         ];
     }
 
-    public static function collection($page, $page_size, array $elements)
+    public static function success(array $payload)
     {
         return [
             'status_code' => 200,
-            'payload' => [
+            'payload' => $payload,
+        ];
+    }
+
+    public static function collection($page, $page_size, array $elements)
+    {
+        return self::success(
+            [
                 'query' => [
                     'page' => $page,
                     'page_size' => $page_size,
                 ],
                 'elements' => $elements,
-            ],
-        ];
+            ]
+        );
     }
 
     public function __construct(
@@ -101,11 +108,10 @@ class Index extends Action
     {
         $request = $this->getRequest();
         $path = $request->getParam('path', '');
-        $pathArguments = json_decode($request->getParam('path_arguments', '[]'), true);
-        $queryArguments = json_decode($request->getParam('query_arguments', '[]'), true);
+        $queryArguments = $request->getParams();
         $payload = json_decode($request->getContent(), true);
 
-        $result = $this->route($path, $pathArguments, $queryArguments, $payload);
+        $result = $this->route($path, $queryArguments, $payload);
 
         $response = $this->getResponse();
         $response->setHttpResponseCode($result['status_code']);
@@ -115,13 +121,12 @@ class Index extends Action
 
     /**
      * @param string $path
-     * @param array $pathArguments
      * @param array $queryArguments
      * @param null|array $payload
      *
      * @return array
      */
-    public function route($path, array $pathArguments, array $queryArguments, $payload)
+    public function route($path, array $queryArguments, $payload)
     {
         if (!$this->verifyAuthentication($this->getRequest(), $this->aplazameConfig->getPrivateApiKey())) {
             return self::forbidden();
@@ -150,7 +155,7 @@ class Index extends Action
                 /** @var \Aplazame\Payment\Model\Api\Controller\Order $controller */
                 $controller = $this->_objectManager->get('Aplazame\Payment\Model\Api\Controller\Order');
 
-                return $controller->history($pathArguments, $queryArguments);
+                return $controller->history($queryArguments);
             default:
                 return self::not_found();
         }
@@ -172,10 +177,6 @@ class Index extends Action
             return $token;
         }
 
-        $header = $request->getHeader('authorization');
-        if (!$header) {
-            return false;
-        }
-        return trim(str_replace('Bearer', '', $header));
+        return false;
     }
 }
