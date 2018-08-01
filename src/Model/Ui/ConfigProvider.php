@@ -2,7 +2,6 @@
 
 namespace Aplazame\Payment\Model\Ui;
 
-use Aplazame\Payment\Model\BusinessModel\Checkout;
 use Aplazame\Payment\Gateway\Config\Config;
 use Aplazame\Payment\Model\Aplazame;
 use Aplazame\Serializer\Decimal;
@@ -38,7 +37,6 @@ class ConfigProvider implements ConfigProviderInterface
                 Aplazame::PAYMENT_METHOD_CODE => [
                     'button' => $this->getButtonConfig($this->quote),
                     'cart_widget_enabled' => $this->config->getCartWidgetIsEnabled(),
-                    'checkout' => $this->getCheckoutConfig($this->quote),
                 ],
             ],
         ];
@@ -51,10 +49,5 @@ class ConfigProvider implements ConfigProviderInterface
             'amount'   => JsonSerializer::serializeValue(Decimal::fromFloat($quote->getGrandTotal())),
             'currency' => $quote->getQuoteCurrencyCode(),
         ];
-    }
-
-    private function getCheckoutConfig(Quote $quote)
-    {
-        return JsonSerializer::serializeValue(Checkout::createFromQuote($quote));
     }
 }
