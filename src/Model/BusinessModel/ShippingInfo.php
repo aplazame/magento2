@@ -9,13 +9,9 @@ class ShippingInfo
 {
     public static function createFromQuote(Quote $quote)
     {
-        $shippingInfo = new self();
-
-        if ($quote->isVirtual()) {
-            return $shippingInfo;
-        }
-
         $address = $quote->getShippingAddress();
+
+        $shippingInfo = new self();
         $shippingInfo->first_name = $address->getFirstname();
         $shippingInfo->last_name = $address->getLastname();
         $shippingInfo->street = $address->getStreetLine(1);

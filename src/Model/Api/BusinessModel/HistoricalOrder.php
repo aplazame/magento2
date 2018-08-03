@@ -23,8 +23,11 @@ class HistoricalOrder
             'order_date' => date(DATE_ISO8601, strtotime($quote->getCreatedAt())),
             'currency' => $quote->getQuoteCurrencyCode(),
             'billing' => Address::createFromAddress($quote->getBillingAddress()),
-            'shipping' => ShippingInfo::createFromQuote($quote),
         ];
+
+        if (!$quote->isVirtual()) {
+            $serialized['shipping'] = ShippingInfo::createFromQuote($quote);
+        }
 
         return $serialized;
     }

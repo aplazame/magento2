@@ -7,7 +7,7 @@ use Magento\Quote\Model\Quote;
 
 class Order
 {
-    public static function crateFromQuote(Quote $quote)
+    public static function createFromQuote(Quote $quote)
     {
         $aOrder = new self();
         $aOrder->id = $quote->getId();

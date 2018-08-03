@@ -24,10 +24,14 @@ class Checkout
                 ]
             ),
         ];
-        $checkout->order = Order::crateFromQuote($quote);
+        $checkout->order = Order::createFromQuote($quote);
         $checkout->customer = Customer::createFromQuote($quote);
         $checkout->billing = Address::createFromAddress($quote->getBillingAddress());
-        $checkout->shipping = ShippingInfo::createFromQuote($quote);
+
+        if (!$quote->isVirtual()) {
+            $checkout->shipping = ShippingInfo::createFromQuote($quote);
+        }
+
         $checkout->meta = [
             'module' => [
                 'name' => 'aplazame:magento',
