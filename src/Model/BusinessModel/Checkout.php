@@ -23,6 +23,16 @@ class Checkout
                     '_secure' => true,
                 ]
             ),
+            'history_url' => self::getUrlBuilder()->getUrl(
+                'aplazame/api/index',
+                [
+                    '_query' => [
+                        'path' => '/order/{order_id}/history/',
+                    ],
+                    '_nosid' => true,
+                    '_secure' => true,
+                ]
+            ),
         ];
         $checkout->order = Order::createFromQuote($quote);
         $checkout->customer = Customer::createFromQuote($quote);
