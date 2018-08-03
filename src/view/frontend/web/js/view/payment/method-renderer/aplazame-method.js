@@ -68,15 +68,18 @@ define(
                         onDismiss: function () {
                             this.isPlaceOrderActionAllowed(true);
                         }.bind(this),
-                        onError: function () {
-                            redirectOnSuccessAction.execute();
+                        onKO: function () {
+                            this.isPlaceOrderActionAllowed(true);
                         }.bind(this),
+                        onError: function () {
+                            this.isPlaceOrderActionAllowed(true);
+                        },
                         onPending: function () {
                             redirectOnSuccessAction.execute();
-                        }.bind(this),
+                        },
                         onSuccess: function () {
                             redirectOnSuccessAction.execute();
-                        }.bind(this)
+                        }
                     }
                 );
             },
