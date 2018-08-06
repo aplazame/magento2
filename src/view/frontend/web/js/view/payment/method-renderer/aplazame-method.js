@@ -73,15 +73,20 @@ define(
                         }.bind(this),
                         onError: function () {
                             this.isPlaceOrderActionAllowed(true);
-                        },
+                        }.bind(this),
                         onPending: function () {
-                            redirectOnSuccessAction.execute();
-                        },
+                            this.success();
+                        }.bind(this),
                         onSuccess: function () {
-                            redirectOnSuccessAction.execute();
-                        }
+                            this.success();
+                        }.bind(this)
                     }
                 );
+            },
+
+            success: function() {
+                redirectOnSuccessAction.redirectUrl = '/aplazame/payment/success';
+                redirectOnSuccessAction.execute();
             },
 
             button: function () {
