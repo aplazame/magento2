@@ -63,7 +63,7 @@ define(
 
             launchAplazameCheckout: function (payload) {
                 aplazame.checkout(
-                    payload,
+                    payload.id,
                     {
                         onDismiss: function () {
                             this.isPlaceOrderActionAllowed(true);
