@@ -4,9 +4,7 @@ services:
     web:
         hostname: magento2
         domainname: aplazame
-        build:
-          dockerfile: Dockerfile
-          context: ./
+        image: magento/magento2devbox-web:latest
         volumes:
           - "~/.composer:/home/magento2/.composer"
           - "./src:/aplazame"
@@ -32,6 +30,7 @@ services:
           - USE_REDIS_SESSIONS=0
           - USE_UNISON_SYNC=0
           - USE_VARNISH=0
+          - XDEBUG_CONFIG
         env_file:
           - ./.env.dist
           - ./.env
