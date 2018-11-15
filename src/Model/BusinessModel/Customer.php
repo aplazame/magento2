@@ -12,7 +12,7 @@ class Customer
 {
     public static function createFromQuote(Quote $quote)
     {
-        if ($quote->getCustomerIsGuest()) {
+        if (empty($quote->getCustomerId())) {
             return self::createGuessCustomerFromQuote($quote);
         }
 
@@ -58,11 +58,17 @@ class Customer
     public static function createGuessCustomerFromQuote(Quote $quote)
     {
         $aCustomer = new self();
-        $aCustomer->email = $quote->getCustomerEmail();
         $aCustomer->type = 'g';
         $aCustomer->gender = 0;
-        $aCustomer->first_name = $quote->getCustomerFirstname();
-        $aCustomer->last_name = $quote->getCustomerLastname();
+
+        $billingAddress = $quote->getBillingAddress();
+        if (!$billingAddress) {
+            return $aCustomer;
+        }
+
+        $aCustomer->email = $billingAddress->getEmail();
+        $aCustomer->first_name = $billingAddress->getFirstname();
+        $aCustomer->last_name = $billingAddress->getLastname();
 
         return $aCustomer;
     }
