@@ -4,8 +4,15 @@ namespace Aplazame\Payment\Block\Adminhtml\Product\Edit;
 
 use Aplazame\Payment\Model\Api\BusinessModel\Article;
 
-class Aplazame extends \Magento\Backend\Block\Widget
+class Aplazame extends \Magento\Backend\Block\Template
 {
+    /**
+     * Block template.
+     *
+     * @var string
+     */
+    protected $_template = 'product/edit/productCampaigns.phtml';
+
     /**
      * @var \Magento\Framework\Registry
      */
