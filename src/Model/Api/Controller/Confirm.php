@@ -44,11 +44,12 @@ final class Confirm
         );
     }
 
-    private static function ko()
+    private static function ko($reason)
     {
         return ApiController::success(
             [
                 'status' => 'ko',
+                'reason' => $reason,
             ]
         );
     }
@@ -89,7 +90,7 @@ final class Confirm
                         $payment = $order->getPayment();
 
                         if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
-                            return self::ko();
+                            return self::ko('Aplazame is not the payment method (at challenge)');
                         }
 
                         if ($this->isFraud($payload, $order)) {
@@ -99,7 +100,7 @@ final class Confirm
                         $this->orderRepository->save($order);
 
                         if ($payment->getIsFraudDetected()) {
-                            return self::ko();
+                            return self::ko('Fraud detected (at challenge)');
                         }
                         break;
                     case 'confirmation_required':
@@ -108,7 +109,7 @@ final class Confirm
                         $payment = $order->getPayment();
 
                         if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
-                            return self::ko();
+                            return self::ko('Aplazame is not the payment method (at confirmation)');
                         }
 
                         if ($this->isFraud($payload, $order)) {
@@ -119,7 +120,7 @@ final class Confirm
                         $this->orderRepository->save($order);
 
                         if ($payment->getIsFraudDetected()) {
-                            return self::ko();
+                            return self::ko('Fraud detected (at confirmation)');
                         }
                         break;
                 }
@@ -135,7 +136,7 @@ final class Confirm
                 $payment = $order->getPayment();
 
                 if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
-                    return self::ko();
+                    return self::ko('Aplazame is not the payment method');
                 }
 
                 if ($this->isFraud($payload, $order)) {
@@ -146,7 +147,7 @@ final class Confirm
                 $this->orderRepository->save($order);
 
                 if ($payment->getIsFraudDetected()) {
-                    return self::ko();
+                    return self::ko('Fraud detected');
                 }
                 break;
         }
