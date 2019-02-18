@@ -59,7 +59,8 @@ final class Confirm
         \Magento\Quote\Model\QuoteManagement $quoteManagement,
         \Magento\Quote\Api\CartRepositoryInterface $quoteRepository,
         \Aplazame\Payment\Gateway\Config\Config $aplazameConfig
-    ) {
+    )
+    {
         $this->orderRepository = $orderRepository;
         $this->quoteManagement = $quoteManagement;
         $this->quoteRepository = $quoteRepository;
@@ -104,7 +105,13 @@ final class Confirm
                         }
                         break;
                     case 'confirmation_required':
-                        $order = $this->createOrder($checkoutToken);
+
+                        try {
+                            $order = $this->findOneOrderByQuote($checkoutToken);
+                        } catch (NoSuchEntityException $e) {
+                            $order = $this->createOrder($checkoutToken);
+                        }
+
                         /** @var \Magento\Sales\Model\Order\Payment $payment */
                         $payment = $order->getPayment();
 
@@ -195,6 +202,6 @@ final class Confirm
     private function isFraud(array $payload, \Magento\Sales\Api\Data\OrderInterface $order)
     {
         return ($payload['total_amount'] !== Decimal::fromFloat($order->getGrandTotal())->jsonSerialize()) ||
-               ($payload['currency']['code'] !== $order->getOrderCurrencyCode());
+            ($payload['currency']['code'] !== $order->getOrderCurrencyCode());
     }
 }
