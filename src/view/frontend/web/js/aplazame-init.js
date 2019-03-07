@@ -1,6 +1,6 @@
 define(
     [
-        "https://aplazame.com/static/aplazame.js",
+        "https://cdn.aplazame.com/aplazame.js",
     ],
     function (aplazameSdk) {
         return function (config) {
