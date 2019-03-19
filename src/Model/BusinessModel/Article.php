@@ -21,7 +21,7 @@ class Article
         $aArticle->price = Decimal::fromFloat($item->getPrice() + $discounts);
         $aArticle->description = substr($product->getDescription(), 0, 255);
         $aArticle->tax_rate = Decimal::fromFloat($item->getTaxPercent());
-        $aArticle->discount = Decimal::fromFloat($item->getDiscountAmount());
+        $aArticle->discount = Decimal::fromFloat($item->getDiscountAmount() + $discounts);
 
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         /** @var \Magento\Catalog\Api\ProductRepositoryInterface $productRepository */
