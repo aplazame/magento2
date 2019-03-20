@@ -24,7 +24,7 @@ class Article
         $aArticle->tax_rate = Decimal::fromFloat($item->getTaxPercent());
 
         // getDiscountAmount() picks cart and coupon discounts related with the item.
-        $aArticle->discount = Decimal::fromFloat($item->getDiscountAmount() + $discounts);
+        $aArticle->discount = Decimal::fromFloat(($item->getDiscountAmount() / $item->getQty()) + $discounts);
 
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
         /** @var \Magento\Catalog\Api\ProductRepositoryInterface $productRepository */
