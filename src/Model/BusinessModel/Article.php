@@ -11,6 +11,7 @@ class Article
     {
         $product = $item->getProduct();
 
+        // This only gets product page related discounts, not cart or coupon discounts.
         $discounts = $product->getPrice() - $product->getFinalPrice();
 
         $aArticle = new self();
@@ -21,6 +22,8 @@ class Article
         $aArticle->price = Decimal::fromFloat($item->getPrice() + $discounts);
         $aArticle->description = substr($product->getDescription(), 0, 255);
         $aArticle->tax_rate = Decimal::fromFloat($item->getTaxPercent());
+
+        // getDiscountAmount() picks cart and coupon discounts related with the item.
         $aArticle->discount = Decimal::fromFloat($item->getDiscountAmount() + $discounts);
 
         $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
