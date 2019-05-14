@@ -21,7 +21,7 @@ define(
 
         return Component.extend({
             defaults: {
-              template: 'Aplazame_Payment/payment/form'
+                template: 'Aplazame_Payment/payment/form'
             },
 
             redirectAfterPlaceOrder: false,
@@ -33,7 +33,7 @@ define(
                 var self = this;
 
                 if (event) {
-                    event.preventDefault();
+                    event.preventDefault()
                 }
 
                 if (additionalValidators.validate()) {
@@ -51,51 +51,55 @@ define(
                     .done(this.launchAplazameCheckout.bind(this))
                     .fail(
                         function () {
-                            self.isPlaceOrderActionAllowed(true);
+                            self.isPlaceOrderActionAllowed(true)
                         }
-                    );
+                    )
                 }
             },
 
             createAplazameCheckout: function () {
-                return placeOrderService('/aplazame/payment/index', {}, this.messageContainer);
+                return placeOrderService('/aplazame/payment/index', {}, this.messageContainer)
             },
 
             launchAplazameCheckout: function (payload) {
-                aplazame.checkout(
-                    payload.id,
-                    {
-                        onDismiss: function () {
-                            this.isPlaceOrderActionAllowed(true);
-                        }.bind(this),
-                        onKO: function () {
-                            this.isPlaceOrderActionAllowed(true);
-                        }.bind(this),
-                        onError: function () {
-                            this.isPlaceOrderActionAllowed(true);
-                        }.bind(this),
-                        onPending: function () {
-                            this.success();
-                        }.bind(this),
-                        onSuccess: function () {
-                            this.success();
-                        }.bind(this)
-                    }
-                );
+                (window.aplazame = window.aplazame || []).push(function (aplazame) {
+                    aplazame.checkout(
+                        payload.id,
+                        {
+                            onDismiss: function () {
+                                this.isPlaceOrderActionAllowed(true)
+                            }.bind(this),
+                            onKO: function () {
+                                this.isPlaceOrderActionAllowed(true)
+                            }.bind(this),
+                            onError: function () {
+                                this.isPlaceOrderActionAllowed(true)
+                            }.bind(this),
+                            onPending: function () {
+                                this.success()
+                            }.bind(this),
+                            onSuccess: function () {
+                                this.success()
+                            }.bind(this)
+                        }
+                    )
+                })
             },
 
-            success: function() {
+            success: function () {
                 redirectOnSuccessAction.redirectUrl = '/aplazame/payment/success';
                 redirectOnSuccessAction.execute();
             },
 
             button: function () {
-                aplazame.button({
-                    selector: config.button.selector,
-                    amount: config.button.amount,
-                    currency: config.button.currency
-                });
-            },
-        });
+                (window.aplazame = window.aplazame || []).push(function (aplazame) {
+                    aplazame.button({
+                        selector: config.button.selector,
+                        amount: config.button.amount,
+                        currency: config.button.currency
+                    })
+                })
+            }
+        })
     }
 );

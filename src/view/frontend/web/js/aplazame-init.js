@@ -6,7 +6,7 @@ define(
         return function (config) {
             aplazameSdk.init({
                 sandbox: config.sandbox,
-                publicKey: config.publicKey,
+                public_key: config.public_key,
                 host: config.host,
             });
 
