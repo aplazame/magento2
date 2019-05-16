@@ -62,25 +62,27 @@ define(
             },
 
             launchAplazameCheckout: function (payload) {
+                var self = this;
+
                 (window.aplazame = window.aplazame || []).push(function (aplazame) {
                     aplazame.checkout(
                         payload.id,
                         {
                             onDismiss: function () {
-                                this.isPlaceOrderActionAllowed(true)
-                            }.bind(this),
+                                self.isPlaceOrderActionAllowed(true)
+                            },
                             onKO: function () {
-                                this.isPlaceOrderActionAllowed(true)
-                            }.bind(this),
+                                self.isPlaceOrderActionAllowed(true)
+                            },
                             onError: function () {
-                                this.isPlaceOrderActionAllowed(true)
-                            }.bind(this),
+                                self.isPlaceOrderActionAllowed(true)
+                            },
                             onPending: function () {
-                                this.success()
-                            }.bind(this),
+                                self.success()
+                            },
                             onSuccess: function () {
-                                this.success()
-                            }.bind(this)
+                                self.success()
+                            }
                         }
                     )
                 })
