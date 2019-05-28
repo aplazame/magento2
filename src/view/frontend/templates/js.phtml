@@ -7,7 +7,6 @@ $config = $block->getConfig();
     {
         "*": {
             "Aplazame_Payment/js/aplazame-init": {
-                "host":"<?php echo $config->getApiBaseUri(); ?>",
                 "public_key":"<?php echo $config->getPublicApiKey() ?>",
                 "sandbox":<?php echo $config->isSandbox() ? 'true' : 'false' ?>
             }
