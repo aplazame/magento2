@@ -7,7 +7,7 @@ use Aplazame\Payment\Model\Api\BusinessModel\HistoricalOrder;
 use Aplazame\Serializer\JsonSerializer;
 use Magento\Framework\Exception\NoSuchEntityException;
 
-final class Order
+class Order
 {
     /**
      * @var \Magento\Quote\Api\CartRepositoryInterface

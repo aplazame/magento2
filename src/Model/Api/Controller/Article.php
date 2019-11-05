@@ -4,7 +4,7 @@ namespace Aplazame\Payment\Model\Api\Controller;
 
 use Aplazame\Payment\Controller\Api\Index as ApiController;
 
-final class Article
+class Article
 {
     /**
      * @var \Magento\Catalog\Api\ProductRepositoryInterface

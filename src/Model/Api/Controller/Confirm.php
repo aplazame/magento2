@@ -9,7 +9,7 @@ use Aplazame\Serializer\Decimal;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\OrderInterface;
 
-final class Confirm
+class Confirm
 {
     /**
      * @var \Aplazame\Payment\Gateway\Config\Config
