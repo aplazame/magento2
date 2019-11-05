@@ -3,6 +3,10 @@
 
 use Aplazame\Payment\Block\Product\View\Widget;
 use Aplazame\Serializer\Decimal;
+
+if (!$block->isInstalmentsActive()) {
+    return '';
+}
 ?>
 <div
   data-aplazame-simulator=""

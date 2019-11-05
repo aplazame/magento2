@@ -1,17 +1,26 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <payment>
             <aplazame_payment>
                 <active>0</active>
                 <model>Aplazame\Payment\Model\Aplazame</model>
                 <payment_action>authorize</payment_action>
-                <title>Aplazame</title>
+                <title>Aplazame - Pago a plazos</title>
                 <product_widget_enabled>1</product_widget_enabled>
                 <cart_widget_enabled>1</cart_widget_enabled>
                 <payment_button>#aplazame-payment-method</payment_button>
                 <allowspecific>0</allowspecific>
             </aplazame_payment>
+            <aplazame_payment_pay_later>
+                <active>0</active>
+                <model>Aplazame\Payment\Model\AplazamePayLater</model>
+                <payment_action>authorize</payment_action>
+                <title>Aplazame - Pago en 15 días</title>
+                <payment_button>#aplazame-payment-pay-later-method</payment_button>
+                <allowspecific>0</allowspecific>
+            </aplazame_payment_pay_later>
         </payment>
     </default>
 </config>

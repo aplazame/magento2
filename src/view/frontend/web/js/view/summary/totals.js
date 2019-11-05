@@ -9,6 +9,7 @@ define([
 
     return Component.extend({
         cartWidgetIsEnabled: config.cart_widget_enabled,
+        instalmentsIsEnabled: config.instalments_enabled,
 
         getAmount: function () {
             return Quote.totals().base_grand_total;

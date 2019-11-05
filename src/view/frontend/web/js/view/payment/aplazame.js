@@ -12,6 +12,10 @@ define(
             {
                 type: 'aplazame_payment',
                 component: 'Aplazame_Payment/js/view/payment/method-renderer/aplazame-method'
+            },
+            {
+                type: 'aplazame_payment_pay_later',
+                component: 'Aplazame_Payment/js/view/payment/method-renderer/aplazame-pay-later-method'
             }
         );
         /** Add view logic here if needed */

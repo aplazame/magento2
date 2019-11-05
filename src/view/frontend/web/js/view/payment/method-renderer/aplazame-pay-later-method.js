@@ -17,11 +17,11 @@ define(
     ) {
         'use strict';
 
-        var config = window.checkoutConfig.payment.aplazame_payment;
+        var config = window.checkoutConfig.payment.aplazame_payment_pay_later;
 
         return Component.extend({
             defaults: {
-                template: 'Aplazame_Payment/payment/form'
+                template: 'Aplazame_Payment/payment/form-pl'
             },
 
             redirectAfterPlaceOrder: false,

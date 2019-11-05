@@ -9,4 +9,9 @@
             <argument name="methodCode" xsi:type="const">Aplazame\Payment\Model\Aplazame::PAYMENT_METHOD_CODE</argument>
         </arguments>
     </type>
+    <type name="Aplazame\Payment\Gateway\Config\ConfigPayLater">
+        <arguments>
+            <argument name="methodCode" xsi:type="const">Aplazame\Payment\Model\AplazamePayLater::PAYMENT_METHOD_CODE</argument>
+        </arguments>
+    </type>
 </config>

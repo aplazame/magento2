@@ -3,7 +3,12 @@ Campaigns,Campañas
 "Associate products to selected campaigns","Asociar productos a las campañas seleccionadas"
 "Remove products from selected campaigns","Eliminar productos de las campañas seleccionadas"
 Aplazame,Aplazame
+"Aplazame - Flexible financing","Aplazame - Pago a plazos"
+"Aplazame - Pay in 15 days","Aplazame - Pago en 15 días"
 "Test Mode (Sandbox)","Modo de pruebas (Sandbox)"
 "Private API Key","Clave API privada"
-"Aplazame Button CSS Selector","Selector CSS del botón de Aplazame"
+"Show widget on product page","Mostrar el widget en la página del producto"
+"Show widget on cart page","Mostrar el widget en la página del carrito"
+"Aplazame 'Flexible financing' Button CSS Selector","Selector CSS del botón 'Pago a plazos' de Aplazame"
+"Aplazame 'Pay in 15 days' Button CSS Selector","Selector CSS del botón 'Pago en 15 días' de Aplazame"
 "Aplazame Campaigns","Campañas Aplazame"

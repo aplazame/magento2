@@ -8,7 +8,7 @@ use Magento\Quote\Model\Quote;
 
 class Checkout
 {
-    public static function createFromQuote(Quote $quote)
+    public static function createFromQuote(Quote $quote, $type)
     {
         $checkout = new self();
         $checkout->toc = true;
@@ -49,6 +49,8 @@ class Checkout
             ],
             'version' => self::getMagentoVersion(),
         ];
+
+        $checkout->product = array('type' => $type);
 
         return $checkout;
     }

@@ -3,6 +3,8 @@
 namespace Aplazame\Payment\Controller\Payment;
 
 use Aplazame\Api\ApiClientException;
+use Aplazame\Payment\Model\Aplazame;
+use Aplazame\Payment\Model\AplazamePayLater;
 use Aplazame\Payment\Model\BusinessModel\Checkout;
 use Aplazame\Serializer\JsonSerializer;
 use Magento\Framework\App\Action\Action;
@@ -33,6 +35,7 @@ class Index extends Action
 
     /**
      * @return HttpResponse
+     * @throws \Exception
      */
     public function getResponse()
     {
@@ -43,11 +46,27 @@ class Index extends Action
         return $response;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function execute()
     {
         $response = $this->getResponse()->setHeader('Content-Type', 'application/json');
 
-        $payload = json_decode(json_encode(JsonSerializer::serializeValue(Checkout::createFromQuote($this->quote))), true);
+        $payment = $this->quote->getPayment();
+
+        switch ($payment->getMethod()) {
+            case Aplazame::PAYMENT_METHOD_CODE:
+                $type = 'instalments';
+                break;
+            case AplazamePayLater::PAYMENT_METHOD_CODE:
+                $type = 'pay_later';
+                break;
+            default:
+                throw new \Exception($payment->getMethod() . 'is not an Aplazame payment method');
+        }
+
+        $payload = json_decode(json_encode(JsonSerializer::serializeValue(Checkout::createFromQuote($this->quote, $type))), true);
 
         try {
             $checkout = $this->aplazameClient->apiClient->request(

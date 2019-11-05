@@ -3,7 +3,9 @@
 namespace Aplazame\Payment\Model\Ui;
 
 use Aplazame\Payment\Gateway\Config\Config;
+use Aplazame\Payment\Gateway\Config\ConfigPayLater;
 use Aplazame\Payment\Model\Aplazame;
+use Aplazame\Payment\Model\AplazamePayLater;
 use Aplazame\Serializer\Decimal;
 use Aplazame\Serializer\JsonSerializer;
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -22,12 +24,19 @@ class ConfigProvider implements ConfigProviderInterface
      */
     private $config;
 
+    /**
+     * @var ConfigPayLater
+     */
+    private $configPayLater;
+
     public function __construct(
         Session $checkoutSession,
-        Config $config
+        Config $config,
+        ConfigPayLater $configPayLater
     ) {
         $this->quote = $checkoutSession->getQuote();
         $this->config = $config;
+        $this->configPayLater = $configPayLater;
     }
 
     public function getConfig()
@@ -35,19 +44,31 @@ class ConfigProvider implements ConfigProviderInterface
         return [
             'payment' => [
                 Aplazame::PAYMENT_METHOD_CODE => [
-                    'button' => $this->getButtonConfig($this->quote),
+                    'button' => $this->getButtonConfig($this->quote, $this->config, 'instalments'),
                     'cart_widget_enabled' => $this->config->getCartWidgetIsEnabled(),
+                    'instalments_enabled' => $this->config->isActive(),
+                ],
+                AplazamePayLater::PAYMENT_METHOD_CODE => [
+                    'button' => $this->getButtonConfig($this->quote, $this->configPayLater, 'pay_later'),
                 ],
             ],
         ];
     }
 
-    private function getButtonConfig(Quote $quote)
+    /**
+     * @param Quote $quote
+     * @param Config|ConfigPayLater $config
+     * @param String $type
+     *
+     * @return array
+     */
+    private function getButtonConfig(Quote $quote, $config, $type)
     {
         return [
-            'selector' => $this->config->getPaymentButton(),
+            'selector' => $config->getPaymentButton(),
             'amount'   => JsonSerializer::serializeValue(Decimal::fromFloat($quote->getGrandTotal())),
             'currency' => $quote->getQuoteCurrencyCode(),
+            'product'  => ['type' => $type]
         ];
     }
 }

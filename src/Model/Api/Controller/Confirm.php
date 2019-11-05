@@ -4,6 +4,7 @@ namespace Aplazame\Payment\Model\Api\Controller;
 
 use Aplazame\Payment\Controller\Api\Index as ApiController;
 use Aplazame\Payment\Model\Aplazame;
+use Aplazame\Payment\Model\AplazamePayLater;
 use Aplazame\Serializer\Decimal;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\OrderInterface;
@@ -90,7 +91,7 @@ final class Confirm
                         /** @var \Magento\Sales\Model\Order\Payment $payment */
                         $payment = $order->getPayment();
 
-                        if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
+                        if (!in_array($payment->getMethod(), array(Aplazame::PAYMENT_METHOD_CODE, AplazamePayLater::PAYMENT_METHOD_CODE))) {
                             return self::ko('Aplazame is not the payment method (at challenge)');
                         }
 
@@ -115,7 +116,7 @@ final class Confirm
                         /** @var \Magento\Sales\Model\Order\Payment $payment */
                         $payment = $order->getPayment();
 
-                        if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
+                        if (!in_array($payment->getMethod(), array(Aplazame::PAYMENT_METHOD_CODE, AplazamePayLater::PAYMENT_METHOD_CODE))) {
                             return self::ko('Aplazame is not the payment method (at confirmation)');
                         }
 
@@ -142,7 +143,7 @@ final class Confirm
                 /** @var \Magento\Sales\Model\Order\Payment $payment */
                 $payment = $order->getPayment();
 
-                if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
+                if (!in_array($payment->getMethod(), array(Aplazame::PAYMENT_METHOD_CODE, AplazamePayLater::PAYMENT_METHOD_CODE))) {
                     return self::ko('Aplazame is not the payment method');
                 }
 
