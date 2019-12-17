@@ -9,8 +9,9 @@ if (!$block->isInstalmentsActive()) {
 }
 ?>
 <div
-  data-aplazame-simulator=""
-  data-view="product"
-  data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
-  data-currency="<?php echo $block->getCurrencyCode(); ?>"
+    data-aplazame-widget-instalments=""
+    data-view="product"
+    data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
+    data-currency="<?php echo $block->getCurrencyCode(); ?>"
+    data-article-id="<?php echo $block->getProduct()->getId(); ?>"
 ></div>
