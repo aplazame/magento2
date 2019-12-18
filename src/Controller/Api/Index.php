@@ -151,7 +151,7 @@ class Index extends Action
                 } catch (NoSuchEntityException $e) {
                     return self::not_found();
                 }
-            case '/order/{order_id}/history/':
+            case '/order/history/':
                 /** @var \Aplazame\Payment\Model\Api\Controller\Order $controller */
                 $controller = $this->_objectManager->get('Aplazame\Payment\Model\Api\Controller\Order');
 

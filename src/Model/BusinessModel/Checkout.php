@@ -23,11 +23,11 @@ class Checkout
                     '_secure' => true,
                 ]
             ),
-            'history_url' => self::getUrlBuilder()->getUrl(
+            'customer_history_url' => self::getUrlBuilder()->getUrl(
                 'aplazame/api/index',
                 [
                     '_query' => [
-                        'path' => '/order/{order_id}/history/',
+                        'path' => '/order/history/',
                     ],
                     '_nosid' => true,
                     '_secure' => true,
@@ -58,7 +58,7 @@ class Checkout
     /**
      * @return string
      */
-    private static function getMagentoVersion()
+    public static function getMagentoVersion()
     {
         $objectManager   = ObjectManager::getInstance();
         /** @var ProductMetadataInterface $productMetadata */
@@ -70,7 +70,7 @@ class Checkout
     /**
      * @return string
      */
-    private static function getModuleVersion()
+    public static function getModuleVersion()
     {
         $objectManager   = ObjectManager::getInstance();
         $moduleInfo =  $objectManager->get('Magento\Framework\Module\ModuleList')->getOne('Aplazame_Payment');

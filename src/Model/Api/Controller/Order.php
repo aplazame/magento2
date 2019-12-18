@@ -10,9 +10,14 @@ use Magento\Framework\Exception\NoSuchEntityException;
 class Order
 {
     /**
-     * @var \Magento\Quote\Api\CartRepositoryInterface
+     * @var \Magento\Quote\Model\QuoteRepository
      */
     private $quoteRepository;
+
+    /**
+     * @var \Magento\Sales\Model\OrderRepository
+     */
+    private $orderRepository;
 
     /**
      * @var \Magento\Framework\App\ObjectManager
@@ -20,9 +25,11 @@ class Order
     protected $objectManager;
 
     public function __construct(
-        \Magento\Quote\Api\CartRepositoryInterface $quoteRepository
+        \Magento\Quote\Model\QuoteRepository $quoteRepository,
+        \Magento\Sales\Model\OrderRepository $orderRepository
     ) {
         $this->quoteRepository = $quoteRepository;
+        $this->orderRepository = $orderRepository;
         $this->objectManager = \Magento\Framework\App\ObjectManager::getInstance();
     }
 
@@ -45,10 +52,18 @@ class Order
             ->addFilter('customer_id', $quote->getCustomer()->getId(), 'eq')
             ->create();
 
-        /** @var \Magento\Quote\Model\Quote[] $quotes */
-        $quotes = $this->quoteRepository->getList($searchCriteria)->getItems();
+        /** @var \Magento\Sales\Model\Order[] $orders */
+        $orders = $this->orderRepository->getList($searchCriteria)->getItems();
 
-        $historyOrders = array_map([HistoricalOrder::class, 'createFromQuotes'], $quotes);
+        $historyOrders = array();
+        foreach ($orders as $order) {
+            try {
+                $quote = $this->quoteRepository->get($order->getQuoteId());
+                $historyOrders[] = HistoricalOrder::createFromQuotes($quote, $order->getState());
+            } catch (NoSuchEntityException $e) {
+                // do nothing
+            }
+        }
 
         return ApiController::success(JsonSerializer::serializeValue($historyOrders));
     }
