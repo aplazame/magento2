@@ -3,8 +3,8 @@
 namespace Aplazame\Payment\Model\Api\BusinessModel;
 
 use Aplazame\Payment\Model\BusinessModel\Address;
-use Aplazame\Payment\Model\BusinessModel\Checkout;
 use Aplazame\Payment\Model\BusinessModel\Customer;
+use Aplazame\Payment\Model\BusinessModel\Meta;
 use Aplazame\Payment\Model\BusinessModel\Order;
 use Aplazame\Payment\Model\BusinessModel\ShippingInfo;
 use Magento\Quote\Model\Quote;
@@ -47,13 +47,7 @@ class HistoricalOrder
             'customer' => Customer::createFromQuote($quote),
             'order' => Order::createFromQuote($quote, $quote->getCreatedAt()),
             'billing' => Address::createFromAddress($quote->getBillingAddress()),
-            'meta' => [
-                'module' => [
-                    'name' => 'aplazame:magento',
-                    'version' => Checkout::getModuleVersion(),
-                ],
-                'version' => Checkout::getMagentoVersion(),
-            ],
+            'meta' => Meta::create(),
             'payment' => array(
                 'method' => $quote->getPayment()->getMethodInstance()->getCode(),
                 'status' => $payment_status,

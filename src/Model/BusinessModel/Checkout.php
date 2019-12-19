@@ -3,7 +3,6 @@
 namespace Aplazame\Payment\Model\BusinessModel;
 
 use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Quote\Model\Quote;
 
 class Checkout
@@ -42,40 +41,10 @@ class Checkout
             $checkout->shipping = ShippingInfo::createFromQuote($quote);
         }
 
-        $checkout->meta = [
-            'module' => [
-                'name' => 'aplazame:magento',
-                'version' => self::getModuleVersion(),
-            ],
-            'version' => self::getMagentoVersion(),
-        ];
-
+        $checkout->meta = Meta::create();
         $checkout->product = array('type' => $type);
 
         return $checkout;
-    }
-
-    /**
-     * @return string
-     */
-    public static function getMagentoVersion()
-    {
-        $objectManager   = ObjectManager::getInstance();
-        /** @var ProductMetadataInterface $productMetadata */
-        $productMetadata = $objectManager->get('Magento\Framework\App\ProductMetadataInterface');
-
-        return $productMetadata->getVersion();
-    }
-
-    /**
-     * @return string
-     */
-    public static function getModuleVersion()
-    {
-        $objectManager   = ObjectManager::getInstance();
-        $moduleInfo =  $objectManager->get('Magento\Framework\Module\ModuleList')->getOne('Aplazame_Payment');
-
-        return $moduleInfo['setup_version'];
     }
 
     /**
