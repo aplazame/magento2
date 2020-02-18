@@ -45,8 +45,9 @@ class ConfigProvider implements ConfigProviderInterface
             'payment' => [
                 Aplazame::PAYMENT_METHOD_CODE => [
                     'button' => $this->getButtonConfig($this->quote, $this->config, 'instalments'),
-                    'cart_widget_enabled' => $this->config->getCartWidgetIsEnabled(),
                     'instalments_enabled' => $this->config->isActive(),
+                    'cart_widget_enabled' => $this->config->isCartWidgetEnabled(),
+                    'cart_legal_advice_enabled' => $this->config->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false',
                 ],
                 AplazamePayLater::PAYMENT_METHOD_CODE => [
                     'button' => $this->getButtonConfig($this->quote, $this->configPayLater, 'pay_later'),

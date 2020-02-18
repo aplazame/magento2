@@ -38,6 +38,30 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return bool
+     */
+    public function isProductWidgetLegalAdviceEnabled()
+    {
+        return (bool) $this->getValue('product_legal_advice');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartWidgetEnabled()
+    {
+        return (bool) $this->getValue('cart_widget_enabled');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartWidgetLegalAdviceEnabled()
+    {
+        return (bool) $this->getValue('cart_legal_advice');
+    }
+
+    /**
      * @return string
      */
     public function getApiBaseUri()
@@ -59,14 +83,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getPublicApiKey()
     {
         return $this->getValue('public_api_key');
-    }
-
-    /**
-     * @return bool
-     */
-    public function getCartWidgetIsEnabled()
-    {
-        return (bool) $this->getValue('cart_widget_enabled');
     }
 
     /**

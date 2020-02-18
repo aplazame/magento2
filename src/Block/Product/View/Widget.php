@@ -49,6 +49,11 @@ class Widget extends AbstractProduct
         return $currencyModel->getCurrencyCode();
     }
 
+    public function getShowLegalAdvice()
+    {
+        return $this->config->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
+    }
+
     public function isInstalmentsActive()
     {
         return $this->config->isActive();

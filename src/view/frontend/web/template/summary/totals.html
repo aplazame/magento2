@@ -1,10 +1,11 @@
 <!-- ko if: cartWidgetIsEnabled && instalmentsIsEnabled -->
     <div
-        data-aplazame-simulator=""
+        data-aplazame-widget-instalments=""
         data-view="cart"
         data-bind="attr: {
             'data-amount': toAplazameDecimal(getAmount()),
-            'data-currency': getCurrency()
+            'data-currency': getCurrency(),
+            'data-option-legal-advice': cartLegalAdviceIsEnabled
         }"
     ></div>
 <!-- /ko -->
