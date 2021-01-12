@@ -23,9 +23,6 @@
                                                                         <item name="aplazame_payment" xsi:type="array">
                                                                             <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
                                                                         </item>
-                                                                        <item name="aplazame_payment_pay_later" xsi:type="array">
-                                                                            <item name="isBillingAddressRequired" xsi:type="boolean">true</item>
-                                                                        </item>
                                                                     </item>
                                                                 </item>
                                                             </item>

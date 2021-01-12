@@ -3,9 +3,7 @@
 namespace Aplazame\Payment\Model\Ui;
 
 use Aplazame\Payment\Gateway\Config\Config;
-use Aplazame\Payment\Gateway\Config\ConfigPayLater;
 use Aplazame\Payment\Model\Aplazame;
-use Aplazame\Payment\Model\AplazamePayLater;
 use Aplazame\Serializer\Decimal;
 use Aplazame\Serializer\JsonSerializer;
 use Magento\Checkout\Model\ConfigProviderInterface;
@@ -24,19 +22,12 @@ class ConfigProvider implements ConfigProviderInterface
      */
     private $config;
 
-    /**
-     * @var ConfigPayLater
-     */
-    private $configPayLater;
-
     public function __construct(
         Session $checkoutSession,
-        Config $config,
-        ConfigPayLater $configPayLater
+        Config $config
     ) {
         $this->quote = $checkoutSession->getQuote();
         $this->config = $config;
-        $this->configPayLater = $configPayLater;
     }
 
     public function getConfig()
@@ -44,13 +35,10 @@ class ConfigProvider implements ConfigProviderInterface
         return [
             'payment' => [
                 Aplazame::PAYMENT_METHOD_CODE => [
-                    'button' => $this->getButtonConfig($this->quote, $this->config, 'instalments'),
+                    'button' => $this->getButtonConfig($this->quote),
                     'instalments_enabled' => $this->config->isActive(),
                     'cart_widget_enabled' => $this->config->isCartWidgetEnabled(),
                     'cart_legal_advice_enabled' => $this->config->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false',
-                ],
-                AplazamePayLater::PAYMENT_METHOD_CODE => [
-                    'button' => $this->getButtonConfig($this->quote, $this->configPayLater, 'pay_later'),
                 ],
             ],
         ];
@@ -58,18 +46,15 @@ class ConfigProvider implements ConfigProviderInterface
 
     /**
      * @param Quote $quote
-     * @param Config|ConfigPayLater $config
-     * @param String $type
      *
      * @return array
      */
-    private function getButtonConfig(Quote $quote, $config, $type)
+    private function getButtonConfig(Quote $quote)
     {
         return [
-            'selector' => $config->getPaymentButton(),
-            'amount'   => JsonSerializer::serializeValue(Decimal::fromFloat($quote->getGrandTotal())),
+            'selector' => $this->config->getPaymentButton(),
+            'amount' => JsonSerializer::serializeValue(Decimal::fromFloat($quote->getGrandTotal())),
             'currency' => $quote->getQuoteCurrencyCode(),
-            'product'  => ['type' => $type]
         ];
     }
 }

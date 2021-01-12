@@ -98,8 +98,7 @@ define(
                     aplazame.button({
                         selector: config.button.selector,
                         amount: config.button.amount,
-                        currency: config.button.currency,
-                        product: config.button.product
+                        currency: config.button.currency
                     })
                 })
             }

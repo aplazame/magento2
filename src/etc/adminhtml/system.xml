@@ -3,7 +3,7 @@
     <system>
         <section id="payment">
             <group id="aplazame_payment" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Aplazame - Flexible financing</label>
+                <label>Aplazame</label>
 
                 <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Enabled</label>
@@ -46,45 +46,7 @@
                 </field>
 
                 <field id="payment_button" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Aplazame 'Flexible financing' Button CSS Selector</label>
-                </field>
-
-                <field id="allowspecific" translate="label" type="allowspecific" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Payment from Applicable Countries</label>
-                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
-                </field>
-
-                <field id="specificcountry" translate="label" type="multiselect" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Payment from Specific Countries</label>
-                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
-                    <can_be_empty>1</can_be_empty>
-                </field>
-
-                <field id="sort_order" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Sort Order</label>
-                    <frontend_class>validate-number</frontend_class>
-                </field>
-
-                <field id="autoinvoice" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Automatic invoice generation</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-            </group>
-
-            <group id="aplazame_payment_pay_later" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Aplazame - Pay in 15 days</label>
-
-                <field id="active" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Enabled</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="title" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Title</label>
-                </field>
-
-                <field id="payment_button" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Aplazame 'Pay in 15 days' Button CSS Selector</label>
+                    <label>Aplazame Button CSS Selector</label>
                 </field>
 
                 <field id="allowspecific" translate="label" type="allowspecific" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">

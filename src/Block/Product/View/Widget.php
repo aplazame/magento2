@@ -54,24 +54,8 @@ class Widget extends AbstractProduct
         return $this->config->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
     }
 
-    public function isInstalmentsActive()
+    public function isAplazameActive()
     {
         return $this->config->isActive();
     }
-
-    /**
-     * Solo renderizamos si tenemos producto,
-     * y si el modulo esta activo en la tienda actual
-     * si no hay producto no renderizamos nada (empty string).
-     *
-     * @return string
-     */
-    /*public function _toHtml()
-    {
-        if (Mage::helper('aplazame')->isEnabled()) {
-            return parent::_toHtml();
-        }
-
-        return '';
-    }*/
 }

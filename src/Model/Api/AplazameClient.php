@@ -67,14 +67,22 @@ class AplazameClient
     }
 
     /**
-     * @param float $amount
+     * @param int $amount
      * @return array
      */
     public function captureAmount($quoteId, $amount)
     {
-        $data = array('amount' => Decimal::fromFloat($amount)->jsonSerialize());
+        $data = array('amount' => $amount);
 
         return $this->apiClient->request('POST', $this->getEndpointForOrder($quoteId) . '/captures', $data);
+    }
+
+    /**
+     * @return array
+     */
+    public function getOrderCapture($quoteId)
+    {
+        return $this->apiClient->request('GET', $this->getEndpointForOrder($quoteId) . '/captures');
     }
 
     /**
