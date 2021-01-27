@@ -11,6 +11,8 @@ define([
         cartWidgetIsEnabled: config.cart_widget_enabled,
         instalmentsIsEnabled: config.instalments_enabled,
         cartLegalAdviceIsEnabled: config.cart_legal_advice_enabled,
+        cartDefaultInstalments: config.cart_default_instalments,
+
 
         getAmount: function () {
             return Quote.totals().base_grand_total;

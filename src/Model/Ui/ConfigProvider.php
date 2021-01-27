@@ -39,6 +39,7 @@ class ConfigProvider implements ConfigProviderInterface
                     'instalments_enabled' => $this->config->isActive(),
                     'cart_widget_enabled' => $this->config->isCartWidgetEnabled(),
                     'cart_legal_advice_enabled' => $this->config->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false',
+                    'cart_default_instalments' => $this->config->getCartDefaultInstalments(),
                 ],
             ],
         ];

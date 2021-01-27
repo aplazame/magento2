@@ -46,6 +46,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return int
+     */
+    public function getProductDefaultInstalments()
+    {
+        return (int) $this->getValue('product_default_instalments');
+    }
+
+    /**
      * @return bool
      */
     public function isCartWidgetEnabled()
@@ -59,6 +67,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function isCartWidgetLegalAdviceEnabled()
     {
         return (bool) $this->getValue('cart_legal_advice');
+    }
+
+    /**
+     * @return int
+     */
+    public function getCartDefaultInstalments()
+    {
+        return (int) $this->getValue('cart_default_instalments');
     }
 
     /**

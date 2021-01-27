@@ -54,6 +54,11 @@ class Widget extends AbstractProduct
         return $this->config->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
     }
 
+    public function getDefaultInstalments()
+    {
+        return $this->config->getProductDefaultInstalments();
+    }
+
     public function isAplazameActive()
     {
         return $this->config->isActive();

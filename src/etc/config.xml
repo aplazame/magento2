@@ -10,8 +10,10 @@
                 <title>Aplazame</title>
                 <product_widget_enabled>1</product_widget_enabled>
                 <product_legal_advice>0</product_legal_advice>
+                <product_default_instalments> </product_default_instalments>
                 <cart_widget_enabled>1</cart_widget_enabled>
                 <cart_legal_advice>0</cart_legal_advice>
+                <cart_default_instalments> </cart_default_instalments>
                 <payment_button>#aplazame-payment-method</payment_button>
                 <allowspecific>0</allowspecific>
             </aplazame_payment>

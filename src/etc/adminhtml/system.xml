@@ -35,6 +35,11 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
 
+                <field id="product_default_instalments" translate="label" type="text" sortOrder="37" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Select the default number instalments for the product widget</label>
+                    <frontend_class>validate-number</frontend_class>
+                </field>
+
                 <field id="cart_widget_enabled" translate="label" type="select" sortOrder="38" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Show widget on cart page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -45,7 +50,12 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
 
-                <field id="payment_button" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                <field id="cart_default_instalments" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Select the default number instalments for the cart widget</label>
+                    <frontend_class>validate-number</frontend_class>
+                </field>
+
+                <field id="payment_button" translate="label" type="text" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Aplazame Button CSS Selector</label>
                 </field>
 
