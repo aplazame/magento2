@@ -40,6 +40,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
+    public function isWidgetLegacyEnabled()
+    {
+        return (bool) $this->getValue('widget_legacy_enabled');
+    }
+
+    /**
+     * @return bool
+     */
     public function isProductWidgetLegalAdviceEnabled()
     {
         return (bool) $this->getValue('product_legal_advice');
@@ -51,6 +59,22 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getProductDefaultInstalments()
     {
         return (int) $this->getValue('product_default_instalments');
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductPrimaryColor()
+    {
+        return (string) $this->getValue('product_widget_primary_color');
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductLayout()
+    {
+        return (string) $this->getValue('product_widget_layout');
     }
 
     /**
@@ -75,6 +99,22 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getCartDefaultInstalments()
     {
         return (int) $this->getValue('cart_default_instalments');
+    }
+
+    /**
+     * @return string
+     */
+    public function getCartPrimaryColor()
+    {
+        return (string) $this->getValue('cart_widget_primary_color');
+    }
+
+    /**
+     * @return string
+     */
+    public function getCartLayout()
+    {
+        return (string) $this->getValue('cart_widget_layout');
     }
 
     /**

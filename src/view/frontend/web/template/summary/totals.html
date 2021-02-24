@@ -1,12 +1,28 @@
 <!-- ko if: cartWidgetIsEnabled && instalmentsIsEnabled -->
-    <div
-        data-aplazame-widget-instalments=""
-        data-view="cart"
-        data-bind="attr: {
-            'data-amount': toAplazameDecimal(getAmount()),
-            'data-currency': getCurrency(),
-            'data-option-legal-advice': cartLegalAdviceIsEnabled,
-            'data-option-default-instalments': cartDefaultInstalments
-        }"
-    ></div>
+    <!-- ko ifnot: widgetLegacyEnabled -->
+        <div
+            data-aplazame-widget-instalments="v4"
+            data-type="cart"
+            data-bind="attr: {
+                    'data-amount': toAplazameDecimal(getAmount()),
+                    'data-currency': getCurrency(),
+                    'data-option-legal-advice': cartLegalAdviceIsEnabled,
+                    'data-option-default-instalments': cartDefaultInstalments,
+                    'data-option-primary-color': cartPrimaryColor,
+                    'data-option-layout': cartLayout,
+                }"
+        ></div>
+    <!-- /ko -->
+    <!-- ko if: widgetLegacyEnabled -->
+        <div
+            data-aplazame-widget-instalments=""
+            data-view="cart"
+            data-bind="attr: {
+                'data-amount': toAplazameDecimal(getAmount()),
+                'data-currency': getCurrency(),
+                'data-option-legal-advice': cartLegalAdviceIsEnabled,
+                'data-option-default-instalments': cartDefaultInstalments,
+            }"
+        ></div>
+    <!-- /ko -->
 <!-- /ko -->

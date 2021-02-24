@@ -9,8 +9,15 @@ if (!$block->isAplazameActive()) {
 }
 ?>
 <div
-    data-aplazame-widget-instalments=""
-    data-view="product"
+    <?php if ($this->isWidgetLegacyEnabled()) : ?>
+        data-aplazame-widget-instalments=""
+        data-view="product"
+    <?php else : ?>
+        data-aplazame-widget-instalments="v4"
+        data-type="product"
+        data-option-primary-color="<?php echo $this->getPrimaryColor(); ?>"
+        data-option-layout="<?php echo $this->getWidgetLayout(); ?>"
+    <?php endif; ?>
     data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
     data-currency="<?php echo $block->getCurrencyCode(); ?>"
     data-article-id="<?php echo $block->getProduct()->getId(); ?>"

@@ -40,6 +40,9 @@ class ConfigProvider implements ConfigProviderInterface
                     'cart_widget_enabled' => $this->config->isCartWidgetEnabled(),
                     'cart_legal_advice_enabled' => $this->config->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false',
                     'cart_default_instalments' => $this->config->getCartDefaultInstalments(),
+                    'widget_legacy_enabled' => $this->config->isWidgetLegacyEnabled(),
+                    'cart_widget_primary_color' => $this->config->isWidgetLegacyEnabled() ? '' : $this->config->getCartPrimaryColor(),
+                    'cart_widget_layout' => $this->config->isWidgetLegacyEnabled() ? '' : $this->config->getCartLayout(),
                 ],
             ],
         ];

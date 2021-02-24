@@ -59,6 +59,21 @@ class Widget extends AbstractProduct
         return $this->config->getProductDefaultInstalments();
     }
 
+    public function isWidgetLegacyEnabled()
+    {
+        return $this->config->isWidgetLegacyEnabled();
+    }
+
+    public function getPrimaryColor()
+    {
+        return $this->config->getProductPrimaryColor();
+    }
+
+    public function getWidgetLayout()
+    {
+        return $this->config->getProductLayout();
+    }
+
     public function isAplazameActive()
     {
         return $this->config->isActive();
