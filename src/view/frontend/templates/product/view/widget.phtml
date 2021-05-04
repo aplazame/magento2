@@ -15,6 +15,7 @@ if (!$block->isAplazameActive()) {
     <?php else : ?>
         data-aplazame-widget-instalments="v4"
         data-type="product"
+        data-option-border-product="<?php echo $this->getShowBorder(); ?>"
         data-option-primary-color="<?php echo $this->getPrimaryColor(); ?>"
         data-option-layout="<?php echo $this->getWidgetLayout(); ?>"
     <?php endif; ?>

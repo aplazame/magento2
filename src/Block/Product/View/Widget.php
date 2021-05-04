@@ -64,6 +64,11 @@ class Widget extends AbstractProduct
         return $this->config->isWidgetLegacyEnabled();
     }
 
+    public function getShowBorder()
+    {
+        return $this->config->isProductWidgetBorderEnabled() ? 'true' : 'false';
+    }
+
     public function getPrimaryColor()
     {
         return $this->config->getProductPrimaryColor();

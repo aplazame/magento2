@@ -12,6 +12,7 @@
                 <product_widget_enabled>1</product_widget_enabled>
                 <product_legal_advice>0</product_legal_advice>
                 <product_default_instalments> </product_default_instalments>
+                <product_widget_border>1</product_widget_border>
                 <product_widget_primary_color>#334BFF</product_widget_primary_color>
                 <product_widget_layout>horizontal</product_widget_layout>
                 <cart_widget_enabled>1</cart_widget_enabled>

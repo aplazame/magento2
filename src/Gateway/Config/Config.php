@@ -54,6 +54,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return bool
+     */
+    public function isProductWidgetBorderEnabled()
+    {
+        return (bool) $this->getValue('product_widget_border');
+    }
+
+    /**
      * @return int
      */
     public function getProductDefaultInstalments()
