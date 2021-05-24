@@ -59,31 +59,41 @@
                     <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
                 </field>
 
-                <field id="cart_widget_enabled" translate="label" type="select" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="product_widget_align" translate="label" type="select" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Product widget alignment (only new widget)</label>
+                    <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
+                </field>
+
+                <field id="cart_widget_enabled" translate="label" type="select" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Show widget on cart page</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
 
-                <field id="cart_legal_advice" translate="label" type="select" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="cart_legal_advice" translate="label" type="select" sortOrder="43" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Show legal notice in cart widget</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
 
-                <field id="cart_default_instalments" translate="label" type="text" sortOrder="43" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="cart_default_instalments" translate="label" type="text" sortOrder="44" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Select the default number instalments for the cart widget</label>
                     <frontend_class>validate-number</frontend_class>
                 </field>
 
-                <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="44" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Primary color hexadecimal code for cart widget (only new widget)</label>
                 </field>
 
-                <field id="cart_widget_layout" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="cart_widget_layout" translate="label" type="select" sortOrder="46" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Layout of cart widget (only new widget)</label>
                     <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
                 </field>
 
-                <field id="payment_button" translate="label" type="text" sortOrder="46" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                <field id="cart_widget_align" translate="label" type="select" sortOrder="47" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Cart widget alignment (only new widget)</label>
+                    <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
+                </field>
+
+                <field id="payment_button" translate="label" type="text" sortOrder="49" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Aplazame Button CSS Selector</label>
                 </field>
 

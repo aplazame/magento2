@@ -86,6 +86,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return string
+     */
+    public function getProductAlign()
+    {
+        return (string) $this->getValue('product_widget_align');
+    }
+
+    /**
      * @return bool
      */
     public function isCartWidgetEnabled()
@@ -123,6 +131,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getCartLayout()
     {
         return (string) $this->getValue('cart_widget_layout');
+    }
+
+    /**
+     * @return string
+     */
+    public function getCartAlign()
+    {
+        return (string) $this->getValue('cart_widget_align');
     }
 
     /**

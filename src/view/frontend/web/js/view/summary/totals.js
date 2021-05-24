@@ -15,7 +15,7 @@ define([
         widgetLegacyEnabled: config.widget_legacy_enabled,
         cartPrimaryColor: config.cart_widget_primary_color,
         cartLayout: config.cart_widget_layout,
-
+        cartAlign: config.cart_widget_align,
 
         getAmount: function () {
             return Quote.totals().base_grand_total;

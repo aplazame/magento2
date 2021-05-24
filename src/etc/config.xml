@@ -15,11 +15,13 @@
                 <product_widget_border>1</product_widget_border>
                 <product_widget_primary_color>#334BFF</product_widget_primary_color>
                 <product_widget_layout>horizontal</product_widget_layout>
+                <product_widget_align>center</product_widget_align>
                 <cart_widget_enabled>1</cart_widget_enabled>
                 <cart_legal_advice>0</cart_legal_advice>
                 <cart_default_instalments> </cart_default_instalments>
                 <cart_widget_primary_color>#334BFF</cart_widget_primary_color>
                 <cart_widget_layout>horizontal</cart_widget_layout>
+                <cart_widget_align>center</cart_widget_align>
                 <payment_button>#aplazame-payment-method</payment_button>
                 <allowspecific>0</allowspecific>
             </aplazame_payment>

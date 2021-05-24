@@ -79,6 +79,11 @@ class Widget extends AbstractProduct
         return $this->config->getProductLayout();
     }
 
+    public function getWidgetAlign()
+    {
+        return $this->config->getProductAlign();
+    }
+
     public function isAplazameActive()
     {
         return $this->config->isActive();

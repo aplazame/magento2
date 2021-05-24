@@ -18,6 +18,7 @@ if (!$block->isAplazameActive()) {
         data-option-border-product="<?php echo $this->getShowBorder(); ?>"
         data-option-primary-color="<?php echo $this->getPrimaryColor(); ?>"
         data-option-layout="<?php echo $this->getWidgetLayout(); ?>"
+        data-option-align="<?php echo $this->getWidgetAlign(); ?>"
     <?php endif; ?>
     data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
     data-currency="<?php echo $block->getCurrencyCode(); ?>"
