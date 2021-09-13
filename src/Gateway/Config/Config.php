@@ -56,6 +56,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
+    public function isProductWidgetPayIn4Enabled()
+    {
+        return (bool) $this->getValue('product_pay_in_4');
+    }
+
+    /**
+     * @return bool
+     */
     public function isProductWidgetBorderEnabled()
     {
         return (bool) $this->getValue('product_widget_border');
@@ -107,6 +115,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function isCartWidgetLegalAdviceEnabled()
     {
         return (bool) $this->getValue('cart_legal_advice');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartWidgetPayIn4Enabled()
+    {
+        return (bool) $this->getValue('cart_pay_in_4');
     }
 
     /**

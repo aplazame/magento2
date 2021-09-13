@@ -11,6 +11,7 @@
                 <widget_legacy_enabled>1</widget_legacy_enabled>
                 <product_widget_enabled>1</product_widget_enabled>
                 <product_legal_advice>0</product_legal_advice>
+                <product_pay_in_4>0</product_pay_in_4>
                 <product_default_instalments> </product_default_instalments>
                 <product_widget_border>1</product_widget_border>
                 <product_widget_primary_color>#334BFF</product_widget_primary_color>
@@ -18,6 +19,7 @@
                 <product_widget_align>center</product_widget_align>
                 <cart_widget_enabled>1</cart_widget_enabled>
                 <cart_legal_advice>0</cart_legal_advice>
+                <cart_pay_in_4>0</cart_pay_in_4>
                 <cart_default_instalments> </cart_default_instalments>
                 <cart_widget_primary_color>#334BFF</cart_widget_primary_color>
                 <cart_widget_layout>horizontal</cart_widget_layout>

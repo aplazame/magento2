@@ -54,6 +54,11 @@ class Widget extends AbstractProduct
         return $this->config->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';
     }
 
+    public function getShowPayIn4()
+    {
+        return $this->config->isProductWidgetPayIn4Enabled();
+    }
+
     public function getDefaultInstalments()
     {
         return $this->config->getProductDefaultInstalments();
