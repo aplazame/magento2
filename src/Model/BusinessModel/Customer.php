@@ -42,9 +42,6 @@ class Customer
         if (($birthday = $customer->getDob()) !== null) {
             $aCustomer->birthday = $birthday;
         }
-        if (($document_id = $customer->getTaxvat()) !== null) {
-            $aCustomer->document_id = $document_id;
-        }
         // TODO
 //        $aCustomer->date_joined = Date::fromDateTime(new DateTime('@' . $customer->getCreatedAtTimestamp()));
         $logCustomer = self::getCustomerLogger()->get($customer->getId());
