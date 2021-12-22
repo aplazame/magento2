@@ -24,6 +24,7 @@ if (!$block->isAplazameActive()) {
     data-currency="<?php echo $block->getCurrencyCode(); ?>"
     data-article-id="<?php echo $block->getProduct()->getId(); ?>"
     data-option-legal-advice="<?php echo $block->getShowLegalAdvice(); ?>"
+    data-option-out-of-limits="<?php echo $block->getOptionOutOfLimits(); ?>"
     <?php if ($block->getShowPayIn4()) : ?>
         data-pay-in-4=""
     <?php endif; ?>

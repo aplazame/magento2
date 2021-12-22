@@ -64,6 +64,11 @@ class Widget extends AbstractProduct
         return $this->config->getProductDefaultInstalments();
     }
 
+    public function getOptionOutOfLimits()
+    {
+        return $this->config->getWidgetOutOfLimits();
+    }
+
     public function isWidgetLegacyEnabled()
     {
         return $this->config->isWidgetLegacyEnabled();

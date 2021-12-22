@@ -46,6 +46,16 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return string
+     */
+    public function getWidgetOutOfLimits()
+    {
+        return (string) $this->getValue('widget_out_of_limits');
+    }
+
+    // Product widget
+
+    /**
      * @return bool
      */
     public function isProductWidgetLegalAdviceEnabled()
@@ -100,6 +110,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     {
         return (string) $this->getValue('product_widget_align');
     }
+
+    // Cart widget
 
     /**
      * @return bool
@@ -156,6 +168,8 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     {
         return (string) $this->getValue('cart_widget_align');
     }
+
+    // API & Payment
 
     /**
      * @return string

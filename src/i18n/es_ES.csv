@@ -5,6 +5,7 @@ Campaigns,Campañas
 Aplazame,Aplazame
 "Test Mode (Sandbox)","Modo de pruebas (Sandbox)"
 "Private API Key","Clave API privada"
+"Show/hide alternative widget if Aplazame is not available","Muestra/oculta el widget alternativo si Aplazame no está disponible"
 "Show widget legacy instead new widget","Mostrar el widget legacy en lugar del nuevo widget"
 "Show widget on product page","Mostrar el widget en la página del producto"
 "Show legal notice in product widget","Mostrar texto legal en el widget del producto"
@@ -23,6 +24,8 @@ Aplazame,Aplazame
 "Layout of cart widget (only new widget)","Disposición del widget del cart (sólo nuevo widget)"
 "Aplazame Button CSS Selector","Selector CSS del botón de Aplazame"
 "Aplazame Campaigns","Campañas Aplazame"
+"Show","Mostrar"
+"Hide","Ocultar"
 "Left","Izquierda"
 "Center","Centro"
 "Right","Derecha"

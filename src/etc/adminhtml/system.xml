@@ -24,7 +24,12 @@
                     <backend_model>Aplazame\Payment\Model\Config\PrivateKey</backend_model>
                 </field>
 
-                <field id="widget_legacy_enabled" translate="label" type="select" sortOrder="31" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="widget_out_of_limits" translate="label" type="select" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show/hide alternative widget if Aplazame is not available</label>
+                    <source_model>Aplazame\Payment\Model\Config\Source\Outoflimits</source_model>
+                </field>
+
+                <field id="widget_legacy_enabled" translate="label" type="select" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Show widget legacy instead new widget</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>

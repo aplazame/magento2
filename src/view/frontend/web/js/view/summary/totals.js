@@ -13,6 +13,7 @@ define([
         cartLegalAdviceIsEnabled: config.cart_legal_advice_enabled,
         cartPayIn4IsEnabled: config.cart_pay_in_4_enabled,
         cartDefaultInstalments: config.cart_default_instalments,
+        widgetOutOfLimits: config.widget_out_of_limits,
         widgetLegacyEnabled: config.widget_legacy_enabled,
         cartPrimaryColor: config.cart_widget_primary_color,
         cartLayout: config.cart_widget_layout,
