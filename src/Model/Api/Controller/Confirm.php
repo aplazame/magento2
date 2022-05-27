@@ -4,6 +4,7 @@ namespace Aplazame\Payment\Model\Api\Controller;
 
 use Aplazame\Payment\Controller\Api\Index as ApiController;
 use Aplazame\Payment\Model\Aplazame;
+use Aplazame\Serializer\Decimal;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\OrderInterface;
 
@@ -93,6 +94,10 @@ class Confirm
                             return self::ko('Aplazame is not the payment method (at challenge)');
                         }
 
+                        if ($this->isFraud($payload, $order)) {
+                            $payment->setIsFraudDetected(true);
+                        }
+
                         $this->orderRepository->save($order);
 
                         if ($payment->getIsFraudDetected()) {
@@ -112,6 +117,10 @@ class Confirm
 
                         if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
                             return self::ko('Aplazame is not the payment method (at confirmation)');
+                        }
+
+                        if ($this->isFraud($payload, $order)) {
+                            $payment->setIsFraudDetected(true);
                         }
 
                         $payment->accept();
@@ -135,6 +144,10 @@ class Confirm
 
                 if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
                     return self::ko('Aplazame is not the payment method');
+                }
+
+                if ($this->isFraud($payload, $order)) {
+                    $payment->setIsFraudDetected(true);
                 }
 
                 $payment->deny(true);
@@ -184,5 +197,11 @@ class Confirm
         $orderId = $this->quoteManagement->placeOrder($quote->getId());
 
         return $this->orderRepository->get($orderId);
+    }
+
+    private function isFraud(array $payload, \Magento\Sales\Api\Data\OrderInterface $order)
+    {
+        return ($payload['total_amount'] !== Decimal::fromFloat($order->getGrandTotal())->jsonSerialize()) ||
+            ($payload['currency']['code'] !== $order->getOrderCurrencyCode());
     }
 }
