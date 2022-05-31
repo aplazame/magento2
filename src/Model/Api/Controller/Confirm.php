@@ -136,6 +136,7 @@ class Confirm
                 try {
                     $order = $this->findOneOrderByQuote($checkoutToken);
                 } catch (NoSuchEntityException $e) {
+                    $this->deleteCart($checkoutToken);
                     return self::ok();
                 }
 
@@ -203,5 +204,15 @@ class Confirm
     {
         return ($payload['total_amount'] !== Decimal::fromFloat($order->getGrandTotal())->jsonSerialize()) ||
             ($payload['currency']['code'] !== $order->getOrderCurrencyCode());
+    }
+
+    /**
+     * @throws NoSuchEntityException
+     */
+    private function deleteCart($checkoutMid)
+    {
+        /** @var \Magento\Quote\Model\Quote $quote */
+        $quote = $this->quoteRepository->get($checkoutMid);
+        $this->quoteRepository->delete($quote);
     }
 }
