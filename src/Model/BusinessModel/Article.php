@@ -20,7 +20,7 @@ class Article
         $aArticle->url = $product->getProductUrl();
         $aArticle->quantity = intval($item->getQty());
         $aArticle->price = Decimal::fromFloat($item->getPrice() + $discounts);
-        $aArticle->description = substr($product->getDescription(), 0, 255);
+        $aArticle->description = $product->getDescription() ? substr($product->getDescription(), 0, 255) : null;
         $aArticle->tax_rate = Decimal::fromFloat($item->getTaxPercent());
 
         // getDiscountAmount() picks cart and coupon discounts related with the item.
