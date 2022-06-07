@@ -15,7 +15,7 @@ class Article
         $article = [
             'id' => $product->getId(),
             'name' => $product->getName(),
-            'description' => substr($product->getDescription(), 0, 255),
+            'description' => $product->getDescription() ? substr($product->getDescription(), 0, 255) : null,
             'url' => $product->getProductUrl(),
             'image_url' => BMArticle::getImageProduct($product),
         ];
