@@ -92,6 +92,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return string
      */
+    public function getProductCSS()
+    {
+        return (string) $this->getValue('aplazame_widget/aplazame_product_widget/product_css');
+    }
+
+    /**
+     * @return string
+     */
     public function getProductPrimaryColor()
     {
         return (string) $this->getValue('aplazame_widget/aplazame_product_widget/product_widget_primary_color');
