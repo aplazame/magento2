@@ -147,7 +147,7 @@ class Index extends Action
                 }
 
                 try {
-                    return $controller->confirm($payload);
+                    return $controller->confirm($payload, $this->getRequest());
                 } catch (NoSuchEntityException $e) {
                     return self::not_found();
                 }

@@ -64,6 +64,11 @@ class Widget extends AbstractProduct
         return $this->config->getProductDefaultInstalments();
     }
 
+    public function getPriceSelector()
+    {
+        return $this->config->getProductCSS();
+    }
+
     public function getOptionOutOfLimits()
     {
         return $this->config->getWidgetOutOfLimits();
