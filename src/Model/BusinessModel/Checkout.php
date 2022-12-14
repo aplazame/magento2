@@ -17,6 +17,7 @@ class Checkout
                 [
                     '_query' => [
                         'path' => '/confirm/',
+                        'quote_id' => $quote->getId(),
                     ],
                     '_nosid' => true,
                     '_secure' => true,

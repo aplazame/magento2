@@ -37,12 +37,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         return (bool) $this->getValue('sandbox');
     }
 
+    // Widget config
+
     /**
      * @return bool
      */
     public function isWidgetLegacyEnabled()
     {
-        return (bool) $this->getValue('widget_legacy_enabled');
+        return (bool) $this->getValue('aplazame_widget/widget_legacy_enabled');
     }
 
     /**
@@ -50,7 +52,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getWidgetOutOfLimits()
     {
-        return (string) $this->getValue('widget_out_of_limits');
+        return (string) $this->getValue('aplazame_widget/widget_out_of_limits');
     }
 
     // Product widget
@@ -60,7 +62,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function isProductWidgetLegalAdviceEnabled()
     {
-        return (bool) $this->getValue('product_legal_advice');
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_legal_advice');
     }
 
     /**
@@ -68,7 +70,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function isProductWidgetPayIn4Enabled()
     {
-        return (bool) $this->getValue('product_pay_in_4');
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_pay_in_4');
     }
 
     /**
@@ -76,7 +78,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function isProductWidgetBorderEnabled()
     {
-        return (bool) $this->getValue('product_widget_border');
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_widget_border');
     }
 
     /**
@@ -84,7 +86,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getProductDefaultInstalments()
     {
-        return (int) $this->getValue('product_default_instalments');
+        return (int) $this->getValue('aplazame_widget/aplazame_product_widget/product_default_instalments');
     }
 
     /**
@@ -92,7 +94,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getProductPrimaryColor()
     {
-        return (string) $this->getValue('product_widget_primary_color');
+        return (string) $this->getValue('aplazame_widget/aplazame_product_widget/product_widget_primary_color');
     }
 
     /**
@@ -100,7 +102,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getProductLayout()
     {
-        return (string) $this->getValue('product_widget_layout');
+        return (string) $this->getValue('aplazame_widget/aplazame_product_widget/product_widget_layout');
     }
 
     /**
@@ -108,7 +110,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getProductAlign()
     {
-        return (string) $this->getValue('product_widget_align');
+        return (string) $this->getValue('aplazame_widget/aplazame_product_widget/product_widget_align');
     }
 
     // Cart widget
@@ -118,7 +120,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function isCartWidgetEnabled()
     {
-        return (bool) $this->getValue('cart_widget_enabled');
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_enabled');
     }
 
     /**
@@ -126,7 +128,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function isCartWidgetLegalAdviceEnabled()
     {
-        return (bool) $this->getValue('cart_legal_advice');
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_legal_advice');
     }
 
     /**
@@ -134,7 +136,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function isCartWidgetPayIn4Enabled()
     {
-        return (bool) $this->getValue('cart_pay_in_4');
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_pay_in_4');
     }
 
     /**
@@ -142,7 +144,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getCartDefaultInstalments()
     {
-        return (int) $this->getValue('cart_default_instalments');
+        return (int) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_default_instalments');
     }
 
     /**
@@ -150,7 +152,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getCartPrimaryColor()
     {
-        return (string) $this->getValue('cart_widget_primary_color');
+        return (string) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_primary_color');
     }
 
     /**
@@ -158,7 +160,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getCartLayout()
     {
-        return (string) $this->getValue('cart_widget_layout');
+        return (string) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_layout');
     }
 
     /**
@@ -166,10 +168,18 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getCartAlign()
     {
-        return (string) $this->getValue('cart_widget_align');
+        return (string) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_align');
     }
 
     // API & Payment
+
+    /**
+     * @return bool
+     */
+    public function isChangeToOrderIdEnabled()
+    {
+        return (bool) $this->getValue('aplazame_misc/change_to_order_id');
+    }
 
     /**
      * @return string
@@ -200,7 +210,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      */
     public function getPaymentButton()
     {
-        return $this->getValue('payment_button');
+        return $this->getValue('aplazame_misc/payment_button');
     }
 
     /**

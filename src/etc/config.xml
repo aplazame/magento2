@@ -8,25 +8,34 @@
                 <model>Aplazame\Payment\Model\Aplazame</model>
                 <payment_action>authorize</payment_action>
                 <title>Aplazame</title>
-                <widget_out_of_limits>show</widget_out_of_limits>
-                <widget_legacy_enabled>1</widget_legacy_enabled>
-                <product_widget_enabled>1</product_widget_enabled>
-                <product_legal_advice>0</product_legal_advice>
-                <product_pay_in_4>0</product_pay_in_4>
-                <product_default_instalments> </product_default_instalments>
-                <product_widget_border>1</product_widget_border>
-                <product_widget_primary_color>#334BFF</product_widget_primary_color>
-                <product_widget_layout>horizontal</product_widget_layout>
-                <product_widget_align>center</product_widget_align>
-                <cart_widget_enabled>1</cart_widget_enabled>
-                <cart_legal_advice>0</cart_legal_advice>
-                <cart_pay_in_4>0</cart_pay_in_4>
-                <cart_default_instalments> </cart_default_instalments>
-                <cart_widget_primary_color>#334BFF</cart_widget_primary_color>
-                <cart_widget_layout>horizontal</cart_widget_layout>
-                <cart_widget_align>center</cart_widget_align>
-                <payment_button>#aplazame-payment-method</payment_button>
-                <allowspecific>0</allowspecific>
+                <aplazame_widget>
+                    <widget_out_of_limits>show</widget_out_of_limits>
+                    <widget_legacy_enabled>1</widget_legacy_enabled>
+                    <aplazame_product_widget>
+                        <product_widget_enabled>1</product_widget_enabled>
+                        <product_legal_advice>0</product_legal_advice>
+                        <product_pay_in_4>0</product_pay_in_4>
+                        <product_default_instalments> </product_default_instalments>
+                        <product_widget_border>1</product_widget_border>
+                        <product_widget_primary_color>#334BFF</product_widget_primary_color>
+                        <product_widget_layout>horizontal</product_widget_layout>
+                        <product_widget_align>center</product_widget_align>
+                    </aplazame_product_widget>
+                    <aplazame_cart_widget>
+                        <cart_widget_enabled>1</cart_widget_enabled>
+                        <cart_legal_advice>0</cart_legal_advice>
+                        <cart_pay_in_4>0</cart_pay_in_4>
+                        <cart_default_instalments> </cart_default_instalments>
+                        <cart_widget_primary_color>#334BFF</cart_widget_primary_color>
+                        <cart_widget_layout>horizontal</cart_widget_layout>
+                        <cart_widget_align>center</cart_widget_align>
+                    </aplazame_cart_widget>
+                </aplazame_widget>
+                <aplazame_misc>
+                    <change_to_order_id>0</change_to_order_id>
+                    <payment_button>#aplazame-payment-method</payment_button>
+                    <allowspecific>0</allowspecific>
+                </aplazame_misc>
             </aplazame_payment>
         </payment>
     </default>

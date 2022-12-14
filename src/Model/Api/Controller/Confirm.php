@@ -6,6 +6,7 @@ use Aplazame\Payment\Controller\Api\Index as ApiController;
 use Aplazame\Payment\Model\Aplazame;
 use Aplazame\Serializer\Decimal;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Sales\Api\Data\OrderInterface;
 
 class Confirm
@@ -35,13 +36,17 @@ class Confirm
      */
     private $quoteRepository;
 
-    private static function ok()
+    private static function ok(array $extra = null)
     {
-        return ApiController::success(
-            [
-                'status' => 'ok',
-            ]
+        $response = array(
+            'status' => 'ok',
         );
+
+        if ($extra) {
+            $response += $extra;
+        }
+
+        return ApiController::success($response);
     }
 
     private static function ko($reason)
@@ -71,7 +76,7 @@ class Confirm
     /**
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function confirm(array $payload)
+    public function confirm(array $payload,HttpRequest $request)
     {
         if (!isset($payload['sandbox']) || $payload['sandbox'] !== $this->aplazameConfig->isSandbox()) {
             return ApiController::client_error('"sandbox" not provided');
@@ -80,7 +85,15 @@ class Confirm
         if (!isset($payload['mid'])) {
             return ApiController::client_error('"mid" not provided');
         }
-        $checkoutToken = $payload['mid'];
+
+        $quote_param = $request->getParam('quote_id');
+        if ($quote_param != null) {
+            $isQuoteIdQueryParamSet = true;
+            $checkoutToken = $quote_param;
+        } else {
+            $isQuoteIdQueryParamSet = false;
+            $checkoutToken = $payload['mid'];
+        }
 
         switch ($payload['status']) {
             case 'pending':
@@ -102,6 +115,10 @@ class Confirm
 
                         if ($payment->getIsFraudDetected()) {
                             return self::ko('Fraud detected (at challenge)');
+                        }
+
+                        if ($this->aplazameConfig->isChangeToOrderIdEnabled()) {
+                            return self::ok($this->buildMid($isQuoteIdQueryParamSet, $order));
                         }
                         break;
                     case 'confirmation_required':
@@ -128,6 +145,10 @@ class Confirm
 
                         if ($payment->getIsFraudDetected()) {
                             return self::ko('Fraud detected (at confirmation)');
+                        }
+
+                        if ($this->aplazameConfig->isChangeToOrderIdEnabled()) {
+                            return self::ok($this->buildMid($isQuoteIdQueryParamSet, $order));
                         }
                         break;
                 }
@@ -214,5 +235,14 @@ class Confirm
         /** @var \Magento\Quote\Model\Quote $quote */
         $quote = $this->quoteRepository->get($checkoutMid);
         $this->quoteRepository->delete($quote);
+    }
+
+    private function buildMid($isCartIdQueryParamSet, $order)
+    {
+        if (!$isCartIdQueryParamSet) {
+            return null;
+        }
+
+        return array('order_id' => "order_" . $order->getRealOrderId());
     }
 }

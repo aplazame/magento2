@@ -24,114 +24,145 @@
                     <backend_model>Aplazame\Payment\Model\Config\PrivateKey</backend_model>
                 </field>
 
-                <field id="widget_out_of_limits" translate="label" type="select" sortOrder="32" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Show/hide alternative widget if Aplazame is not available</label>
-                    <source_model>Aplazame\Payment\Model\Config\Source\Outoflimits</source_model>
-                </field>
-
-                <field id="widget_legacy_enabled" translate="label" type="select" sortOrder="34" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Show widget legacy instead new widget</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="product_widget_enabled" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Show widget on product page</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <backend_model>Aplazame\Payment\Model\Config\Backend\Links</backend_model>
-                </field>
-
-                <field id="product_legal_advice" translate="label" type="select" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Show legal notice in product widget</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="product_pay_in_4" translate="label" type="select" sortOrder="37" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Enable product widget pay in 4 (if available)</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="product_default_instalments" translate="label" type="text" sortOrder="38" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Select the default number instalments for the product widget</label>
-                    <frontend_class>validate-number</frontend_class>
-                </field>
-
-                <field id="product_widget_border" translate="label" type="select" sortOrder="39" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Show border in product widget (only new widget)</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="product_widget_primary_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Primary color hexadecimal code for product widget (only new widget)</label>
-                </field>
-
-                <field id="product_widget_layout" translate="label" type="select" sortOrder="41" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Layout of product widget (only new widget)</label>
-                    <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
-                </field>
-
-                <field id="product_widget_align" translate="label" type="select" sortOrder="42" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Product widget alignment (only new widget)</label>
-                    <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
-                </field>
-
-                <field id="cart_widget_enabled" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Show widget on cart page</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="cart_legal_advice" translate="label" type="select" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Show legal notice in cart widget</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="cart_pay_in_4" translate="label" type="select" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Enable cart widget pay in 4 (if available)</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-
-                <field id="cart_default_instalments" translate="label" type="text" sortOrder="53" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Select the default number instalments for the cart widget</label>
-                    <frontend_class>validate-number</frontend_class>
-                </field>
-
-                <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="54" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Primary color hexadecimal code for cart widget (only new widget)</label>
-                </field>
-
-                <field id="cart_widget_layout" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Layout of cart widget (only new widget)</label>
-                    <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
-                </field>
-
-                <field id="cart_widget_align" translate="label" type="select" sortOrder="56" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Cart widget alignment (only new widget)</label>
-                    <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
-                </field>
-
-                <field id="payment_button" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Aplazame Button CSS Selector</label>
-                </field>
-
-                <field id="allowspecific" translate="label" type="allowspecific" sortOrder="62" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Payment from Applicable Countries</label>
-                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
-                </field>
-
-                <field id="specificcountry" translate="label" type="multiselect" sortOrder="64" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Payment from Specific Countries</label>
-                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
-                    <can_be_empty>1</can_be_empty>
-                </field>
-
-                <field id="sort_order" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Sort Order</label>
-                    <frontend_class>validate-number</frontend_class>
-                </field>
-
-                <field id="autoinvoice" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="autoinvoice" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Automatic invoice generation</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
+
+                <group id="aplazame_widget" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Widget</label>
+
+                    <field id="widget_out_of_limits" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Show/hide alternative widget if Aplazame is not available</label>
+                        <source_model>Aplazame\Payment\Model\Config\Source\Outoflimits</source_model>
+                    </field>
+
+                    <field id="widget_legacy_enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Show widget legacy instead new widget</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    </field>
+
+                    <group id="aplazame_product_widget" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Product Widget</label>
+
+                        <field id="product_widget_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show widget</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <backend_model>Aplazame\Payment\Model\Config\Backend\Links</backend_model>
+                        </field>
+
+                        <field id="product_legal_advice" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show legal notice</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
+                        <field id="product_pay_in_4" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Force pay in 4 widget</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>If not available, the standard widget will be displayed</comment>
+                        </field>
+
+                        <field id="product_default_instalments" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Select the default number instalments</label>
+                            <frontend_class>validate-number</frontend_class>
+                        </field>
+
+                        <field id="product_widget_border" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show border</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>Only new widget</comment>
+                        </field>
+
+                        <field id="product_widget_primary_color" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Primary color hexadecimal code</label>
+                            <comment>Only new widget</comment>
+                        </field>
+
+                        <field id="product_widget_layout" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Layout</label>
+                            <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
+                            <comment>Only new widget</comment>
+                        </field>
+
+                        <field id="product_widget_align" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Alignment</label>
+                            <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
+                            <comment>Only new widget</comment>
+                        </field>
+                    </group>
+
+                    <group id="aplazame_cart_widget" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                        <label>Checkout Widget</label>
+
+                        <field id="cart_widget_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show widget</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
+                        <field id="cart_legal_advice" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show legal notice</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
+                        <field id="cart_pay_in_4" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Force pay in 4 widget</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>If not available, the standard widget will be displayed</comment>
+                        </field>
+
+                        <field id="cart_default_instalments" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Select the default number instalments</label>
+                            <frontend_class>validate-number</frontend_class>
+                        </field>
+
+                        <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Primary color hexadecimal code</label>
+                            <comment>Only new widget</comment>
+                        </field>
+
+                        <field id="cart_widget_layout" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Layout</label>
+                            <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
+                            <comment>Only new widget</comment>
+                        </field>
+
+                        <field id="cart_widget_align" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Alignment</label>
+                            <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
+                            <comment>Only new widget</comment>
+                        </field>
+                    </group>
+                </group>
+
+                <group id="aplazame_misc" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Other options</label>
+
+                    <field id="change_to_order_id" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Change internal Aplazame ID from 'quote' to 'order' when an order is confirmed</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>This will use 'order_' prefix to avoid DB problems with numerical IDs</comment>
+                    </field>
+
+                    <field id="payment_button" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                        <label>Aplazame Button CSS Selector</label>
+                    </field>
+
+                    <field id="allowspecific" translate="label" type="allowspecific" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                        <label>Payment from Applicable Countries</label>
+                        <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                    </field>
+
+                    <field id="specificcountry" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Payment from Specific Countries</label>
+                        <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                        <can_be_empty>1</can_be_empty>
+                    </field>
+
+                    <field id="sort_order" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Sort Order</label>
+                        <frontend_class>validate-number</frontend_class>
+                    </field>
+                </group>
             </group>
         </section>
     </system>

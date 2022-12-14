@@ -8,7 +8,7 @@
             <block class="Aplazame\Payment\Block\Product\View\Widget"
                 name="product.view.widget"
                 template="Aplazame_Payment::product/view/widget.phtml"
-                ifconfig="payment/aplazame_payment/product_widget_enabled"
+                ifconfig="payment/aplazame_payment/aplazame_widget/aplazame_product_widget/product_widget_enabled"
                 after="-">
             </block>
         </referenceBlock>
