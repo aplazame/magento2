@@ -51,44 +51,49 @@
                             <backend_model>Aplazame\Payment\Model\Config\Backend\Links</backend_model>
                         </field>
 
+                        <field id="product_downpayment_info" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show downpayment info</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
                         <field id="product_legal_advice" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show legal notice</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                         </field>
 
-                        <field id="product_pay_in_4" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_pay_in_4" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Force pay in 4 widget</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                             <comment>If not available, the standard widget will be displayed</comment>
                         </field>
 
-                        <field id="product_default_instalments" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_default_instalments" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Select the default number instalments</label>
                             <frontend_class>validate-number</frontend_class>
                         </field>
 
-                        <field id="product_css" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                        <field id="product_css" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
                             <label>CSS price selector</label>
                         </field>
 
-                        <field id="product_widget_border" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_widget_border" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show border</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="product_widget_primary_color" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_widget_primary_color" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color hexadecimal code</label>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="product_widget_layout" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_widget_layout" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Layout</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="product_widget_align" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_widget_align" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Alignment</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
                             <comment>Only new widget</comment>
@@ -103,34 +108,39 @@
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                         </field>
 
+                        <field id="cart_downpayment_info" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show downpayment info</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
                         <field id="cart_legal_advice" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show legal notice</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                         </field>
 
-                        <field id="cart_pay_in_4" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_pay_in_4" translate="label" type="select" sortOrder="25" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Force pay in 4 widget</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                             <comment>If not available, the standard widget will be displayed</comment>
                         </field>
 
-                        <field id="cart_default_instalments" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_default_instalments" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Select the default number instalments</label>
                             <frontend_class>validate-number</frontend_class>
                         </field>
 
-                        <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color hexadecimal code</label>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="cart_widget_layout" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_widget_layout" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Layout</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="cart_widget_align" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_widget_align" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Alignment</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
                             <comment>Only new widget</comment>
