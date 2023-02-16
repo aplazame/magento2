@@ -49,6 +49,11 @@ class Widget extends AbstractProduct
         return $currencyModel->getCurrencyCode();
     }
 
+    public function getShowDownpaymentInfo()
+    {
+        return $this->config->isProductWidgetDownpaymentInfoEnabled() ? 'true' : 'false';
+    }
+
     public function getShowLegalAdvice()
     {
         return $this->config->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';

@@ -60,6 +60,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
+    public function isProductWidgetDownpaymentInfoEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_downpayment_info');
+    }
+
+    /**
+     * @return bool
+     */
     public function isProductWidgetLegalAdviceEnabled()
     {
         return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_legal_advice');
@@ -129,6 +137,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function isCartWidgetEnabled()
     {
         return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_enabled');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartWidgetDownpaymentInfoEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_downpayment_info');
     }
 
     /**
