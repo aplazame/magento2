@@ -54,7 +54,7 @@ class PrivateKey extends \Magento\Framework\App\Config\Value
         );
 
         try {
-            $response = $client->get('/me');
+            $response = $client->get('/merchants/api-keys');
         } catch (ApiClientException $apiClientException) {
             throw new \Magento\Framework\Exception\ValidatorException(__($label . ' ' . $apiClientException->getMessage()));
         }
