@@ -90,6 +90,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return bool
+     */
+    public function isProductWidgetMaxDesiredEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_widget_max_desired');
+    }
+
+    /**
      * @return int
      */
     public function getProductDefaultInstalments()
@@ -169,6 +177,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function getCartDefaultInstalments()
     {
         return (int) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_default_instalments');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartWidgetMaxDesiredEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_max_desired');
     }
 
     /**

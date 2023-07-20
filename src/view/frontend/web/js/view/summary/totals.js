@@ -16,6 +16,7 @@ define([
         cartDefaultInstalments: config.cart_default_instalments,
         widgetOutOfLimits: config.widget_out_of_limits,
         widgetLegacyEnabled: config.widget_legacy_enabled,
+        cartMaxDesired: config.cart_max_desired_enabled,
         cartPrimaryColor: config.cart_widget_primary_color,
         cartLayout: config.cart_widget_layout,
         cartAlign: config.cart_widget_align,

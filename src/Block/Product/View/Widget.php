@@ -89,6 +89,11 @@ class Widget extends AbstractProduct
         return $this->config->isProductWidgetBorderEnabled() ? 'true' : 'false';
     }
 
+    public function getShowMaxDesired()
+    {
+        return $this->config->isProductWidgetMaxDesiredEnabled() ? 'true' : 'false';
+    }
+
     public function getPrimaryColor()
     {
         return $this->config->getProductPrimaryColor();
