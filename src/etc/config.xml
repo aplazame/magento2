@@ -19,6 +19,7 @@
                         <product_default_instalments> </product_default_instalments>
                         <product_css>.product-info-main span[data-price-type='finalPrice'] .price</product_css>
                         <product_widget_border>1</product_widget_border>
+                        <product_widget_max_desired>0</product_widget_max_desired>
                         <product_widget_primary_color>#334BFF</product_widget_primary_color>
                         <product_widget_layout>horizontal</product_widget_layout>
                         <product_widget_align>center</product_widget_align>
@@ -29,6 +30,7 @@
                         <cart_legal_advice>0</cart_legal_advice>
                         <cart_pay_in_4>0</cart_pay_in_4>
                         <cart_default_instalments> </cart_default_instalments>
+                        <cart_widget_max_desired>0</cart_widget_max_desired>
                         <cart_widget_primary_color>#334BFF</cart_widget_primary_color>
                         <cart_widget_layout>horizontal</cart_widget_layout>
                         <cart_widget_align>center</cart_widget_align>

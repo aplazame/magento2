@@ -44,6 +44,7 @@ class ConfigProvider implements ConfigProviderInterface
                     'cart_default_instalments' => $this->config->getCartDefaultInstalments(),
                     'widget_out_of_limits' => $this->config->getWidgetOutOfLimits(),
                     'widget_legacy_enabled' => $this->config->isWidgetLegacyEnabled(),
+                    'cart_max_desired_enabled' => $this->config->isWidgetLegacyEnabled() ? '' : ($this->config->isCartWidgetMaxDesiredEnabled()  ? 'true' : 'false'),
                     'cart_widget_primary_color' => $this->config->isWidgetLegacyEnabled() ? '' : $this->config->getCartPrimaryColor(),
                     'cart_widget_layout' => $this->config->isWidgetLegacyEnabled() ? '' : $this->config->getCartLayout(),
                     'cart_widget_align' => $this->config->isWidgetLegacyEnabled() ? '' : $this->config->getCartAlign(),

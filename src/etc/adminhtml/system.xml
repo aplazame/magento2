@@ -82,18 +82,24 @@
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="product_widget_primary_color" translate="label" type="text" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_widget_max_desired" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Enter maximum instalment</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>Only new widget</comment>
+                        </field>
+
+                        <field id="product_widget_primary_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color hexadecimal code</label>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="product_widget_layout" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_widget_layout" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Layout</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="product_widget_align" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="product_widget_align" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Alignment</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
                             <comment>Only new widget</comment>
@@ -129,18 +135,24 @@
                             <frontend_class>validate-number</frontend_class>
                         </field>
 
-                        <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_widget_max_desired" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Enter maximum instalment</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>Only new widget</comment>
+                        </field>
+
+                        <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color hexadecimal code</label>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="cart_widget_layout" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_widget_layout" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Layout</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
                             <comment>Only new widget</comment>
                         </field>
 
-                        <field id="cart_widget_align" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <field id="cart_widget_align" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Alignment</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
                             <comment>Only new widget</comment>
