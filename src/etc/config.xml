@@ -10,7 +10,7 @@
                 <title>Aplazame</title>
                 <aplazame_widget>
                     <widget_out_of_limits>show</widget_out_of_limits>
-                    <widget_legacy_enabled>1</widget_legacy_enabled>
+                    <widget_legacy_enabled>0</widget_legacy_enabled>
                     <aplazame_product_widget>
                         <product_widget_enabled>1</product_widget_enabled>
                         <product_downpayment_info>1</product_downpayment_info>
