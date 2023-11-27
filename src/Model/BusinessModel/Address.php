@@ -6,7 +6,7 @@ class Address
 {
     public static function createFromAddress(\Magento\Quote\Model\Quote\Address $address)
     {
-        $aAddress = new self();
+        $aAddress = new \stdClass();
         $aAddress->first_name = $address->getFirstname();
         $aAddress->last_name = $address->getLastname();
         $aAddress->street = $address->getStreetLine(1);

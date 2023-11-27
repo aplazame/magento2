@@ -11,7 +11,7 @@ class Order
 {
     public static function createFromQuote(Quote $quote, $quote_date = null)
     {
-        $aOrder = new self();
+        $aOrder = new \stdClass();
         $aOrder->id = $quote->getId();
         $aOrder->currency = $quote->getQuoteCurrencyCode();
         $aOrder->total_amount = Decimal::fromFloat($quote->getGrandTotal());

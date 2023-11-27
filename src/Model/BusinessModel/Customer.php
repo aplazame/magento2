@@ -32,7 +32,7 @@ class Customer
                 $gender = 0;
         }
 
-        $aCustomer = new self();
+        $aCustomer = new \stdClass();
         $aCustomer->email = $customer->getEmail();
         $aCustomer->type = 'e';
         $aCustomer->gender = $gender;
@@ -54,7 +54,7 @@ class Customer
 
     public static function createGuessCustomerFromQuote(Quote $quote)
     {
-        $aCustomer = new self();
+        $aCustomer = new \stdClass();
         $aCustomer->type = 'g';
         $aCustomer->gender = 0;
 

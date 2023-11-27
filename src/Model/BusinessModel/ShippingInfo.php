@@ -11,7 +11,7 @@ class ShippingInfo
     {
         $address = $quote->getShippingAddress();
 
-        $shippingInfo = new self();
+        $shippingInfo = new \stdClass();
         $shippingInfo->first_name = $address->getFirstname();
         $shippingInfo->last_name = $address->getLastname();
         $shippingInfo->street = $address->getStreetLine(1);

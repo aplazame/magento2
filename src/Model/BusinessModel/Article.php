@@ -14,7 +14,7 @@ class Article
         // This only gets product page related discounts, not cart or coupon discounts.
         $discounts = $product->getPrice() - $product->getFinalPrice();
 
-        $aArticle = new self();
+        $aArticle = new \stdClass();
         $aArticle->id = $product->getId();
         $aArticle->name = $item->getName();
         $aArticle->url = $product->getProductUrl();

@@ -9,7 +9,7 @@ class Checkout
 {
     public static function createFromQuote(Quote $quote)
     {
-        $checkout = new self();
+        $checkout = new \stdClass();
         $checkout->toc = true;
         $checkout->merchant = [
             'notification_url' => self::getUrlBuilder()->getUrl(

@@ -9,7 +9,7 @@ class Meta
 {
     public static function create()
     {
-        $aMeta = new self();
+        $aMeta = new \stdClass();
         $aMeta->module = [
             'name' => 'aplazame:magento',
             'version' => self::getModuleVersion(),
