@@ -161,7 +161,7 @@
                 </group>
 
                 <group id="aplazame_misc" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <label>Other options</label>
+                    <label>Other Settings</label>
 
                     <field id="change_to_order_id" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>Change internal Aplazame ID from 'quote' to 'order' when an order is confirmed</label>
@@ -187,6 +187,16 @@
                     <field id="sort_order" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>Sort Order</label>
                         <frontend_class>validate-number</frontend_class>
+                    </field>
+                </group>
+
+                <group id="aplazame_dev" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Developer Settings (WARNING: DO NOT TOUCH IF NOT NECESSARY)</label>
+
+                    <field id="checkout_v4" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Checkout v4</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Use v4 checkout API</comment>
                     </field>
                 </group>
             </group>
