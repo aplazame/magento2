@@ -2,7 +2,6 @@
 
 namespace Aplazame\Payment\Controller\Api;
 
-use Aplazame\Serializer\JsonSerializer;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\Request\Http as HttpRequest;
@@ -116,7 +115,7 @@ class Index extends Action
         $response = $this->getResponse();
         $response->setHttpResponseCode($result['status_code']);
         $response->setHeader('Content-type', 'application/json');
-        $response->setBody(json_encode(JsonSerializer::serializeValue($result['payload'])));
+        $response->setBody(json_encode($result['payload']));
     }
 
     /**

@@ -4,7 +4,6 @@ namespace Aplazame\Payment\Model\Api\Controller;
 
 use Aplazame\Payment\Controller\Api\Index as ApiController;
 use Aplazame\Payment\Model\Api\BusinessModel\HistoricalOrder;
-use Aplazame\Serializer\JsonSerializer;
 use Magento\Framework\Exception\NoSuchEntityException;
 
 class Order
@@ -65,6 +64,6 @@ class Order
             }
         }
 
-        return ApiController::success(JsonSerializer::serializeValue($historyOrders));
+        return ApiController::success($historyOrders);
     }
 }

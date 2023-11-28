@@ -5,7 +5,6 @@ namespace Aplazame\Payment\Controller\Payment;
 use Aplazame\Api\ApiClientException;
 use Aplazame\Payment\Model\Aplazame;
 use Aplazame\Payment\Model\BusinessModel\Checkout;
-use Aplazame\Serializer\JsonSerializer;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Response\Http as HttpResponse;
 
@@ -57,7 +56,7 @@ class Index extends Action
             throw new \Exception($payment->getMethod() . 'is not an Aplazame payment method');
         }
 
-        $payload = json_decode(json_encode(JsonSerializer::serializeValue(Checkout::createFromQuote($this->quote))), true);
+        $payload = json_decode(json_encode(Checkout::createFromQuote($this->quote)), true);
 
         try {
             $checkout = $this->aplazameClient->apiClient->request(

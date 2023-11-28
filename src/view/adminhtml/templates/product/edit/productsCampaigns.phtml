@@ -3,7 +3,6 @@
 /** @var Aplazame $block */
 
 use Aplazame\Payment\Block\Adminhtml\Product\Edit\Aplazame;
-use Aplazame\Serializer\JsonSerializer;
 
 ?>
 
@@ -24,7 +23,7 @@ use Aplazame\Serializer\JsonSerializer;
     var apiProxyEndpoint = "<?php echo $block->getUrl('aplazame/proxy/index') ?>";
     var campaignsContainer = document.getElementById("aplazame_campaigns_container");
 
-    var articles = <?php echo json_encode(JsonSerializer::serializeValue($block->getArticles())) ?>;
+    var articles = <?php echo json_encode($block->getArticles()) ?>;
 
     var dateObj = new Date();
     var currentDate = dateObj.toISOString();
