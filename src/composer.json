@@ -8,7 +8,7 @@
     "require": {
         "php": "~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0|~7.4.0|~8.1.0|~8.2.0",
         "ext-json": "*",
-        "aplazame/aplazame-api-sdk": "^0.2.2",
+        "aplazame/aplazame-api-sdk": "^0.3.6",
         "magento/module-checkout": "<200",
         "magento/module-payment": "<200",
         "magento/module-sales": "<200"
