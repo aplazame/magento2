@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v2.10.1](https://github.com/aplazame/magento2/tree/v2.10.1) (2023-12-14)
+
+* [FIX] PHP-SDK version.
+
 #### [v2.10.0](https://github.com/aplazame/magento2/tree/v2.10.0) (2023-12-04)
 
 * [ADD] Developer options for checkout v4 API tests.
