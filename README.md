@@ -15,6 +15,8 @@ php bin/magento setup:upgrade
 php bin/magento setup:di:compile
 ```
 
+You can also check our [documentation for installation and basic configuration](https://aplazame.dev/en/docs/plugins/magento2/).
+
 #### Release history
 
 For new features check [this](HISTORY.md).
