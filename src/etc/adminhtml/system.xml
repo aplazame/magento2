@@ -179,14 +179,14 @@
                 <group id="aplazame_misc" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Other Settings</label>
 
-                    <field id="change_to_order_id" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                        <label>Change internal Aplazame ID from 'quote' to 'order' when an order is confirmed</label>
-                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                        <comment>This will use 'order_' prefix to avoid DB problems with numerical IDs</comment>
+                    <field id="payment_button" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
+                        <label>Aplazame Button CSS Selector</label>
                     </field>
 
-                    <field id="payment_button" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                        <label>Aplazame Button CSS Selector</label>
+                    <field id="change_to_order_id" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Use 'order' ID on Aplazame</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Change Aplazame's internal ID from 'quote' to 'order' when an order is confirmed, the 'order_' prefix will be used to avoid DB problems with duplicate numeric IDs</comment>
                     </field>
                 </group>
 
