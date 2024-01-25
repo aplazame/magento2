@@ -1,8 +1,10 @@
-Campaigns,Campañas
+"Enabled","Activado"
+"Title","Título"
+"Campaigns","Campañas"
 "The campaign applies to all products from your catalogue","La campaña aplica a todo el catálogo de productos"
 "Associate products to selected campaigns","Asociar productos a las campañas seleccionadas"
 "Remove products from selected campaigns","Eliminar productos de las campañas seleccionadas"
-Aplazame,Aplazame
+"Aplazame","Aplazame"
 "Test Mode (Sandbox)","Modo de pruebas (Sandbox)"
 "Private API Key","Clave API privada"
 "Show/hide alternative widget if Aplazame is not available","Muestra/oculta el widget alternativo si Aplazame no está disponible"
@@ -23,6 +25,7 @@ Aplazame,Aplazame
 "Change internal Aplazame ID from 'quote' to 'order' when an order is confirmed","Cambiar ID interno de Aplazame de 'quote' a 'order' cuando se confirme un pedido"
 "This will use 'order_' prefix to avoid DB problems with numerical IDs","Esto usará el prefijo 'order_' para evitar problemas de base de datos con IDs numéricos"
 "Aplazame Button CSS Selector","Selector CSS del botón de Aplazame"
+"Automatic invoice generation","Facturar automáticamente"
 "Aplazame Campaigns","Campañas Aplazame"
 "Show","Mostrar"
 "Hide","Ocultar"
