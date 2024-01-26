@@ -49,13 +49,15 @@
                     <label>Widget</label>
 
                     <field id="widget_out_of_limits" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                        <label>Show/hide alternative widget if Aplazame is not available</label>
+                        <label>Widget if Aplazame is not available</label>
                         <source_model>Aplazame\Payment\Model\Config\Source\Outoflimits</source_model>
+                        <comment>Show/hide alternative widget if Aplazame is not available</comment>
                     </field>
 
                     <field id="widget_legacy_enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
-                        <label>Show widget legacy instead new widget</label>
+                        <label>Widget legacy</label>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Use widget legacy instead new widget</comment>
                     </field>
 
                     <group id="aplazame_product_widget" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -84,8 +86,9 @@
                         </field>
 
                         <field id="product_default_instalments" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
-                            <label>Select the default number instalments</label>
+                            <label>Default instalments</label>
                             <frontend_class>validate-number</frontend_class>
+                            <comment>Select the default number instalments</comment>
                         </field>
 
                         <field id="product_css" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
@@ -105,8 +108,8 @@
                         </field>
 
                         <field id="product_widget_primary_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
-                            <label>Primary color hexadecimal code</label>
-                            <comment>Only new widget</comment>
+                            <label>Primary color</label>
+                            <comment>Hexadecimal code, only new widget</comment>
                         </field>
 
                         <field id="product_widget_layout" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -147,8 +150,9 @@
                         </field>
 
                         <field id="cart_default_instalments" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
-                            <label>Select the default number instalments</label>
+                            <label>Default instalments</label>
                             <frontend_class>validate-number</frontend_class>
+                            <comment>Select the default number instalments</comment>
                         </field>
 
                         <field id="cart_widget_max_desired" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -158,8 +162,8 @@
                         </field>
 
                         <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
-                            <label>Primary color hexadecimal code</label>
-                            <comment>Only new widget</comment>
+                            <label>Primary color</label>
+                            <comment>Hexadecimal code, only new widget</comment>
                         </field>
 
                         <field id="cart_widget_layout" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -180,7 +184,8 @@
                     <label>Other Settings</label>
 
                     <field id="payment_button" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0" canRestore="1">
-                        <label>Aplazame Button CSS Selector</label>
+                        <label>Button Selector</label>
+                        <comment>Aplazame payment button CSS selector</comment>
                     </field>
 
                     <field id="change_to_order_id" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
