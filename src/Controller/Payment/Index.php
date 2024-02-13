@@ -20,22 +20,15 @@ class Index extends Action
      */
     private $aplazameClient;
 
-    /**
-     * @var \Aplazame\Payment\Gateway\Config\Config
-     */
-    private $aplazameConfig;
-
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Checkout\Model\Session $checkoutSession,
-        \Aplazame\Payment\Model\Api\AplazameClient $aplazameClient,
-        \Aplazame\Payment\Gateway\Config\Config $aplazameConfig
+        \Aplazame\Payment\Model\Api\AplazameClient $aplazameClient
     ) {
         parent::__construct($context);
 
         $this->quote = $checkoutSession->getQuote();
         $this->aplazameClient = $aplazameClient;
-        $this->aplazameConfig = $aplazameConfig;
     }
 
     /**
@@ -70,7 +63,7 @@ class Index extends Action
                 'POST',
                 '/checkout',
                 $payload,
-                $this->aplazameConfig->isCheckoutV4() ? 4 : 3
+                4
             );
             $response->setBody(json_encode($checkout));
         } catch (ApiClientException $e) {

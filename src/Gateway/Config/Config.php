@@ -260,12 +260,4 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     {
         return (bool) $this->getValue('autoinvoice');
     }
-
-    /**
-     * @return bool
-     */
-    public function isCheckoutV4()
-    {
-        return (bool) $this->getValue('aplazame_dev/checkout_v4');
-    }
 }
