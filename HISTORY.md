@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v3.0.0](https://github.com/aplazame/magento2/tree/v3.0.0) (2024-02-26)
+
+* [ADD] Checkout v4 as primary version.
+* [DEL] Developer options for previous checkout versions.
+
 #### [v2.10.2](https://github.com/aplazame/magento2/tree/v2.10.2) (2024-01-31)
 
 * [FIX] Various settings tweaks.
