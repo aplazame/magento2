@@ -59,12 +59,21 @@ class Index extends Action
         $payload = json_decode(json_encode(Checkout::createFromQuote($this->quote)), true);
 
         try {
-            $checkout = $this->aplazameClient->apiClient->request(
-                'POST',
-                '/checkout',
-                $payload,
-                4
-            );
+            try {
+                $checkout = $this->aplazameClient->apiClient->request(
+                    'POST',
+                    '/checkout',
+                    $payload,
+                    4
+                );
+            } catch ( \Exception $e) {
+                $checkout = $this->aplazameClient->apiClient->request(
+                    'POST',
+                    '/checkout',
+                    $payload,
+                    3
+                );
+            }
             $response->setBody(json_encode($checkout));
         } catch (ApiClientException $e) {
             $response->setStatusCode(400);
