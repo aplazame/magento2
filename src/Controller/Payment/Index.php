@@ -20,22 +20,15 @@ class Index extends Action
      */
     private $aplazameClient;
 
-    /**
-     * @var \Aplazame\Payment\Gateway\Config\Config
-     */
-    private $aplazameConfig;
-
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Checkout\Model\Session $checkoutSession,
-        \Aplazame\Payment\Model\Api\AplazameClient $aplazameClient,
-        \Aplazame\Payment\Gateway\Config\Config $aplazameConfig
+        \Aplazame\Payment\Model\Api\AplazameClient $aplazameClient
     ) {
         parent::__construct($context);
 
         $this->quote = $checkoutSession->getQuote();
         $this->aplazameClient = $aplazameClient;
-        $this->aplazameConfig = $aplazameConfig;
     }
 
     /**
@@ -66,12 +59,21 @@ class Index extends Action
         $payload = json_decode(json_encode(Checkout::createFromQuote($this->quote)), true);
 
         try {
-            $checkout = $this->aplazameClient->apiClient->request(
-                'POST',
-                '/checkout',
-                $payload,
-                $this->aplazameConfig->isCheckoutV4() ? 4 : 3
-            );
+            try {
+                $checkout = $this->aplazameClient->apiClient->request(
+                    'POST',
+                    '/checkout',
+                    $payload,
+                    4
+                );
+            } catch ( \Exception $e) {
+                $checkout = $this->aplazameClient->apiClient->request(
+                    'POST',
+                    '/checkout',
+                    $payload,
+                    3
+                );
+            }
             $response->setBody(json_encode($checkout));
         } catch (ApiClientException $e) {
             $response->setStatusCode(400);

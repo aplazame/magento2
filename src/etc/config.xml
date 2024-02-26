@@ -41,9 +41,6 @@
                     <payment_button>#aplazame-payment-method</payment_button>
                     <change_to_order_id>0</change_to_order_id>
                 </aplazame_misc>
-                <aplazame_dev>
-                    <checkout_v4>0</checkout_v4>
-                </aplazame_dev>
             </aplazame_payment>
         </payment>
     </default>
