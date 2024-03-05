@@ -97,62 +97,51 @@ class Confirm
 
         switch ($payload['status']) {
             case 'pending':
-                switch ($payload['status_reason']) {
-                    case 'challenge_required':
-                        $order = $this->createOrder($checkoutToken);
-                        /** @var \Magento\Sales\Model\Order\Payment $payment */
-                        $payment = $order->getPayment();
+                try {
+                    $order = $this->findOneOrderByQuote($checkoutToken);
+                } catch (NoSuchEntityException $e) {
+                    $order = $this->createOrder($checkoutToken);
+                }
 
-                        if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
-                            return self::ko('Aplazame is not the payment method (at challenge)');
-                        }
+                /** @var \Magento\Sales\Model\Order\Payment $payment */
+                $payment = $order->getPayment();
 
-                        if ($this->isFraud($payload, $order)) {
-                            $payment->setIsFraudDetected(true);
-                        }
+                if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
+                    return self::ko('Aplazame is not the payment method');
+                }
 
-                        $this->orderRepository->save($order);
+                if ($this->isFraud($payload, $order)) {
+                    $payment->setIsFraudDetected(true);
+                }
 
-                        if ($payment->getIsFraudDetected()) {
-                            return self::ko('Fraud detected (at challenge)');
-                        }
+                $this->orderRepository->save($order);
 
-                        if ($this->aplazameConfig->isChangeToOrderIdEnabled()) {
-                            return self::ok($this->buildMid($isQuoteIdQueryParamSet, $order));
-                        }
-                        break;
-                    case 'confirmation_required':
+                if ($payment->getIsFraudDetected()) {
+                    return self::ko('Fraud detected');
+                }
 
-                        try {
-                            $order = $this->findOneOrderByQuote($checkoutToken);
-                        } catch (NoSuchEntityException $e) {
-                            $order = $this->createOrder($checkoutToken);
-                        }
-
-                        /** @var \Magento\Sales\Model\Order\Payment $payment */
-                        $payment = $order->getPayment();
-
-                        if ($payment->getMethod() !== Aplazame::PAYMENT_METHOD_CODE) {
-                            return self::ko('Aplazame is not the payment method (at confirmation)');
-                        }
-
-                        if ($this->isFraud($payload, $order)) {
-                            $payment->setIsFraudDetected(true);
-                        }
-
-                        $payment->accept();
-                        $this->orderRepository->save($order);
-
-                        if ($payment->getIsFraudDetected()) {
-                            return self::ko('Fraud detected (at confirmation)');
-                        }
-
-                        if ($this->aplazameConfig->isChangeToOrderIdEnabled()) {
-                            return self::ok($this->buildMid($isQuoteIdQueryParamSet, $order));
-                        }
-                        break;
+                if ($this->aplazameConfig->isChangeToOrderIdEnabled()) {
+                    return self::ok($this->buildMid($isQuoteIdQueryParamSet, $order));
                 }
                 break;
+
+            case 'ok':
+                try {
+                    $order = $this->findOneOrderByQuote($checkoutToken);
+                } catch (NoSuchEntityException $e) {
+                    $order = $this->createOrder($checkoutToken);
+                }
+
+                /** @var \Magento\Sales\Model\Order\Payment $payment */
+                $payment = $order->getPayment();
+                $payment->accept();
+                $this->orderRepository->save($order);
+
+                if ($this->aplazameConfig->isChangeToOrderIdEnabled()) {
+                    return self::ok($this->buildMid($isQuoteIdQueryParamSet, $order));
+                }
+                break;
+
             case 'ko':
                 try {
                     $order = $this->findOneOrderByQuote($checkoutToken);
@@ -168,16 +157,8 @@ class Confirm
                     return self::ko('Aplazame is not the payment method');
                 }
 
-                if ($this->isFraud($payload, $order)) {
-                    $payment->setIsFraudDetected(true);
-                }
-
                 $payment->deny(true);
                 $this->orderRepository->save($order);
-
-                if ($payment->getIsFraudDetected()) {
-                    return self::ko('Fraud detected');
-                }
                 break;
         }
 
