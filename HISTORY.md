@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.0.1](https://github.com/aplazame/magento2/tree/v3.0.1) (2024-03-06)
+
+* Order confirmation process improved.
+
 #### [v3.0.0](https://github.com/aplazame/magento2/tree/v3.0.0) (2024-02-26)
 
 * [ADD] Checkout v4 as primary version.
