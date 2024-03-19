@@ -4,6 +4,10 @@
 use Aplazame\Payment\Block\Product\View\Widget;
 use Aplazame\Serializer\Decimal;
 
+if ($block->isHiddenInCurrentLanguage()) {
+    return ''; // No renderizar el widget si el idioma actual está en la lista de idiomas ocultos.
+}
+
 if (!$block->isAplazameActive()) {
     return '';
 }
