@@ -45,13 +45,13 @@ class Widget extends AbstractProduct
     // Obtiene el código de localización actual
     $currentLocale = $this->scopeConfig->getValue('general/locale/code', ScopeInterface::SCOPE_STORE);
     // Obtiene la configuración de los idiomas seleccionados para ocultar el widget
-    $hiddenLanguages = $this->scopeConfig->getValue('payment/aplazame_payment/aplazame_widget/hide_in_languages', ScopeInterface::SCOPE_STORE);
-    
-    // Convierte la lista separada por comas en un array
-    $hiddenLocales = explode(',', $hiddenLanguages);
-    
-    // Verifica si el código de localización actual está en la lista de localizaciones para ocultar
-    return in_array($currentLocale, $hiddenLocales);
+    $hiddenLanguages = $this->scopeConfig->getValue('payment/aplazame_payment/aplazame_widget/hide_in_languages', ScopeInterface::SCOPE_STORE) ?? '';
+
+    if (in_array($currentLocale, explode(',', $hiddenLanguages))) {
+        return true;
+    }
+
+    return false;
 }
 
     /**
