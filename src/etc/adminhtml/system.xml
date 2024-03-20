@@ -60,6 +60,13 @@
                         <comment>Use widget legacy instead new widget</comment>
                     </field>
 
+                    <field id="hide_in_languages" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Hide Widget in Languages</label>
+                        <source_model>Magento\Config\Model\Config\Source\Locale</source_model>
+                        <comment>Select the languages in which the widget should be hidden.</comment>
+                        <can_be_empty>1</can_be_empty>
+                    </field>
+
                     <group id="aplazame_product_widget" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Product Widget</label>
 
@@ -192,6 +199,16 @@
                         <label>Use 'order' ID on Aplazame</label>
                         <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                         <comment>Change Aplazame's internal ID from 'quote' to 'order' when an order is confirmed, the 'order_' prefix will be used to avoid DB problems with duplicate numeric IDs</comment>
+                    </field>
+                </group>
+
+                <group id="aplazame_dev" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Developer Settings (WARNING: DO NOT TOUCH IF NOT NECESSARY)</label>
+
+                    <field id="checkout_v4" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Checkout v4</label>
+                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        <comment>Use v4 checkout API</comment>
                     </field>
                 </group>
             </group>

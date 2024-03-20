@@ -6,6 +6,8 @@ use Aplazame\Payment\Gateway\Config\Config;
 use Magento\Catalog\Block\Product\AbstractProduct;
 use Magento\Directory\Model\Currency;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class Widget extends AbstractProduct
 {
@@ -19,17 +21,38 @@ class Widget extends AbstractProduct
      */
     private $config;
 
+    /**
+     * @var ScopeConfigInterface
+     */
+    private $scopeConfig;
+
     public function __construct(
         PriceCurrencyInterface $priceCurrency,
         \Magento\Catalog\Block\Product\Context $context,
         Config $config,
+        ScopeConfigInterface $scopeConfig,
         array $data = []
     ) {
 
         parent::__construct($context, $data);
         $this->priceCurrency = $priceCurrency;
         $this->config = $config;
+        $this->scopeConfig = $scopeConfig;
     }
+
+    public function isHiddenInCurrentLanguage()
+{
+    // Obtiene el código de localización actual
+    $currentLocale = $this->scopeConfig->getValue('general/locale/code', ScopeInterface::SCOPE_STORE);
+    // Obtiene la configuración de los idiomas seleccionados para ocultar el widget
+    $hiddenLanguages = $this->scopeConfig->getValue('payment/aplazame_payment/aplazame_widget/hide_in_languages', ScopeInterface::SCOPE_STORE) ?? '';
+
+    if (in_array($currentLocale, explode(',', $hiddenLanguages))) {
+        return true;
+    }
+
+    return false;
+}
 
     /**
      * @return float
