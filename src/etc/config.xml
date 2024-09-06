@@ -11,9 +11,11 @@
                 <allowspecific>0</allowspecific>
                 <aplazame_widget>
                     <widget_out_of_limits>show</widget_out_of_limits>
-                    <widget_legacy_enabled>0</widget_legacy_enabled>
                     <aplazame_product_widget>
                         <product_widget_enabled>1</product_widget_enabled>
+                        <product_widget_ver>v5</product_widget_ver>
+                        <product_slider>1</product_slider>
+                        <product_small_size>0</product_small_size>
                         <product_downpayment_info>1</product_downpayment_info>
                         <product_legal_advice>0</product_legal_advice>
                         <product_pay_in_4>0</product_pay_in_4>
@@ -27,6 +29,9 @@
                     </aplazame_product_widget>
                     <aplazame_cart_widget>
                         <cart_widget_enabled>1</cart_widget_enabled>
+                        <cart_widget_ver>v5</cart_widget_ver>
+                        <cart_slider>1</cart_slider>
+                        <cart_small_size>0</cart_small_size>
                         <cart_downpayment_info>1</cart_downpayment_info>
                         <cart_legal_advice>0</cart_legal_advice>
                         <cart_pay_in_4>0</cart_pay_in_4>

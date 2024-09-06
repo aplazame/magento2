@@ -9,16 +9,23 @@ if (!$block->isAplazameActive()) {
 }
 ?>
 <div
-    <?php if ($block->isWidgetLegacyEnabled()) : ?>
+    <?php if ($block->getWidgetVersion() == 'v3') : ?>
         data-aplazame-widget-instalments=""
         data-view="product"
-    <?php else : ?>
+    <?php elseif ($block->getWidgetVersion() == 'v4') : ?>
         data-aplazame-widget-instalments="v4"
         data-type="product"
         data-option-border-product="<?php echo $block->getShowBorder(); ?>"
         data-option-max-amount-desired="<?php echo $block->getShowMaxDesired(); ?>"
         data-option-primary-color="<?php echo $block->getPrimaryColor(); ?>"
         data-option-layout="<?php echo $block->getWidgetLayout(); ?>"
+        data-option-align="<?php echo $block->getWidgetAlign(); ?>"
+    <?php else : ?>
+        data-aplazame-widget-instalments="v5"
+        data-type="product"
+        data-option-slider="<?php echo $block->getShowSlider(); ?>"
+        data-option-small-size="<?php echo $block->getSmallSize(); ?>"
+        data-option-primary-color="<?php echo $block->getPrimaryColor(); ?>"
         data-option-align="<?php echo $block->getWidgetAlign(); ?>"
     <?php endif; ?>
     data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"

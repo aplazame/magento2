@@ -79,11 +79,6 @@ class Widget extends AbstractProduct
         return $this->config->getWidgetOutOfLimits();
     }
 
-    public function isWidgetLegacyEnabled()
-    {
-        return $this->config->isWidgetLegacyEnabled();
-    }
-
     public function getShowBorder()
     {
         return $this->config->isProductWidgetBorderEnabled() ? 'true' : 'false';
@@ -107,6 +102,21 @@ class Widget extends AbstractProduct
     public function getWidgetAlign()
     {
         return $this->config->getProductAlign();
+    }
+
+    public function getWidgetVersion()
+    {
+        return $this->config->getProductWidgetVer();
+    }
+
+    public function getShowSlider()
+    {
+        return $this->config->isProductSliderEnabled() ? 'true' : 'false';
+    }
+
+    public function getSmallSize()
+    {
+        return $this->config->isProductSmallSizeEnabled() ? 'true' : 'false';
     }
 
     public function isAplazameActive()

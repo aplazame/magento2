@@ -1,5 +1,24 @@
 <!-- ko if: cartWidgetIsEnabled && instalmentsIsEnabled -->
-    <!-- ko ifnot: widgetLegacyEnabled -->
+    <!-- ko if: cartWidgetVer == 'v5' -->
+        <div
+            data-aplazame-widget-instalments="v5"
+            data-type="cart"
+            data-bind="attr: {
+                    'data-amount': toAplazameDecimal(getAmount()),
+                    'data-currency': getCurrency(),
+                    'data-option-legal-advice': cartLegalAdviceIsEnabled,
+                    'data-option-downpayment-info': cartDownpaymentInfoIsEnabled,
+                    'data-option-out-of-limits': widgetOutOfLimits,
+                    'data-pay-in-4': cartPayIn4IsEnabled ? '' : null,
+                    'data-option-default-instalments': cartDefaultInstalments,
+                    'data-option-primary-color': cartPrimaryColor,
+                    'data-option-align': cartAlign,
+                    'data-option-slider': cartSliderIsEnabled,
+                    'data-option-small-size': cartSmallSizeIsEnabled,
+                }"
+        ></div>
+    <!-- /ko -->
+    <!-- ko if: cartWidgetVer == 'v4' -->
         <div
             data-aplazame-widget-instalments="v4"
             data-type="cart"
@@ -18,7 +37,7 @@
                 }"
         ></div>
     <!-- /ko -->
-    <!-- ko if: widgetLegacyEnabled -->
+    <!-- ko if: cartWidgetVer == 'v3' -->
         <div
             data-aplazame-widget-instalments=""
             data-view="cart"
