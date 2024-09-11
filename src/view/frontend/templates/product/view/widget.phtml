@@ -25,7 +25,6 @@ if (!$block->isAplazameActive()) {
         data-type="product"
         data-option-slider="<?php echo $block->getShowSlider(); ?>"
         data-option-small-size="<?php echo $block->getSmallSize(); ?>"
-        data-option-primary-color="<?php echo $block->getPrimaryColor(); ?>"
         data-option-align="<?php echo $block->getWidgetAlign(); ?>"
     <?php endif; ?>
     data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"

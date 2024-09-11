@@ -120,7 +120,7 @@
 
                         <field id="product_widget_primary_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color</label>
-                            <comment>Hexadecimal code, only v4/v5</comment>
+                            <comment>Hexadecimal code, only v4</comment>
                         </field>
 
                         <field id="product_widget_layout" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -191,7 +191,7 @@
 
                         <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color</label>
-                            <comment>Hexadecimal code, only v4/v5</comment>
+                            <comment>Hexadecimal code, only v4</comment>
                         </field>
 
                         <field id="cart_widget_layout" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
