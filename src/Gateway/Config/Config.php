@@ -40,14 +40,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     // Widget config
 
     /**
-     * @return bool
-     */
-    public function isWidgetLegacyEnabled()
-    {
-        return (bool) $this->getValue('aplazame_widget/widget_legacy_enabled');
-    }
-
-    /**
      * @return string
      */
     public function getWidgetOutOfLimits()
@@ -98,11 +90,35 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return bool
+     */
+    public function isProductSliderEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_slider');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isProductSmallSizeEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_small_size');
+    }
+
+    /**
      * @return int
      */
     public function getProductDefaultInstalments()
     {
         return (int) $this->getValue('aplazame_widget/aplazame_product_widget/product_default_instalments');
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductWidgetVer()
+    {
+        return (string) $this->getValue('aplazame_widget/aplazame_product_widget/product_widget_ver');
     }
 
     /**
@@ -172,6 +188,30 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
+     * @return bool
+     */
+    public function isCartWidgetMaxDesiredEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_max_desired');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartSliderEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_slider');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartSmallSizeEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_small_size');
+    }
+
+    /**
      * @return int
      */
     public function getCartDefaultInstalments()
@@ -180,11 +220,11 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isCartWidgetMaxDesiredEnabled()
+    public function getCartWidgetVer()
     {
-        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_max_desired');
+        return (string) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_widget_ver');
     }
 
     /**

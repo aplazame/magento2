@@ -54,12 +54,6 @@
                         <comment>Show/hide alternative widget if Aplazame is not available</comment>
                     </field>
 
-                    <field id="widget_legacy_enabled" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
-                        <label>Widget legacy</label>
-                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                        <comment>Use widget legacy instead new widget</comment>
-                    </field>
-
                     <group id="aplazame_product_widget" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                         <label>Product Widget</label>
 
@@ -67,6 +61,23 @@
                             <label>Show widget</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                             <backend_model>Aplazame\Payment\Model\Config\Backend\Links</backend_model>
+                        </field>
+
+                        <field id="product_widget_ver" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Widget version</label>
+                            <source_model>Aplazame\Payment\Model\Config\Source\WidgetVersion</source_model>
+                        </field>
+
+                        <field id="product_slider" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show slider</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>Only v5</comment>
+                        </field>
+
+                        <field id="product_small_size" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Small size</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>Only v5</comment>
                         </field>
 
                         <field id="product_downpayment_info" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -98,30 +109,30 @@
                         <field id="product_widget_border" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show border</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                            <comment>Only new widget</comment>
+                            <comment>Only v4</comment>
                         </field>
 
                         <field id="product_widget_max_desired" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Enter maximum instalment</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                            <comment>Only new widget</comment>
+                            <comment>Only v4</comment>
                         </field>
 
                         <field id="product_widget_primary_color" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color</label>
-                            <comment>Hexadecimal code, only new widget</comment>
+                            <comment>Hexadecimal code, only v4</comment>
                         </field>
 
                         <field id="product_widget_layout" translate="label" type="select" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Layout</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
-                            <comment>Only new widget</comment>
+                            <comment>Only v4</comment>
                         </field>
 
                         <field id="product_widget_align" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Alignment</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
-                            <comment>Only new widget</comment>
+                            <comment>Only v4/v5</comment>
                         </field>
                     </group>
 
@@ -131,6 +142,23 @@
                         <field id="cart_widget_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show widget</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
+                        <field id="cart_widget_ver" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Widget version</label>
+                            <source_model>Aplazame\Payment\Model\Config\Source\WidgetVersion</source_model>
+                        </field>
+
+                        <field id="cart_slider" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show slider</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>Only v5</comment>
+                        </field>
+
+                        <field id="cart_small_size" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Small size</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                            <comment>Only v5</comment>
                         </field>
 
                         <field id="cart_downpayment_info" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
@@ -158,24 +186,24 @@
                         <field id="cart_widget_max_desired" translate="label" type="select" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Enter maximum instalment</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                            <comment>Only new widget</comment>
+                            <comment>Only v4</comment>
                         </field>
 
                         <field id="cart_widget_primary_color" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Primary color</label>
-                            <comment>Hexadecimal code, only new widget</comment>
+                            <comment>Hexadecimal code, only v4</comment>
                         </field>
 
                         <field id="cart_widget_layout" translate="label" type="select" sortOrder="45" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Layout</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Layout</source_model>
-                            <comment>Only new widget</comment>
+                            <comment>Only v4</comment>
                         </field>
 
                         <field id="cart_widget_align" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Alignment</label>
                             <source_model>Aplazame\Payment\Model\Config\Source\Align</source_model>
-                            <comment>Only new widget</comment>
+                            <comment>Only v4/v5</comment>
                         </field>
                     </group>
                 </group>

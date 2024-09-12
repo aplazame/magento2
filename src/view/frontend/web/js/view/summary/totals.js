@@ -15,11 +15,13 @@ define([
         cartPayIn4IsEnabled: config.cart_pay_in_4_enabled,
         cartDefaultInstalments: config.cart_default_instalments,
         widgetOutOfLimits: config.widget_out_of_limits,
-        widgetLegacyEnabled: config.widget_legacy_enabled,
+        cartWidgetVer: config.cart_widget_ver,
         cartMaxDesired: config.cart_max_desired_enabled,
         cartPrimaryColor: config.cart_widget_primary_color,
         cartLayout: config.cart_widget_layout,
         cartAlign: config.cart_widget_align,
+        cartSliderIsEnabled: config.cart_slider_enabled,
+        cartSmallSizeIsEnabled: config.cart_small_size_enabled,
 
         getAmount: function () {
             return Quote.totals().base_grand_total;

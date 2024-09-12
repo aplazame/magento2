@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.1.0](https://github.com/aplazame/magento2/tree/v3.1.0) (2024-09-12)
+
+* [ADD] Widget v5.
+
 #### [v3.0.1](https://github.com/aplazame/magento2/tree/v3.0.1) (2024-03-06)
 
 * Order confirmation process improved.
