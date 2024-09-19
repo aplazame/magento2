@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.1.1](https://github.com/aplazame/magento2/tree/v3.1.1) (2024-09-19)
+
+* [ADD] PHP 8.3 compatibility check for marketplace release.
+
 #### [v3.1.0](https://github.com/aplazame/magento2/tree/v3.1.0) (2024-09-12)
 
 * [ADD] Widget v5.

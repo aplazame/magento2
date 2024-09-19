@@ -1,12 +1,12 @@
 {
     "name": "aplazame/magento2",
-    "version": "3.1.0",
+    "version": "3.1.1",
     "description": "Aplazame Magento 2 module",
     "type": "magento2-module",
     "homepage": "https://aplazame.com/",
     "license": "GPL-3.0",
     "require": {
-        "php": "~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0|~7.4.0|~8.1.0|~8.2.0",
+        "php": "~5.6.0|~7.0.0|~7.1.0|~7.2.0|~7.3.0|~7.4.0|~8.1.0|~8.2.0|~8.3.0",
         "ext-json": "*",
         "aplazame/aplazame-api-sdk": "^0.3.6",
         "magento/module-checkout": "<200",
