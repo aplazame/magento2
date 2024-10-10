@@ -98,14 +98,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     /**
-     * @return bool
-     */
-    public function isProductSmallSizeEnabled()
-    {
-        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_small_size');
-    }
-
-    /**
      * @return int
      */
     public function getProductDefaultInstalments()
@@ -201,14 +193,6 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function isCartSliderEnabled()
     {
         return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_slider');
-    }
-
-    /**
-     * @return bool
-     */
-    public function isCartSmallSizeEnabled()
-    {
-        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_small_size');
     }
 
     /**

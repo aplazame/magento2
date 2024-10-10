@@ -114,11 +114,6 @@ class Widget extends AbstractProduct
         return $this->config->isProductSliderEnabled() ? 'true' : 'false';
     }
 
-    public function getSmallSize()
-    {
-        return $this->config->isProductSmallSizeEnabled() ? 'true' : 'false';
-    }
-
     public function isAplazameActive()
     {
         return $this->config->isActive();

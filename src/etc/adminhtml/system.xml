@@ -74,12 +74,6 @@
                             <comment>Only v5</comment>
                         </field>
 
-                        <field id="product_small_size" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="0">
-                            <label>Small size</label>
-                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                            <comment>Only v5</comment>
-                        </field>
-
                         <field id="product_downpayment_info" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show downpayment info</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -151,12 +145,6 @@
 
                         <field id="cart_slider" translate="label" type="select" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show slider</label>
-                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                            <comment>Only v5</comment>
-                        </field>
-
-                        <field id="cart_small_size" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="0">
-                            <label>Small size</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                             <comment>Only v5</comment>
                         </field>
