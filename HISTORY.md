@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v3.1.2](https://github.com/aplazame/magento2/tree/v3.1.2) (2024-10-14)
+
+* [ADD] Widget loading animation.
+* [DEL] Deprecated options.
+
 #### [v3.1.1](https://github.com/aplazame/magento2/tree/v3.1.1) (2024-09-19)
 
 * [ADD] PHP 8.3 compatibility check for marketplace release.
