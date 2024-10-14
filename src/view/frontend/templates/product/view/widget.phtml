@@ -24,7 +24,6 @@ if (!$block->isAplazameActive()) {
         data-aplazame-widget-instalments="v5"
         data-type="product"
         data-option-slider="<?php echo $block->getShowSlider(); ?>"
-        data-option-small-size="<?php echo $block->getSmallSize(); ?>"
         data-option-align="<?php echo $block->getWidgetAlign(); ?>"
     <?php endif; ?>
     data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
@@ -40,4 +39,6 @@ if (!$block->isAplazameActive()) {
     <?php if ( ! empty( $block->getDefaultInstalments() ) ) : ?>
 		data-option-default-instalments="<?php echo $block->getDefaultInstalments(); ?>"
 	<?php endif; ?>
-></div>
+>
+    <div data-aplazame-loading></div>
+</div>

@@ -48,7 +48,6 @@ class ConfigProvider implements ConfigProviderInterface
                     'cart_widget_primary_color' => $this->config->getCartPrimaryColor(),
                     'cart_widget_ver' => $this->config->getCartWidgetVer(),
                     'cart_slider_enabled' => $this->config->isCartSliderEnabled()  ? 'true' : 'false',
-                    'cart_small_size_enabled' => $this->config->isCartSmallSizeEnabled()  ? 'true' : 'false',
                 ],
             ],
         ];

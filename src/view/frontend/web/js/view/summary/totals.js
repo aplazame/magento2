@@ -21,7 +21,6 @@ define([
         cartLayout: config.cart_widget_layout,
         cartAlign: config.cart_widget_align,
         cartSliderIsEnabled: config.cart_slider_enabled,
-        cartSmallSizeIsEnabled: config.cart_small_size_enabled,
 
         getAmount: function () {
             return Quote.totals().base_grand_total;

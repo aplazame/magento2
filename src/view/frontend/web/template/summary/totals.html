@@ -13,9 +13,10 @@
                     'data-option-default-instalments': cartDefaultInstalments,
                     'data-option-align': cartAlign,
                     'data-option-slider': cartSliderIsEnabled,
-                    'data-option-small-size': cartSmallSizeIsEnabled,
                 }"
-        ></div>
+        >
+            <div data-aplazame-loading></div>
+        </div>
     <!-- /ko -->
     <!-- ko if: cartWidgetVer == 'v4' -->
         <div
@@ -34,7 +35,9 @@
                     'data-option-layout': cartLayout,
                     'data-option-align': cartAlign,
                 }"
-        ></div>
+        >
+            <div data-aplazame-loading></div>
+        </div>
     <!-- /ko -->
     <!-- ko if: cartWidgetVer == 'v3' -->
         <div
@@ -49,6 +52,8 @@
                 'data-pay-in-4': cartPayIn4IsEnabled ? '' : null,
                 'data-option-default-instalments': cartDefaultInstalments,
             }"
-        ></div>
+        >
+            <div data-aplazame-loading></div>
+        </div>
     <!-- /ko -->
 <!-- /ko -->
