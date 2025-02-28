@@ -29,7 +29,7 @@ pipeline {
       }
       environment {
         SONAR_TEST = credentials('SONAR_TEST')
-        CODE_SOURCE_DEFAULT = "extension"
+        CODE_SOURCE_DEFAULT = "src"
       }
       steps {
         scmSkip()
