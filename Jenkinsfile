@@ -3,7 +3,7 @@ library "aplazame-shared-library"
 pipeline {
   agent {
     kubernetes {
-      yamlFile "/jenkins/php.yaml"
+      yamlFile "/php.yaml"
     }
   }
   environment {
@@ -24,7 +24,7 @@ pipeline {
       }
       agent {
         kubernetes {
-          yamlFile "/jenkins/jenkins-sonar.yaml"
+          yamlFile "/jenkins-sonar.yaml"
         }
       }
       environment {
