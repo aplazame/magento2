@@ -1,5 +1,9 @@
 ## Change Log
 
+#### [v3.1.3](https://github.com/aplazame/magento2/tree/v3.1.3) (2025-03-27)
+
+* [FIX] Deprecated broken event at shipment.
+
 #### [v3.1.2](https://github.com/aplazame/magento2/tree/v3.1.2) (2024-10-14)
 
 * [ADD] Widget loading animation.
