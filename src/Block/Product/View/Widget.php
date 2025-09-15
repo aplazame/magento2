@@ -6,6 +6,8 @@ use Aplazame\Payment\Gateway\Config\Config;
 use Magento\Catalog\Block\Product\AbstractProduct;
 use Magento\Directory\Model\Currency;
 use Magento\Framework\Pricing\PriceCurrencyInterface;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class Widget extends AbstractProduct
 {
@@ -19,16 +21,23 @@ class Widget extends AbstractProduct
      */
     private $config;
 
+    /**
+     * @var ScopeConfigInterface
+     */
+    private $scopeConfig;
+
     public function __construct(
         PriceCurrencyInterface $priceCurrency,
         \Magento\Catalog\Block\Product\Context $context,
         Config $config,
+        ScopeConfigInterface $scopeConfig,
         array $data = []
     ) {
 
         parent::__construct($context, $data);
         $this->priceCurrency = $priceCurrency;
         $this->config = $config;
+        $this->scopeConfig = $scopeConfig;
     }
 
     /**
@@ -39,6 +48,13 @@ class Widget extends AbstractProduct
         $product = $this->getProduct();
 
         return $product->getFinalPrice();
+    }
+
+    public function getContryCode()
+    {
+        $currentLocale = $this->scopeConfig->getValue('general/locale/code', ScopeInterface::SCOPE_STORE);
+
+        return substr($currentLocale, 0, 2);
     }
 
     public function getCurrencyCode()
