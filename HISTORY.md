@@ -1,5 +1,11 @@
 ## Change Log
 
+#### [v3.2.0](https://github.com/aplazame/magento2/tree/v3.2.0) (2025-09-25)
+
+* [ADD] PT widget.
+* [ADD] PHP 8.4 compatibility.
+* [FIX] CSP restrictions.
+
 #### [v3.1.3](https://github.com/aplazame/magento2/tree/v3.1.3) (2025-03-27)
 
 * [FIX] Deprecated broken event at shipment.
