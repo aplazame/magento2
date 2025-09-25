@@ -41,6 +41,7 @@ class ConfigProvider implements ConfigProviderInterface
                     'cart_legal_advice_enabled' => $this->config->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false',
                     'cart_pay_in_4_enabled' => $this->config->isCartWidgetPayIn4Enabled(),
                     'cart_default_instalments' => $this->config->getCartDefaultInstalments(),
+                    'widget_country' => $this->config->getWidgetCountry(),
                     'widget_out_of_limits' => $this->config->getWidgetOutOfLimits(),
                     'cart_max_desired_enabled' => $this->config->isCartWidgetMaxDesiredEnabled()  ? 'true' : 'false',
                     'cart_widget_layout' => $this->config->getCartLayout(),

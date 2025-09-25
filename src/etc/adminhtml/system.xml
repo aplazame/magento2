@@ -48,7 +48,13 @@
                 <group id="aplazame_widget" translate="label" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Widget</label>
 
-                    <field id="widget_out_of_limits" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <field id="widget_country" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                        <label>Widget country</label>
+                        <source_model>Aplazame\Payment\Model\Config\Source\WidgetCountry</source_model>
+                        <comment>Select widget country</comment>
+                    </field>
+
+                    <field id="widget_out_of_limits" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                         <label>Widget if Aplazame is not available</label>
                         <source_model>Aplazame\Payment\Model\Config\Source\Outoflimits</source_model>
                         <comment>Show/hide alternative widget if Aplazame is not available</comment>

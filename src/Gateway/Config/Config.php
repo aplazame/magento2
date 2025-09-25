@@ -3,6 +3,7 @@
 namespace Aplazame\Payment\Gateway\Config;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\ScopeInterface;
 
 class Config extends \Magento\Payment\Gateway\Config\Config
 {
@@ -10,6 +11,11 @@ class Config extends \Magento\Payment\Gateway\Config\Config
      * @var string
      */
     private $apiBaseUri;
+
+    /**
+     * @var ScopeConfigInterface
+     */
+    private $scopeConfig;
 
     public function __construct(
         ScopeConfigInterface $scopeConfig,
@@ -19,6 +25,7 @@ class Config extends \Magento\Payment\Gateway\Config\Config
         parent::__construct($scopeConfig, $methodCode, $pathPattern);
 
         $this->apiBaseUri = getenv('APLAZAME_API_BASE_URI') ? getenv('APLAZAME_API_BASE_URI') : 'https://api.aplazame.com';
+        $this->scopeConfig = $scopeConfig;
     }
 
     /**
@@ -38,6 +45,20 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     }
 
     // Widget config
+
+    /**
+     * @return string
+     */
+    public function getWidgetCountry()
+    {
+        if ((string) $this->getValue('aplazame_widget/widget_country') == 'auto')
+        {
+            $currentLocale = $this->scopeConfig->getValue('general/locale/code', ScopeInterface::SCOPE_STORE);
+            return substr($currentLocale, 0, 2);
+        } else {
+            return (string) $this->getValue('aplazame_widget/widget_country');
+        }
+    }
 
     /**
      * @return string

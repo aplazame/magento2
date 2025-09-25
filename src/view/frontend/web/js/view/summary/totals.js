@@ -14,6 +14,7 @@ define([
         cartDownpaymentInfoIsEnabled: config.cart_downpayment_info_enabled,
         cartPayIn4IsEnabled: config.cart_pay_in_4_enabled,
         cartDefaultInstalments: config.cart_default_instalments,
+        widgetCountry: config.widget_country,
         widgetOutOfLimits: config.widget_out_of_limits,
         cartWidgetVer: config.cart_widget_ver,
         cartMaxDesired: config.cart_max_desired_enabled,
