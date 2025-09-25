@@ -41,6 +41,11 @@ class Widget extends AbstractProduct
         return $product->getFinalPrice();
     }
 
+    public function getCountryCode()
+    {
+        return $this->config->getWidgetCountry();
+    }
+
     public function getCurrencyCode()
     {
         /** @var Currency $currencyModel */

@@ -10,6 +10,7 @@
                 <title>Aplazame</title>
                 <allowspecific>0</allowspecific>
                 <aplazame_widget>
+                    <widget_country>auto</widget_country>
                     <widget_out_of_limits>show</widget_out_of_limits>
                     <aplazame_product_widget>
                         <product_widget_enabled>1</product_widget_enabled>

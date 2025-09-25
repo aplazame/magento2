@@ -36,7 +36,7 @@ class Confirm
      */
     private $quoteRepository;
 
-    private static function ok(array $extra = null)
+    private static function ok(?array $extra = null)
     {
         $response = array(
             'status' => 'ok',
