@@ -15,30 +15,30 @@ if (!$block->isAplazameActive()) {
     <?php elseif ($block->getWidgetVersion() == 'v4') : ?>
         data-aplazame-widget-instalments="v4"
         data-type="product"
-        data-option-border-product="<?php echo $block->getShowBorder(); ?>"
-        data-option-max-amount-desired="<?php echo $block->getShowMaxDesired(); ?>"
-        data-option-primary-color="<?php echo $block->getPrimaryColor(); ?>"
-        data-option-layout="<?php echo $block->getWidgetLayout(); ?>"
-        data-option-align="<?php echo $block->getWidgetAlign(); ?>"
+        data-option-border-product="<?= /* @noEscape */ $block->getShowBorder(); ?>"
+        data-option-max-amount-desired="<?= /* @noEscape */ $block->getShowMaxDesired(); ?>"
+        data-option-primary-color="<?= /* @noEscape */ $block->getPrimaryColor(); ?>"
+        data-option-layout="<?= /* @noEscape */ $block->getWidgetLayout(); ?>"
+        data-option-align="<?= /* @noEscape */ $block->getWidgetAlign(); ?>"
     <?php else : ?>
         data-aplazame-widget-instalments="v5"
         data-type="product"
-        data-option-slider="<?php echo $block->getShowSlider(); ?>"
-        data-option-align="<?php echo $block->getWidgetAlign(); ?>"
+        data-option-slider="<?= /* @noEscape */ $block->getShowSlider(); ?>"
+        data-option-align="<?= /* @noEscape */ $block->getWidgetAlign(); ?>"
     <?php endif; ?>
-    data-amount="<?php echo Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
-    data-price="<?php echo $block->getPriceSelector(); ?>"
-    data-country="<?php echo $block->getCountryCode(); ?>"
-    data-currency="<?php echo $block->getCurrencyCode(); ?>"
-    data-article-id="<?php echo $block->getProduct()->getId(); ?>"
-    data-option-legal-advice="<?php echo $block->getShowLegalAdvice(); ?>"
-    data-option-downpayment-info="<?php echo $block->getShowDownpaymentInfo(); ?>"
-    data-option-out-of-limits="<?php echo $block->getOptionOutOfLimits(); ?>"
+    data-amount="<?= /* @noEscape */ Decimal::fromFloat($block->getFinalPrice())->jsonSerialize(); ?>"
+    data-price="<?= /* @noEscape */ $block->getPriceSelector(); ?>"
+    data-country="<?= /* @noEscape */ $block->getCountryCode(); ?>"
+    data-currency="<?= /* @noEscape */ $block->getCurrencyCode(); ?>"
+    data-article-id="<?= /* @noEscape */ $block->getProduct()->getId(); ?>"
+    data-option-legal-advice="<?= /* @noEscape */ $block->getShowLegalAdvice(); ?>"
+    data-option-downpayment-info="<?= /* @noEscape */ $block->getShowDownpaymentInfo(); ?>"
+    data-option-out-of-limits="<?= /* @noEscape */ $block->getOptionOutOfLimits(); ?>"
     <?php if ($block->getShowPayIn4()) : ?>
         data-pay-in-4=""
     <?php endif; ?>
     <?php if ( ! empty( $block->getDefaultInstalments() ) ) : ?>
-		data-option-default-instalments="<?php echo $block->getDefaultInstalments(); ?>"
+		data-option-default-instalments="<?= /* @noEscape */ $block->getDefaultInstalments(); ?>"
 	<?php endif; ?>
 >
     <div data-aplazame-loading></div>

@@ -11,19 +11,19 @@ use Aplazame\Payment\Block\Adminhtml\Product\Edit\Aplazame;
     </fieldset>
 
     <button type="button" name="associateProductsToCampaigns" id="associateProductsToCampaigns" onclick="associateArticlesToCampaigns()">
-        <?php echo __('Associate products to selected campaigns'); ?>
+        <?= /* @noEscape */ __('Associate products to selected campaigns'); ?>
     </button>
 
     <button type="button" name="removeProductsFromCampaigns" id="removeProductsFromCampaigns" onclick="removeArticlesFromCampaigns()">
-        <?php echo __('Remove products from selected campaigns'); ?>
+        <?= /* @noEscape */ __('Remove products from selected campaigns'); ?>
     </button>
 </div>
 
 <script>
-    var apiProxyEndpoint = "<?php echo $block->getUrl('aplazame/proxy/index') ?>";
+    var apiProxyEndpoint = "<?= /* @noEscape */ $block->getUrl('aplazame/proxy/index') ?>";
     var campaignsContainer = document.getElementById("aplazame_campaigns_container");
 
-    var articles = <?php echo json_encode($block->getArticles()) ?>;
+    var articles = <?= /* @noEscape */ json_encode($block->getArticles()) ?>;
 
     var dateObj = new Date();
     var currentDate = dateObj.toISOString();
@@ -89,7 +89,7 @@ use Aplazame\Payment\Block\Adminhtml\Product\Edit\Aplazame;
         if (!campaign.partial) {
             checkbox.checked = true;
             checkbox.disabled = true;
-            checkbox.title = "<?php echo __('The campaign applies to all products from your catalogue'); ?>";
+            checkbox.title = "<?= /* @noEscape */ __('The campaign applies to all products from your catalogue'); ?>";
         }
 
         /**
