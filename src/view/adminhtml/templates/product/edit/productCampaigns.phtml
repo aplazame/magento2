@@ -9,16 +9,16 @@ use Aplazame\Payment\Block\Adminhtml\Product\Edit\Aplazame;
 <div class="entry-edit">
     <fieldset class="admin__fieldset" id="aplazame_campaigns_container">
         <legend>
-            <?php echo __('Campaigns'); ?>
+            <?= /* @noEscape */ __('Campaigns'); ?>
         </legend>
     </fieldset>
 </div>
 
 <script>
-    var apiProxyEndpoint = "<?php echo $block->getUrl('aplazame/proxy/index') ?>";
+    var apiProxyEndpoint = "<?= /* @noEscape */ $block->getUrl('aplazame/proxy/index') ?>";
     var campaignsContainer = document.getElementById("aplazame_campaigns_container");
 
-    var articles = <?php echo json_encode($block->getArticles()) ?>;
+    var articles = <?= /* @noEscape */ json_encode($block->getArticles()) ?>;
 
     var dateObj = new Date();
     var currentDate = dateObj.toISOString();
@@ -73,7 +73,7 @@ use Aplazame\Payment\Block\Adminhtml\Product\Edit\Aplazame;
         if (!campaign.partial) {
             checkbox.checked = true;
             checkbox.disabled = true;
-            checkbox.title = "<?php echo __('The campaign applies to all products from your catalogue'); ?>";
+            checkbox.title = "<?= /* @noEscape */ __('The campaign applies to all products from your catalogue'); ?>";
         }
 
         /**

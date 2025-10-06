@@ -7,6 +7,8 @@
 "Aplazame","Aplazame"
 "Test Mode (Sandbox)","Modo de pruebas (Sandbox)"
 "Private API Key","Clave API privada"
+"Widget country","País del widget"
+"Select widget country","Seleccionar país del widget"
 "Widget if Aplazame is not available","Widget si Aplazame no está disponible"
 "Show/hide alternative widget if Aplazame is not available","Muestra/oculta el widget alternativo si Aplazame no está disponible"
 "Widget version","Versión del widget"
@@ -39,3 +41,4 @@
 "Left","Izquierda"
 "Center","Centro"
 "Right","Derecha"
+"ES (Spain)","ES (España)"
