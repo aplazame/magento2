@@ -1,5 +1,10 @@
 ## Change Log
 
+#### [v3.2.1](https://github.com/aplazame/magento2/tree/v3.2.1) (2025-10-06)
+
+* [ADD] Widget country option translation.
+* [FIX] HTML escapes.
+
 #### [v3.2.0](https://github.com/aplazame/magento2/tree/v3.2.0) (2025-09-25)
 
 * [ADD] PT widget.
