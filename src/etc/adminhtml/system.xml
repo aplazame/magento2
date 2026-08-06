@@ -85,6 +85,11 @@
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                         </field>
 
+                        <field id="product_open_fee" translate="label" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show open fee</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
                         <field id="product_legal_advice" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show legal notice</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
@@ -157,6 +162,11 @@
 
                         <field id="cart_downpayment_info" translate="label" type="select" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="0">
                             <label>Show downpayment info</label>
+                            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                        </field>
+
+                        <field id="cart_open_fee" translate="label" type="select" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="0">
+                            <label>Show open fee</label>
                             <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                         </field>
 

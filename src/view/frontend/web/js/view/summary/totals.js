@@ -12,6 +12,7 @@ define([
         instalmentsIsEnabled: config.instalments_enabled,
         cartLegalAdviceIsEnabled: config.cart_legal_advice_enabled,
         cartDownpaymentInfoIsEnabled: config.cart_downpayment_info_enabled,
+        cartOpenFeeIsEnabled: config.cart_open_fee_enabled,
         cartPayIn4IsEnabled: config.cart_pay_in_4_enabled,
         cartDefaultInstalments: config.cart_default_instalments,
         widgetCountry: config.widget_country,

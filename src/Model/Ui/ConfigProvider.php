@@ -38,6 +38,7 @@ class ConfigProvider implements ConfigProviderInterface
                     'instalments_enabled' => $this->config->isActive(),
                     'cart_widget_enabled' => $this->config->isCartWidgetEnabled(),
                     'cart_downpayment_info_enabled' => $this->config->isCartWidgetDownpaymentInfoEnabled() ? 'true' : 'false',
+                    'cart_open_fee_enabled' => $this->config->isCartWidgetOpenFeeEnabled() ? 'true' : 'false',
                     'cart_legal_advice_enabled' => $this->config->isCartWidgetLegalAdviceEnabled() ? 'true' : 'false',
                     'cart_pay_in_4_enabled' => $this->config->isCartWidgetPayIn4Enabled(),
                     'cart_default_instalments' => $this->config->getCartDefaultInstalments(),
