@@ -59,6 +59,11 @@ class Widget extends AbstractProduct
         return $this->config->isProductWidgetDownpaymentInfoEnabled() ? 'true' : 'false';
     }
 
+    public function getShowOpenFee()
+    {
+        return $this->config->isProductWidgetOpenFeeEnabled() ? 'true' : 'false';
+    }
+
     public function getShowLegalAdvice()
     {
         return $this->config->isProductWidgetLegalAdviceEnabled() ? 'true' : 'false';

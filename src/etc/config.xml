@@ -17,6 +17,7 @@
                         <product_widget_ver>v5</product_widget_ver>
                         <product_slider>1</product_slider>
                         <product_downpayment_info>1</product_downpayment_info>
+                        <product_open_fee>1</product_open_fee>
                         <product_legal_advice>0</product_legal_advice>
                         <product_pay_in_4>0</product_pay_in_4>
                         <product_default_instalments> </product_default_instalments>
@@ -32,6 +33,7 @@
                         <cart_widget_ver>v5</cart_widget_ver>
                         <cart_slider>1</cart_slider>
                         <cart_downpayment_info>1</cart_downpayment_info>
+                        <cart_open_fee>1</cart_open_fee>
                         <cart_legal_advice>0</cart_legal_advice>
                         <cart_pay_in_4>0</cart_pay_in_4>
                         <cart_default_instalments> </cart_default_instalments>

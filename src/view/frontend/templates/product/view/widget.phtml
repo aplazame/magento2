@@ -33,6 +33,7 @@ if (!$block->isAplazameActive()) {
     data-article-id="<?= /* @noEscape */ $block->getProduct()->getId(); ?>"
     data-option-legal-advice="<?= /* @noEscape */ $block->getShowLegalAdvice(); ?>"
     data-option-downpayment-info="<?= /* @noEscape */ $block->getShowDownpaymentInfo(); ?>"
+    data-option-show-open-fee="<?= /* @noEscape */ $block->getShowOpenFee(); ?>"
     data-option-out-of-limits="<?= /* @noEscape */ $block->getOptionOutOfLimits(); ?>"
     <?php if ($block->getShowPayIn4()) : ?>
         data-pay-in-4=""

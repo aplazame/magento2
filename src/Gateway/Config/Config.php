@@ -81,6 +81,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     /**
      * @return bool
      */
+    public function isProductWidgetOpenFeeEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_open_fee');
+    }
+
+    /**
+     * @return bool
+     */
     public function isProductWidgetLegalAdviceEnabled()
     {
         return (bool) $this->getValue('aplazame_widget/aplazame_product_widget/product_legal_advice');
@@ -182,6 +190,14 @@ class Config extends \Magento\Payment\Gateway\Config\Config
     public function isCartWidgetDownpaymentInfoEnabled()
     {
         return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_downpayment_info');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCartWidgetOpenFeeEnabled()
+    {
+        return (bool) $this->getValue('aplazame_widget/aplazame_cart_widget/cart_open_fee');
     }
 
     /**
